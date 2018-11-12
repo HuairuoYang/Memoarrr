@@ -1,3 +1,3 @@
 # Memoarrr
 
-#using xcode to open project Memoarrr
+## using xcode to open project Memoarrr
