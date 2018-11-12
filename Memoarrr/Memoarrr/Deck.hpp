@@ -16,4 +16,10 @@
 //• C* getNext() returns the next card or reward by pointer. Will return nullptr if no more cards or rewards are available.
 //• bool isEmpty() const returns true if the deck is empty.
 
+class Deck{
+    void shuffle();
+    bool isEmpty();
+    //C* getNext();
+};
+
 #endif /* Deck_hpp */

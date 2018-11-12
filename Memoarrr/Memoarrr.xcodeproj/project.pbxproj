@@ -52,6 +52,7 @@
 		9EB89A922199FCBA0041F107 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		9EB89A942199FCC10041F107 /* Rules.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rules.cpp; sourceTree = "<group>"; };
 		9EB89A952199FCC10041F107 /* Rules.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rules.hpp; sourceTree = "<group>"; };
+		9EB89A97219A041C0041F107 /* Utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Utils.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +90,7 @@
 				9EB89A7D2199FC7D0041F107 /* Player.hpp */,
 				9EB89A7F2199FC850041F107 /* Card.cpp */,
 				9EB89A802199FC850041F107 /* Card.hpp */,
+				9EB89A97219A041C0041F107 /* Utils.hpp */,
 				9EB89A822199FC900041F107 /* Reward.cpp */,
 				9EB89A832199FC900041F107 /* Reward.hpp */,
 				9EB89A852199FC970041F107 /* Deck.cpp */,

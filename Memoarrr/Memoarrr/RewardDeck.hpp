@@ -10,7 +10,11 @@
 #define RewardDeck_hpp
 
 #include <stdio.h>
-
+#include "Deck.hpp"
 //Design a class RewardDeck derived from Deck<Reward> with the corresponding properties to CardDeck.
+
+class RewardDeck: Deck{
+    
+};
 
 #endif /* RewardDeck_hpp */

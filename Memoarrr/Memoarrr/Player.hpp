@@ -10,6 +10,12 @@
 #define Player_hpp
 
 #include <stdio.h>
+#include <string>
+
+using namespace std;
+
+#include "Reward.hpp"
+#include "Utils.hpp"
 
 
 //Design a class Player which combines all information for a player including name, side of the board (top, bottom, left or right) and has the current count of rubies. The class should have the following public methods:
@@ -22,6 +28,22 @@
 //Joe Remember Doe: left (active)
 //Once endOfGame is true:
 //Joe Remember Doe: 3 rubies
+
+class Player{
+    string name;
+    PlayerSide side;
+    int countOfRubies;
+    bool active;
+    
+public:
+    string getName(){return name;}
+    void setActive(){active = true;}
+    bool isActive(){return active;}
+    int getNRubies(){return countOfRubies;}
+    void addReward(const Reward&){};
+    void setDisplayMode(bool endOfGame){};
+    //operator cout << player
+};
 
 
 #endif /* Player_hpp */
