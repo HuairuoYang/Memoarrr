@@ -32,17 +32,35 @@ using namespace std;
 class Player{
     string name;
     PlayerSide side;
-    int countOfRubies;
-    bool active;
-    
+    int countOfRubies = 0;
+    bool active = true;
+    bool endOfGame = false;
+    Player(){};
 public:
     string getName(){return name;}
+    PlayerSide getSideEnum(){return side;}
+    string getSideString();
     void setActive(){active = true;}
     bool isActive(){return active;}
     int getNRubies(){return countOfRubies;}
     void addReward(const Reward&){};
-    void setDisplayMode(bool endOfGame){};
-    //operator cout << player
+    void setDisplayMode(bool eog){endOfGame = eog;}
+    
+    //constructor
+    Player(string pName, PlayerSide pSide) : name{pName}, side{pSide}{};
+    
+    friend std::ostream& operator<<(std::ostream& os,Player & p) {
+        std::string str;
+        if(p.endOfGame == false){
+            str = "Player: "+p.name+" is on " + p.getSideString() + " side is " + (p.isActive()? "ACTIVE":"DISPLAY") + "\n";
+        } else {
+            str = "Player: "+p.name + " has " + to_string(p.countOfRubies) + " rubies" + "\n";
+        }
+        
+        os << str;
+        return os;
+        
+    }
 };
 
 

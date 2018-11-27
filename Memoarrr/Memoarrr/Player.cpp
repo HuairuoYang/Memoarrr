@@ -7,3 +7,21 @@
 //
 
 #include "Player.hpp"
+
+string Player::getSideString(){
+    switch (side){
+        case top:
+            return "TOP";
+        case bottom:
+            return "BOTTOM";
+            break;
+        case left:
+            return "LEFT";
+            break;
+        case right:
+            return "RIGHT";
+            break;
+        default:
+            break;
+    }
+}
