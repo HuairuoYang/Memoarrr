@@ -7,3 +7,17 @@
 //
 
 #include "RewardDeck.hpp"
+
+RewardDeck& RewardDeck::make_CardDeck(){
+    if(myRDeck == nullptr){
+        myRDeck = new RewardDeck();
+        for (int i : rewardList)  {
+            myRDeck->deck.push_back(new Reward(i));
+        }
+        myRDeck->shuffle();
+        return *myRDeck;
+    }
+    else{
+        return *myRDeck;
+    }
+}

@@ -7,3 +7,27 @@
 //
 
 #include "CardDeck.hpp"
+
+CardDeck& CardDeck::make_CardDeck(){
+    if(myCDeck == nullptr){
+        myCDeck = new CardDeck();
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                myCDeck->deck.push_back(new Card(FaceAnimal(i), FaceBackground(j)));
+            }
+        }
+        myCDeck->shuffle();
+        return *myCDeck;
+    }
+    else{
+        return *myCDeck;
+    }
+}
+
+void CardDeck::shuffle(){
+    std::random_shuffle(deck.begin(), deck.end());
+    for(auto i: deck){
+        i->faceUp = false;
+    }
+}
+

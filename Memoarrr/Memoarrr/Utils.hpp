@@ -9,6 +9,8 @@
 #ifndef utils_hpp
 #define utils_hpp
 
+const int rewardList[7] ={1,1,1,2,2,3,4};
+
 enum PlayerSide{
     top = 0,
     bottom,

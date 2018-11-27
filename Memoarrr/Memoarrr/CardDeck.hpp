@@ -17,12 +17,13 @@
 //An object of type CardDeck can not be copied or assigned, and it has no public constructor.
 
 class CardDeck : public Deck<Card> {
-    static Deck myDeck;
-    static CardDeck& make_CardDeck();
-    
-    CardDeck();
+    static CardDeck* myCDeck;
+    CardDeck() = default;
     CardDeck(const CardDeck&) = delete;
     CardDeck& operator= ( const CardDeck & ) = delete;
+public:
+    static CardDeck& make_CardDeck();
+    virtual void shuffle();
 };
 
 #endif /* CardDeck_hpp */

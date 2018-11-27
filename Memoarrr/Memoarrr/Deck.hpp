@@ -20,13 +20,12 @@
 template <typename C>
 class Deck
 {
+protected:
     std::vector<C*> deck;
     int iter = 0;
     
 public:
-    void shuffle(){
-        std::random_shuffle(deck.begin(), deck.end());
-    };
+    virtual void shuffle()= 0;
     bool isEmpty(){return deck.empty();}
     
     C* getNext(){
@@ -38,6 +37,11 @@ public:
             return card;
         }
     };
+    virtual ~Deck(){
+        for(auto i : deck){
+            delete(deck[i]);
+        }
+    }
 };
 
 #endif /* Deck_hpp */

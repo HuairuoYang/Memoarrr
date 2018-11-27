@@ -11,10 +11,17 @@
 
 #include <stdio.h>
 #include "Deck.hpp"
+#include "Reward.hpp"
 //Design a class RewardDeck derived from Deck<Reward> with the corresponding properties to CardDeck.
 
-class RewardDeck: Deck{
-    
+class RewardDeck : public Deck<Reward>{
+
+    static RewardDeck* myRDeck;
+    RewardDeck() = default;
+    RewardDeck(const RewardDeck&) = delete;
+    RewardDeck& operator= ( const RewardDeck & ) = delete;
+public:
+    static RewardDeck& make_CardDeck();
 };
 
 #endif /* RewardDeck_hpp */
