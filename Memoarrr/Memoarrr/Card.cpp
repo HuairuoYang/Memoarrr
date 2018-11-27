@@ -7,3 +7,47 @@
 //
 
 #include "Card.hpp"
+
+std::string Card::getAnimalStr(){
+    switch (cardAnimal){
+        case crab:
+            return "C";
+        case penguin:
+            return "P";
+            break;
+        case octopus:
+            return "O";
+            break;
+        case turtle:
+            return "T";
+            break;
+        case walrus:
+            return "W";
+            break;
+        default:
+            return " ";
+            break;
+    }
+}
+
+std::string Card::getColorStr(){
+    switch (cardColor){
+        case red:
+            return "r";
+        case green:
+            return "g";
+            break;
+        case purple:
+            return "p";
+            break;
+        case blue:
+            return "b";
+            break;
+        case yellow:
+            return "y";
+            break;
+        default:
+            return " ";
+            break;
+    }
+}

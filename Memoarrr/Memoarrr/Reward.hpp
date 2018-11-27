@@ -15,7 +15,18 @@
 //An object of type Reward can not be copied or assigned and needs a private constructor but will give RewardDeck (see below) friend access.
 
 class Reward{
-
+    int numOfRubies=0;
+    friend class RewardDeck;
+    Reward(const Reward&) = delete;
+    Reward& operator= ( const Reward & ) = delete;
+    Reward(int ruby):numOfRubies{ruby}{};
+ 
+public:
+    friend std::ostream& operator<<(std::ostream& os,Reward & r) {
+        return os << std::to_string(r.numOfRubies);
+    }
+    int operator()() { return numOfRubies; }
+    
 };
 
 #endif /* Reward_hpp */
