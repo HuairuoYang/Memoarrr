@@ -10,7 +10,7 @@
 
 bool Board::isFaceUp(const Letter & let, const Number & num){
     if( 0<let<5 && 0<num<5){
-         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let -1)*5 +(int)num-1));
+         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let )*5 +(int)num));
         return c->isFaceUp();
     }
     else{
@@ -21,9 +21,9 @@ bool Board::isFaceUp(const Letter & let, const Number & num){
 
 bool Board::turnFaceUp(const Letter & let, const Number & num){
     if( 0<let<5 && 0<num<5){
-        Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let -1)*5 +(int)num-1));
+        Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let)*5 +(int)num));
         
-        c->turnFace(true);;
+        c->turnFace(true);
         return true;
     }
     else{
@@ -33,7 +33,7 @@ bool Board::turnFaceUp(const Letter & let, const Number & num){
 }
 bool Board::turnFaceDown(const Letter & let, const Number & num){
     if( 0<let<5 && 0<num<5){
-        Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let -1)*5 +(int)num-1));
+        Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let)*5 +(int)num));
          c->turnFace(false);
         return true;
     }

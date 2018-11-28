@@ -10,6 +10,7 @@
 #include <string>
 #include <iostream>
 #include "Board.hpp"
+#include "Utils.hpp"
 
 using namespace std;
 //game rules:
@@ -83,5 +84,13 @@ int main(int argc, const char * argv[]) {
     std::cout << "Hello, World!\n";
     Board* myBoard = new Board();
     cout<<*myBoard<<endl;
+    
+    myBoard->turnFaceUp(Letter::A, Number::one);
+    myBoard->turnFaceUp(Letter::B, Number::two);
+    myBoard->turnFaceUp(Letter::C, Number::three);
+    myBoard->turnFaceUp(Letter::D, Number::four);
+    myBoard->turnFaceUp(Letter::E, Number::five);
+    cout<<*myBoard<<endl;
+    
     return 0;
 }

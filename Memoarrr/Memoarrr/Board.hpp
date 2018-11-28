@@ -32,10 +32,6 @@ public:
     bool turnFaceUp( const Letter&, const Number&);
     bool turnFaceDown( const Letter&, const Number& );
     void reset();
-    Board(){
-        std::cout<<"creating new board";
-        gameCdeck->make_CardDeck();
-    }
     friend std::ostream& operator<<(std::ostream& os,Board & b) {
         std::string str;
         if(!gameCdeck->isEmpty()){
