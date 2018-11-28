@@ -18,7 +18,7 @@
 //An object of type CardDeck can not be copied or assigned, and it has no public constructor.
 
 class CardDeck : public Deck<Card> {
-  static CardDeck* myCDeck;
+    static CardDeck* myCDeck;
     CardDeck() = default;
     CardDeck(const CardDeck&) = delete;
     CardDeck& operator= ( const CardDeck & ) = delete;

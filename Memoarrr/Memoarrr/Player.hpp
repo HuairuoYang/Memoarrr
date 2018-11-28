@@ -34,7 +34,6 @@ class Player{
     PlayerSide side;
     int countOfRubies = 0;
     bool active = true;
-    bool endOfGame = false;
     Player(){};
 public:
     string getName(){return name;}
@@ -44,17 +43,18 @@ public:
     bool isActive(){return active;}
     int getNRubies(){return countOfRubies;}
     void addReward(const Reward&){};
-    void setDisplayMode(bool eog){endOfGame = eog;}
+    void setDisplayMode(bool display){active = !display;}
     
     //constructor
     Player(string pName, PlayerSide pSide) : name{pName}, side{pSide}{};
     
     friend std::ostream& operator<<(std::ostream& os,Player & p) {
-        if(!p.endOfGame){
+        if(!endOfGame){
             os<<p.name+": " + p.getSideString() + "(" + (p.isActive()? "ACTIVE":"DISPLAY") + ")\n";
         } else {
            os<<p.name + ": " + to_string(p.countOfRubies) + " rubies\n";
         }
+
         return os;
         
     }

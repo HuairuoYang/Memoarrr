@@ -26,15 +26,26 @@
 //A game must be printable with the insertion operator cout << game. It should display the board and all players.
 
 class Game{
+    Card* prevCard;
+    Card* currentCard;
+    int gameRound;
 public:
     Board gameBoard;
+
+
+    
     vector<Player> gamePlayers;
-    int getRound();
+    int getRound(){return gameRound;}
+    void incRound(){gameRound++;}
     void addPlayer( const Player& p){gamePlayers.push_back(p);}
-    Player& getPlayer();
-    const Card* getPreviousCard();
-    const Card* getCurrentCard();
-    void setCurrentCard( const Card*);
+    Player& getPlayer(){    };
+    const Card* getPreviousCard(){return prevCard;}
+    const Card* getCurrentCard(){return currentCard;}
+    void setCurrentCard( const Card* c){
+        prevCard = currentCard;
+        int pos = c->getPosition();
+        currentCard = gameCdeck->getByPosition(pos);
+    }
     
     friend std::ostream& operator<<(std::ostream& os,Game & g) {
         os << g.gameBoard;

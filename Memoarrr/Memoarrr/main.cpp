@@ -110,7 +110,7 @@ int main(int argc, const char * argv[]) {
             myGame->gameBoard.turnFaceUp((Letter)i, (Number)j);
         }
     }
- 
+    endOfGame = true;
     cout<<*myGame<<endl;
     return 0;
 }

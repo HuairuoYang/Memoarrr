@@ -10,6 +10,7 @@
 #define utils_hpp
 
 const int rewardList[7] ={1,1,1,2,2,3,4};
+static bool endOfGame = false;
 
 enum PlayerSide{
     top = 0,

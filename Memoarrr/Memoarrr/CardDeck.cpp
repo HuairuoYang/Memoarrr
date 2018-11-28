@@ -18,6 +18,11 @@ CardDeck& CardDeck::make_CardDeck(){
             }
         }
         myCDeck->shuffle();
+        int l=0,n=0;
+        for(auto k : myCDeck->deck){
+            k->setLetter((Letter)l++);
+            k->setNumber((Number)n++);
+        }
         return *myCDeck;
     }
     else{

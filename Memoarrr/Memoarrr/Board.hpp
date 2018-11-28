@@ -23,8 +23,8 @@
 //• bool turnFaceDown( const Letter&, const Number& ) changes the state of the specified card return false if card was down already. Throws an exception of type OutOfRange if an invalid Letter and Number combination was given.
 //• void reset() changes the state to all cards to be face down.
 //A board must be printable with the insertion operator cout << board.
-
 static CardDeck* gameCdeck = &(CardDeck::make_CardDeck());
+
 class Board{
  
 public:
@@ -34,6 +34,7 @@ public:
     void reset();
     friend std::ostream& operator<<(std::ostream& os,Board & b) {
         std::string str;
+         os<<"================================\n";
         if(!gameCdeck->isEmpty()){
         for(int row = 0;row < gameCdeck->getByPosition(0)->getNRows();row++){
             (row==1)?(str+="A"):(str+=" ");
@@ -81,7 +82,9 @@ public:
         else{
             str+="deck empty\n";
         }
+
         os << str;
+        os<<"-------------------------------\n";   
         return os;
     }
 };
