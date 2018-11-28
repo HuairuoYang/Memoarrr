@@ -50,14 +50,11 @@ public:
     Player(string pName, PlayerSide pSide) : name{pName}, side{pSide}{};
     
     friend std::ostream& operator<<(std::ostream& os,Player & p) {
-        std::string str;
-        if(p.endOfGame == false){
-            str = "Player: "+p.name+" is on " + p.getSideString() + " side is " + (p.isActive()? "ACTIVE":"DISPLAY") + "\n";
+        if(!p.endOfGame){
+            os<<p.name+": " + p.getSideString() + "(" + (p.isActive()? "ACTIVE":"DISPLAY") + ")\n";
         } else {
-            str = "Player: "+p.name + " has " + to_string(p.countOfRubies) + " rubies" + "\n";
+           os<<p.name + ": " + to_string(p.countOfRubies) + " rubies\n";
         }
-        
-        os << str;
         return os;
         
     }

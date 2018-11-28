@@ -10,6 +10,9 @@
 #define Game_hpp
 
 #include <stdio.h>
+#include <vector>
+#include <string>
+#include <iostream>
 #include "Player.hpp"
 #include "Card.hpp"
 #include "Board.hpp"
@@ -23,13 +26,24 @@
 //A game must be printable with the insertion operator cout << game. It should display the board and all players.
 
 class Game{
+public:
     Board gameBoard;
+    vector<Player> gamePlayers;
     int getRound();
-    void addPlayer( const Player& );
+    void addPlayer( const Player& p){gamePlayers.push_back(p);}
     Player& getPlayer();
     const Card* getPreviousCard();
     const Card* getCurrentCard();
     void setCurrentCard( const Card*);
+    
+    friend std::ostream& operator<<(std::ostream& os,Game & g) {
+        os << g.gameBoard;
+        for(auto i: g.gamePlayers){
+            os<<(i);
+        }
+        return os;
+        
+    }
 };
 
 #endif /* Game_hpp */

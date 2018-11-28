@@ -10,12 +10,9 @@
 CardDeck* CardDeck::myCDeck = nullptr;
 
 CardDeck& CardDeck::make_CardDeck(){
-    std::cout<<"enter make_CardDeck"<<std::endl;
     if(myCDeck == nullptr){
-        std::cout<<"new deck"<<std::endl;
         myCDeck = new CardDeck();
         for (int i = 0; i < 5; i++) {
-             std::cout<<"push row"<<std::endl;
             for (int j = 0; j < 5; j++) {
                 myCDeck->deck.push_back(new Card(FaceAnimal(i), FaceBackground(j)));
             }
@@ -24,7 +21,6 @@ CardDeck& CardDeck::make_CardDeck(){
         return *myCDeck;
     }
     else{
-         std::cout<<"find prev deck"<<std::endl;
         return *myCDeck;
     }
 }

@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Board.hpp"
 #include "Utils.hpp"
+#include "Game.hpp"
 
 using namespace std;
 //game rules:
@@ -81,16 +82,35 @@ while Rules.gameOver is false{
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
-    Board* myBoard = new Board();
-    cout<<*myBoard<<endl;
+    std::cout << "Hello, World!\n"<<endl;
+    Game* myGame = new Game();
+    cout<<*myGame<<endl;
     
-    myBoard->turnFaceUp(Letter::A, Number::one);
-    myBoard->turnFaceUp(Letter::B, Number::two);
-    myBoard->turnFaceUp(Letter::C, Number::three);
-    myBoard->turnFaceUp(Letter::D, Number::four);
-    myBoard->turnFaceUp(Letter::E, Number::five);
-    cout<<*myBoard<<endl;
+    myGame->gameBoard.turnFaceUp(Letter::A, Number::one);
+    myGame->gameBoard.turnFaceUp(Letter::B, Number::two);
+    myGame->gameBoard.turnFaceUp(Letter::C, Number::three);
+    myGame->gameBoard.turnFaceUp(Letter::D, Number::four);
+    myGame->gameBoard.turnFaceUp(Letter::E, Number::five);
     
+    Player* A = new Player("AA",(PlayerSide)0);
+    Player* B = new Player("BB",(PlayerSide)1);
+    Player* C = new Player("CC",(PlayerSide)2);
+    Player* D = new Player("DD",(PlayerSide)3);
+    myGame->addPlayer(*A);
+    myGame->addPlayer(*B);
+    myGame->addPlayer(*C);
+    myGame->addPlayer(*D);
+    cout<<*myGame<<endl;
+    
+    
+    myGame->gameBoard.reset();
+      cout<<*myGame<<endl;
+    for (int i =0;i<5;i++){
+        for(int j =0;j<5;j++){
+            myGame->gameBoard.turnFaceUp((Letter)i, (Number)j);
+        }
+    }
+ 
+    cout<<*myGame<<endl;
     return 0;
 }
