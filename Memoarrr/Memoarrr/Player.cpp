@@ -10,15 +10,15 @@
 
 string Player::getSideString(){
     switch (side){
-        case top:
+        case PlayerSide::top:
             return "TOP";
-        case bottom:
+        case PlayerSide::bottom:
             return "BOTTOM";
             break;
-        case left:
+        case PlayerSide::left:
             return "LEFT";
             break;
-        case right:
+        case PlayerSide::right:
             return "RIGHT";
             break;
         default:

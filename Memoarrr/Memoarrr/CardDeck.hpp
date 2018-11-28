@@ -10,6 +10,7 @@
 #define CardDeck_hpp
 
 #include <stdio.h>
+#include <iostream>
 #include "Deck.hpp"
 #include "Card.hpp"
 //Design a class CardDeck derived from Deck<Card>.
@@ -17,13 +18,12 @@
 //An object of type CardDeck can not be copied or assigned, and it has no public constructor.
 
 class CardDeck : public Deck<Card> {
-    static CardDeck* myCDeck;
+  static CardDeck* myCDeck;
     CardDeck() = default;
     CardDeck(const CardDeck&) = delete;
     CardDeck& operator= ( const CardDeck & ) = delete;
 public:
     static CardDeck& make_CardDeck();
-    virtual void shuffle();
 };
 
 #endif /* CardDeck_hpp */

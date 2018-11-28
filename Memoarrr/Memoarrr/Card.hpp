@@ -54,19 +54,22 @@ public:
     FaceBackground getColor(){return cardColor;}
     std::string getColorStr();
     
+    bool isFaceUp(){return faceUp;}
+    void turnFace(bool trueForUp){faceUp = trueForUp;}
+    
     Card(const Card&) = delete;
     Card& operator= ( const Card & ) = delete;
     int getNRows() {return nRows;}
     std::string operator()(int i) {
             if(!faceUp){
-                return " zzz ";
+                return " zzz";
             }
             else{
                 if(i==2){
-                    return (" "+getColorStr()+getAnimalStr()+getColorStr()+" ");
+                    return (" "+getColorStr()+getAnimalStr()+getColorStr());
                 }
                 else{
-                    return (" "+(getColorStr()+getColorStr()+getColorStr()+" "));
+                    return (" "+(getColorStr()+getColorStr()+getColorStr()));
                 }
             }
     }

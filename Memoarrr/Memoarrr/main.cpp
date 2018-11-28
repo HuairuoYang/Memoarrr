@@ -7,7 +7,11 @@
 //
 
 #include <iostream>
+#include <string>
+#include <iostream>
+#include "Board.hpp"
 
+using namespace std;
 //game rules:
 
 //25 memory cards that will show a combination of an animal and a background colour
@@ -77,5 +81,7 @@ while Rules.gameOver is false{
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
+    Board* myBoard = new Board();
+    cout<<*myBoard<<endl;
     return 0;
 }

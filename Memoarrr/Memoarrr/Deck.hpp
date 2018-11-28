@@ -25,21 +25,33 @@ protected:
     int iter = 0;
     
 public:
-    virtual void shuffle()= 0;
+    void shuffle(){
+        std::random_shuffle(deck.begin(), deck.end());
+    };
     bool isEmpty(){return deck.empty();}
     
     C* getNext(){
         if(isEmpty()){
             return nullptr;
         } else {
-            C* card = deck.at(iter);
+            C* next = deck.at(iter);
             iter++;
-            return card;
+            return next;
         }
     };
     virtual ~Deck(){
         for(auto i : deck){
-            delete(deck[i]);
+            delete(i);
+        }
+    }
+    C* getByPosition(int p){
+        if(isEmpty()||p > deck.size()){
+            return nullptr;
+        }
+        else {
+            C* pos = deck.at(p);
+            return pos;
+    
         }
     }
 };
