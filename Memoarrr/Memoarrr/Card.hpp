@@ -48,17 +48,17 @@ class Card{
     Number num;
     bool faceUp = false;
     int nRows = 3;
+    
     Card(FaceAnimal animal, FaceBackground background): cardAnimal(animal), cardColor(background){};
     
 public:
-
     int getPosition() const {return let*5+num;}
     void setLetter(Letter l){let=l;}
     void setNumber(Number n){num=n;}
     
-    FaceAnimal getAnimal(){return cardAnimal;}
+    FaceAnimal getAnimal() const {return cardAnimal;}
     std::string getAnimalStr();
-    FaceBackground getColor(){return cardColor;}
+    FaceBackground getColor() const {return cardColor;}
     std::string getColorStr();
     
     bool isFaceUp(){return faceUp;}

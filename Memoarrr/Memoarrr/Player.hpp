@@ -37,10 +37,13 @@ public:
     std::string getName(){return name;}
     PlayerSide getSideEnum(){return side;}
     std::string getSideString();
-    void setActive(){active = true;}
+    
+   
     bool isActive(){return active;}
     int getNRubies(){return countOfRubies;}
     void addReward(const Reward&){};
+    
+    void setActive(){active = true;}    
     void setDisplayMode(bool display){active = !display;}
     
     //constructor

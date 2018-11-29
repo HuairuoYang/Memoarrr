@@ -7,6 +7,7 @@
 //
 
 #include "RewardDeck.hpp"
+RewardDeck* RewardDeck::myRDeck = nullptr;
 
 RewardDeck& RewardDeck::make_CardDeck(){
     if(myRDeck == nullptr){

@@ -7,3 +7,26 @@
 //
 
 #include "Rules.hpp"
+
+bool Rules::isValid(const Game& g){
+    if(g.getPreviousCard()->getAnimal() ==g.getCurrentCard()->getAnimal() || g.getPreviousCard()->getColor() ==g.getCurrentCard()->getColor()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool Rules::gameOver(const Game& g){
+    if(g.getRound() == 7){
+        endOfGame = true;
+        return endOfGame;
+    }
+    else{
+        endOfGame = false;
+        return endOfGame;
+    }
+}
+bool Rules::roundOver(const Game& g){
+    return g.roundFinish();
+}

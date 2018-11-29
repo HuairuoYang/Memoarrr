@@ -10,7 +10,6 @@
 		9EB89A762199FBFB0041F107 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A752199FBFB0041F107 /* main.cpp */; };
 		9EB89A7E2199FC7D0041F107 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A7C2199FC7D0041F107 /* Player.cpp */; };
 		9EB89A812199FC850041F107 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A7F2199FC850041F107 /* Card.cpp */; };
-		9EB89A842199FC900041F107 /* Reward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A822199FC900041F107 /* Reward.cpp */; };
 		9EB89A8A2199FCA40041F107 /* CardDeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A882199FCA40041F107 /* CardDeck.cpp */; };
 		9EB89A8D2199FCAE0041F107 /* RewardDeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A8B2199FCAE0041F107 /* RewardDeck.cpp */; };
 		9EB89A902199FCB30041F107 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A8E2199FCB30041F107 /* Board.cpp */; };
@@ -36,7 +35,6 @@
 		9EB89A7D2199FC7D0041F107 /* Player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		9EB89A7F2199FC850041F107 /* Card.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
 		9EB89A802199FC850041F107 /* Card.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Card.hpp; sourceTree = "<group>"; };
-		9EB89A822199FC900041F107 /* Reward.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Reward.cpp; sourceTree = "<group>"; };
 		9EB89A832199FC900041F107 /* Reward.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Reward.hpp; sourceTree = "<group>"; };
 		9EB89A862199FC970041F107 /* Deck.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Deck.hpp; sourceTree = "<group>"; };
 		9EB89A882199FCA40041F107 /* CardDeck.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CardDeck.cpp; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				9EB89A7F2199FC850041F107 /* Card.cpp */,
 				9EB89A802199FC850041F107 /* Card.hpp */,
 				9EB89A97219A041C0041F107 /* Utils.hpp */,
-				9EB89A822199FC900041F107 /* Reward.cpp */,
 				9EB89A832199FC900041F107 /* Reward.hpp */,
 				9EB89A862199FC970041F107 /* Deck.hpp */,
 				9EB89A882199FCA40041F107 /* CardDeck.cpp */,
@@ -162,7 +159,6 @@
 				9EB89A8D2199FCAE0041F107 /* RewardDeck.cpp in Sources */,
 				9EB89A8A2199FCA40041F107 /* CardDeck.cpp in Sources */,
 				9EB89A902199FCB30041F107 /* Board.cpp in Sources */,
-				9EB89A842199FC900041F107 /* Reward.cpp in Sources */,
 				9EB89A812199FC850041F107 /* Card.cpp in Sources */,
 				9EB89A7E2199FC7D0041F107 /* Player.cpp in Sources */,
 				9EB89A962199FCC10041F107 /* Rules.cpp in Sources */,

@@ -26,6 +26,7 @@
 //A game must be printable with the insertion operator cout << game. It should display the board and all players.
 
 class Game{
+ 
     Card* prevCard;
     Card* currentCard;
     int currentPlayer; //(0-4)
@@ -34,12 +35,10 @@ class Game{
     
 public:
     Board gameBoard;
-    int getRound(){return gameRound;}
+    int getRound() const {return gameRound;}
+    
     void incRound(){
         gameRound++;
-        if(gameRound ==7){
-            endOfGame = true;
-        }
     }
     void addPlayer( const Player& p){
         gamePlayers.push_back(p);
@@ -50,8 +49,17 @@ public:
         }
         return (gamePlayers[currentPlayer++]);
     }
-    const Card* getPreviousCard(){return prevCard;}
-    const Card* getCurrentCard(){return currentCard;}
+    
+    bool roundFinish() const{
+        int activeCount = 0;
+        for(auto i: gamePlayers){
+            (i.isActive())?(activeCount+=1):(activeCount+=0);
+        }
+        return (activeCount ==1);
+    }
+    
+    const Card* getPreviousCard() const{return prevCard;}
+    const Card* getCurrentCard() const{return currentCard;}
     void setCurrentCard( const Card* c){
         prevCard = currentCard;
         int pos = c->getPosition();
@@ -65,5 +73,6 @@ public:
         return os;
     }
 };
+
 
 #endif /* Game_hpp */
