@@ -12,8 +12,6 @@
 #include <stdio.h>
 #include <string>
 
-using namespace std;
-
 #include "Reward.hpp"
 #include "Utils.hpp"
 
@@ -30,15 +28,15 @@ using namespace std;
 //Joe Remember Doe: 3 rubies
 
 class Player{
-    string name;
+    std::string name;
     PlayerSide side;
     int countOfRubies = 0;
     bool active = true;
     Player(){};
 public:
-    string getName(){return name;}
+    std::string getName(){return name;}
     PlayerSide getSideEnum(){return side;}
-    string getSideString();
+    std::string getSideString();
     void setActive(){active = true;}
     bool isActive(){return active;}
     int getNRubies(){return countOfRubies;}
@@ -46,13 +44,13 @@ public:
     void setDisplayMode(bool display){active = !display;}
     
     //constructor
-    Player(string pName, PlayerSide pSide) : name{pName}, side{pSide}{};
+    Player(std::string pName, PlayerSide pSide) : name{pName}, side{pSide}{};
     
     friend std::ostream& operator<<(std::ostream& os,Player & p) {
         if(!endOfGame){
             os<<p.name+": " + p.getSideString() + "(" + (p.isActive()? "ACTIVE":"DISPLAY") + ")\n";
         } else {
-           os<<p.name + ": " + to_string(p.countOfRubies) + " rubies\n";
+           os<<p.name + ": " + std::to_string(p.countOfRubies) + " rubies\n";
         }
 
         return os;

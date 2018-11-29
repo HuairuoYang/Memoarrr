@@ -82,7 +82,7 @@ while Rules.gameOver is false{
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n"<<endl;
+    cout << "Hello, World!\n"<<endl;
     Game* myGame = new Game();
     cout<<*myGame<<endl;
     
@@ -97,11 +97,12 @@ int main(int argc, const char * argv[]) {
     Player* C = new Player("CC",(PlayerSide)2);
     Player* D = new Player("DD",(PlayerSide)3);
     myGame->addPlayer(*A);
+
     myGame->addPlayer(*B);
+    
     myGame->addPlayer(*C);
     myGame->addPlayer(*D);
     cout<<*myGame<<endl;
-    
     
     myGame->gameBoard.reset();
       cout<<*myGame<<endl;

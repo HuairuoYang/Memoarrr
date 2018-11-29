@@ -28,17 +28,28 @@
 class Game{
     Card* prevCard;
     Card* currentCard;
+    int currentPlayer; //(0-4)
     int gameRound;
+    std::vector<Player> gamePlayers;
+    
 public:
     Board gameBoard;
-
-
-    
-    vector<Player> gamePlayers;
     int getRound(){return gameRound;}
-    void incRound(){gameRound++;}
-    void addPlayer( const Player& p){gamePlayers.push_back(p);}
-    Player& getPlayer(){    };
+    void incRound(){
+        gameRound++;
+        if(gameRound ==7){
+            endOfGame = true;
+        }
+    }
+    void addPlayer( const Player& p){
+        gamePlayers.push_back(p);
+    }
+    Player& getPlayer(){
+        if(currentPlayer ==4){
+            currentPlayer = 0;
+        }
+        return (gamePlayers[currentPlayer++]);
+    }
     const Card* getPreviousCard(){return prevCard;}
     const Card* getCurrentCard(){return currentCard;}
     void setCurrentCard( const Card* c){
@@ -46,14 +57,12 @@ public:
         int pos = c->getPosition();
         currentCard = gameCdeck->getByPosition(pos);
     }
-    
     friend std::ostream& operator<<(std::ostream& os,Game & g) {
         os << g.gameBoard;
         for(auto i: g.gamePlayers){
             os<<(i);
         }
         return os;
-        
     }
 };
 

@@ -11,11 +11,9 @@
 		9EB89A7E2199FC7D0041F107 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A7C2199FC7D0041F107 /* Player.cpp */; };
 		9EB89A812199FC850041F107 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A7F2199FC850041F107 /* Card.cpp */; };
 		9EB89A842199FC900041F107 /* Reward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A822199FC900041F107 /* Reward.cpp */; };
-		9EB89A872199FC970041F107 /* Deck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A852199FC970041F107 /* Deck.cpp */; };
 		9EB89A8A2199FCA40041F107 /* CardDeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A882199FCA40041F107 /* CardDeck.cpp */; };
 		9EB89A8D2199FCAE0041F107 /* RewardDeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A8B2199FCAE0041F107 /* RewardDeck.cpp */; };
 		9EB89A902199FCB30041F107 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A8E2199FCB30041F107 /* Board.cpp */; };
-		9EB89A932199FCBA0041F107 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A912199FCBA0041F107 /* Game.cpp */; };
 		9EB89A962199FCC10041F107 /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EB89A942199FCC10041F107 /* Rules.cpp */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +38,6 @@
 		9EB89A802199FC850041F107 /* Card.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Card.hpp; sourceTree = "<group>"; };
 		9EB89A822199FC900041F107 /* Reward.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Reward.cpp; sourceTree = "<group>"; };
 		9EB89A832199FC900041F107 /* Reward.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Reward.hpp; sourceTree = "<group>"; };
-		9EB89A852199FC970041F107 /* Deck.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Deck.cpp; sourceTree = "<group>"; };
 		9EB89A862199FC970041F107 /* Deck.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Deck.hpp; sourceTree = "<group>"; };
 		9EB89A882199FCA40041F107 /* CardDeck.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CardDeck.cpp; sourceTree = "<group>"; };
 		9EB89A892199FCA40041F107 /* CardDeck.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CardDeck.hpp; sourceTree = "<group>"; };
@@ -48,7 +45,6 @@
 		9EB89A8C2199FCAE0041F107 /* RewardDeck.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RewardDeck.hpp; sourceTree = "<group>"; };
 		9EB89A8E2199FCB30041F107 /* Board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
 		9EB89A8F2199FCB30041F107 /* Board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Board.hpp; sourceTree = "<group>"; };
-		9EB89A912199FCBA0041F107 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		9EB89A922199FCBA0041F107 /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		9EB89A942199FCC10041F107 /* Rules.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rules.cpp; sourceTree = "<group>"; };
 		9EB89A952199FCC10041F107 /* Rules.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Rules.hpp; sourceTree = "<group>"; };
@@ -93,7 +89,6 @@
 				9EB89A97219A041C0041F107 /* Utils.hpp */,
 				9EB89A822199FC900041F107 /* Reward.cpp */,
 				9EB89A832199FC900041F107 /* Reward.hpp */,
-				9EB89A852199FC970041F107 /* Deck.cpp */,
 				9EB89A862199FC970041F107 /* Deck.hpp */,
 				9EB89A882199FCA40041F107 /* CardDeck.cpp */,
 				9EB89A892199FCA40041F107 /* CardDeck.hpp */,
@@ -101,7 +96,6 @@
 				9EB89A8C2199FCAE0041F107 /* RewardDeck.hpp */,
 				9EB89A8E2199FCB30041F107 /* Board.cpp */,
 				9EB89A8F2199FCB30041F107 /* Board.hpp */,
-				9EB89A912199FCBA0041F107 /* Game.cpp */,
 				9EB89A922199FCBA0041F107 /* Game.hpp */,
 				9EB89A942199FCC10041F107 /* Rules.cpp */,
 				9EB89A952199FCC10041F107 /* Rules.hpp */,
@@ -165,7 +159,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EB89A932199FCBA0041F107 /* Game.cpp in Sources */,
 				9EB89A8D2199FCAE0041F107 /* RewardDeck.cpp in Sources */,
 				9EB89A8A2199FCA40041F107 /* CardDeck.cpp in Sources */,
 				9EB89A902199FCB30041F107 /* Board.cpp in Sources */,
@@ -174,7 +167,6 @@
 				9EB89A7E2199FC7D0041F107 /* Player.cpp in Sources */,
 				9EB89A962199FCC10041F107 /* Rules.cpp in Sources */,
 				9EB89A762199FBFB0041F107 /* main.cpp in Sources */,
-				9EB89A872199FC970041F107 /* Deck.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
