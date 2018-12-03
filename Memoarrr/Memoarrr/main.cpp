@@ -29,10 +29,10 @@ int main(int argc, const char * argv[]) {
     myGame->gameBoard.turnFaceUp(Letter::D, Number::four);
     myGame->gameBoard.turnFaceUp(Letter::E, Number::five);
     
-    Player* A = new Player("AA",(PlayerSide)0);
-    Player* B = new Player("BB",(PlayerSide)1);
-    Player* C = new Player("CC",(PlayerSide)2);
-    Player* D = new Player("DD",(PlayerSide)3);
+    Player* A = new Player("AA",(PlayerSide::top));
+    Player* B = new Player("BB",(PlayerSide::bottom));
+    Player* C = new Player("CC",(PlayerSide::left));
+    Player* D = new Player("DD",(PlayerSide::right));
     myGame->addPlayer(*A);
 
     myGame->addPlayer(*B);
