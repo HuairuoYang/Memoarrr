@@ -9,38 +9,38 @@
 #include "Board.hpp"
 
 bool Board::isFaceUp(const Letter & let, const Number & num){
-    if( 0<let<5 && 0<num<5){
+    try{
          Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let )*5 +(int)num));
         return c->isFaceUp();
     }
-    else{
-        std::cout<<"OutOfRange error"<<std::endl;
-        return false;
+    catch (const std::out_of_range& oor) {
+        std::cerr << "Out of Range error: " << oor.what() << '\n';
     }
+     return false;
 }
 
 bool Board::turnFaceUp(const Letter & let, const Number & num){
-    if( 0<let<5 && 0<num<5){
+   try{
         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let)*5 +(int)num));
         
         c->turnFace(true);
         return true;
     }
-    else{
-        std::cout<<"OutOfRange error"<<std::endl;
-        return false;
+    catch (const std::out_of_range& oor) {
+        std::cerr << "Out of Range error: " << oor.what() << '\n';
     }
+     return false;
 }
 bool Board::turnFaceDown(const Letter & let, const Number & num){
-    if( 0<let<5 && 0<num<5){
+    try{
         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let)*5 +(int)num));
          c->turnFace(false);
         return true;
     }
-    else{
-        std::cout<<"OutOfRange error"<<std::endl;
-        return false;
+    catch (const std::out_of_range& oor) {
+        std::cerr << "Out of Range error: " << oor.what() << '\n';
     }
+     return false;
 }
 void Board::reset(){
     Card* c;

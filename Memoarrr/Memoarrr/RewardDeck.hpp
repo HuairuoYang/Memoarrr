@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include "Deck.hpp"
 #include "Reward.hpp"
-//Design a class RewardDeck derived from Deck<Reward> with the corresponding properties to CardDeck.
 
 class RewardDeck : public Deck<Reward>{
     static RewardDeck* myRDeck;
