@@ -24,7 +24,6 @@ public:
     friend std::ostream& operator<<(std::ostream& os,Reward & r) {
         return os << std::to_string(r.numOfRubies);
     }
-    
 };
 
 #endif /* Reward_hpp */
