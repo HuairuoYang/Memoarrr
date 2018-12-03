@@ -42,7 +42,7 @@ int main(int argc, const char * argv[]) {
     cout<<*myGame<<endl;
     
     myGame->gameBoard.reset();
-      cout<<*myGame<<endl;
+    cout<<*myGame<<endl;
     for (int i =0;i<5;i++){
         for(int j =0;j<5;j++){
             myGame->gameBoard.turnFaceUp((Letter)i, (Number)j);
