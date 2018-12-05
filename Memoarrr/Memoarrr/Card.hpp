@@ -8,10 +8,11 @@
 
 #ifndef Card_hpp
 #define Card_hpp
-
+#include <iostream>
 #include <stdio.h>
 #include <string>
 #include "Utils.hpp"
+using namespace std;
 
 class Card{
     friend class CardDeck;
@@ -25,7 +26,42 @@ class Card{
     Card(FaceAnimal animal, FaceBackground background): cardAnimal(animal), cardColor(background){};
     
 public:
-    int getPosition() const {return let*5+num;}
+    int getPosition() const{
+        int pos=0;
+        int n=0;
+        switch(num){
+            case Number::one: n=1;
+                break;
+            case Number::two: n=2;
+                break;
+            case Number::three:n=3;
+                break;
+            case Number::four:n=4;
+                break;
+            case Number::five:n=5;
+                break;
+            dafault: break;
+        }
+        switch(let){
+            case Letter::A:  pos=n-1;
+                cout<<"A"<<endl;
+                break;
+            case Letter::B:  pos=n+4;
+                cout<<"b"<<endl;
+                break;
+            case Letter::C:  pos=n+9;
+                cout<<"c"<<endl;
+                break;
+            case Letter::D:  pos=n+14;
+                cout<<"d"<<endl;
+                break;
+            case Letter::E:  pos=n+19;
+                cout<<"Ae"<<endl;
+                break;
+            default: break;
+        }
+        cout<<"This is the calculated value for index: " << pos << ", and column: "<< n <<endl;
+        return pos;}
     void setLetter(Letter l){let=l;}
     void setNumber(Number n){num=n;}
     

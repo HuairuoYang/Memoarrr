@@ -8,7 +8,7 @@
 
 #include "Player.hpp"
 
-std::string Player::getSideString(){
+std::string Player::getSideString() const{
     switch (side){
         case PlayerSide::top:
             return "TOP";

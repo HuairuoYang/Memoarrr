@@ -18,12 +18,12 @@
 #include "RewardDeck.hpp"
 
 static CardDeck* gameCdeck = &(CardDeck::make_CardDeck());
-
+static RewardDeck* rDeck = &(RewardDeck::make_CardDeck());
 class Board{
 public:
     bool isFaceUp( const Letter&, const Number&);
     bool turnFaceUp( const Letter&, const Number&);
-    bool turnFaceDown( const Letter&, const Number& );
+    bool turnFaceDown( const Letter&, const Number&);
     void reset();
     friend std::ostream& operator<<(std::ostream& os,Board & b) {
          os<<"================================\n";

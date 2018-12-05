@@ -21,6 +21,9 @@ class Reward{
     Reward(int ruby):numOfRubies{ruby}{};
  
 public:
+    int getRubies(){
+        return numOfRubies;
+    }
     friend std::ostream& operator<<(std::ostream& os,Reward & r) {
         return os << std::to_string(r.numOfRubies);
     }

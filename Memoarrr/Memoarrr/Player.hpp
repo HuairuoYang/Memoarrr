@@ -23,12 +23,13 @@ class Player{
 public:
     std::string getName(){return name;}
     PlayerSide getSideEnum(){return side;}
-    std::string getSideString();
+    std::string getSideString() const;
     
-   
     bool isActive(){return active;}
     int getNRubies(){return countOfRubies;}
-    void addReward(const Reward&){};
+    void addReward(Reward& r){
+        countOfRubies=countOfRubies+ r.getRubies();
+    };
     
     void setActive(){active = true;}    
     void setDisplayMode(bool display){active = !display;}

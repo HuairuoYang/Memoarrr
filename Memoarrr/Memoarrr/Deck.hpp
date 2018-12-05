@@ -25,7 +25,7 @@ public:
     };
     bool isEmpty(){return deck.empty();}
     
-    C* getNext(){
+    C* getNext() {
         if(isEmpty()){
             return nullptr;
         } else {
