@@ -30,38 +30,47 @@ public:
         int pos=0;
         int n=0;
         switch(num){
-            case Number::one: n=1;
+            case Number::one:
+                n=1;
                 break;
-            case Number::two: n=2;
+            case Number::two:
+                n=2;
                 break;
-            case Number::three:n=3;
+            case Number::three:
+                n=3;
                 break;
-            case Number::four:n=4;
+            case Number::four:
+                n=4;
                 break;
-            case Number::five:n=5;
+            case Number::five:
+                n=5;
                 break;
             dafault: break;
         }
         switch(let){
-            case Letter::A:  pos=n-1;
+            case Letter::A:
+                pos=n-1;
                 cout<<"A"<<endl;
                 break;
-            case Letter::B:  pos=n+4;
-                cout<<"b"<<endl;
+            case Letter::B:
+                pos=n+4;
+                cout<<"B"<<endl;
                 break;
-            case Letter::C:  pos=n+9;
-                cout<<"c"<<endl;
+            case Letter::C:
+                pos=n+9;
+                cout<<"C"<<endl;
                 break;
             case Letter::D:  pos=n+14;
-                cout<<"d"<<endl;
+                cout<<"D"<<endl;
                 break;
             case Letter::E:  pos=n+19;
-                cout<<"Ae"<<endl;
+                cout<<"E"<<endl;
                 break;
-            default: break;
+            default:
+                break;
         }
-        cout<<"This is the calculated value for index: " << pos << ", and column: "<< n <<endl;
-        return pos;}
+        return pos;
+    }
     void setLetter(Letter l){let=l;}
     void setNumber(Number n){num=n;}
     

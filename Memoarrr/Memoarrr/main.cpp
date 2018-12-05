@@ -123,8 +123,11 @@ int main(int argc, const char * argv[]) {
             }
             cout<<*myGame<<endl;
             numberOfCardsInRound++;
-            cout<<"just index: "<<pos<<endl;
-            myGame->setCurrentCard(gameCdeck->getByPosition(pos), pos);
+            cout<< a <<endl;
+            cout<<z<<endl;
+            cout<<"just index : "<<pos<<endl;
+            cout<<"card pos:"<<gameCdeck->getByPosition(pos)->getPosition()<<endl;;
+            myGame->setCurrentCard(gameCdeck->getByPosition(pos));
             if(numberOfCardsInRound>1){
                  if(rules->isValid(*myGame)==true){}
             else{

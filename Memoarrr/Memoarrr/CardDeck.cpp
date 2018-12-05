@@ -20,8 +20,15 @@ CardDeck& CardDeck::make_CardDeck(){
         myCDeck->shuffle();
         int l=0,n=0;
         for(auto k : myCDeck->deck){
-            k->setLetter((Letter)l++);
+            k->setLetter((Letter)l);
             k->setNumber((Number)n++);
+            if(n==5){
+                n = 0;
+                l++;
+            }
+            if (l == 5){
+                cout<<"error occured during giving pos"<<endl;
+            }
         }
         return *myCDeck;
     }

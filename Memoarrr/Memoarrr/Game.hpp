@@ -77,14 +77,11 @@ public:
     
     const Card* getPreviousCard() const{return prevCard;}
     const Card* getCurrentCard() const{return currentCard;}
-    void setCurrentCard( const Card* c, int ind){
+    void setCurrentCard( const Card* c){
         tempCard=currentCard;
         prevCard =tempCard;
-        cout<<"This is the prev: "<<prevCard<<endl;
         int pos = c->getPosition();
-        cout<<"printing the position: "<< pos <<endl;
-        currentCard = gameCdeck->getByPosition(ind);
-        cout<<"This is the current: "<< currentCard<<endl;
+        currentCard = gameCdeck->getByPosition(pos);
     }
     
     friend std::ostream& operator<<(std::ostream& os,Game & g) {
