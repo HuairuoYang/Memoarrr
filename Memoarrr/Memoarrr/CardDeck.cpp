@@ -10,7 +10,9 @@
 CardDeck* CardDeck::myCDeck = nullptr;
 
 CardDeck& CardDeck::make_CardDeck(){
-    if(myCDeck == nullptr){
+    if(myCDeck == nullptr || roundOverShuffle == true){
+        delete(myCDeck);
+        myCDeck = nullptr;
         myCDeck = new CardDeck();
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {

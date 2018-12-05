@@ -98,8 +98,6 @@ public:
                 }
             }
     }
-
-    
 };
 
 #endif /* Card_hpp */

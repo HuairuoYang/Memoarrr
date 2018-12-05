@@ -11,6 +11,7 @@
 
 const int rewardList[7] ={1,1,1,2,2,3,4};
 static bool endOfGame = false;
+static bool roundOverShuffle = false;
 
 enum PlayerSide{
     top = 0,
