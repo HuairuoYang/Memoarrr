@@ -24,7 +24,7 @@ class Game{
     Card* currentCard=nullptr;
     Card* tempCard=nullptr;
     int currentPlayer =0; //(0-4)
-    int gameRound;
+    int gameRound=1;
 
     std::vector<Player> gamePlayers;
     
@@ -37,22 +37,35 @@ public:
     }
     void addPlayer ( const Player& p){
         gamePlayers.push_back(p);
+        revealCardsForPlayer(p);
+    }
+    
+    void revealCardsForPlayer(const Player& p){
+        string i;
         if(p.getSideString()=="TOP"){
+            cout<<"Please input any character to continue for player on the Top side"<<endl;
+            cin>>i;
             gameBoard.turnFaceUp(Letter::A, Number::two);
             gameBoard.turnFaceUp(Letter::A, Number::three);
             gameBoard.turnFaceUp(Letter::A, Number::four);
         }
         if(p.getSideString()=="BOTTOM"){
+            cout<<"Please input any character to continue for player on the Bottom side"<<endl;
+            cin>>i;
             gameBoard.turnFaceUp(Letter::E, Number::two);
             gameBoard.turnFaceUp(Letter::E, Number::three);
             gameBoard.turnFaceUp(Letter::E, Number::four);
         }
         if(p.getSideString()=="LEFT"){
+            cout<<"Please input any character to continue for player on the Left side"<<endl;
+            cin>>i;
             gameBoard.turnFaceUp(Letter::B, Number::one);
             gameBoard.turnFaceUp(Letter::C, Number::one);
             gameBoard.turnFaceUp(Letter::D, Number::one);
         }
-        if(p.getSideString()=="RIGHT"){
+        else if(p.getSideString()=="RIGHT"){
+            cout<<"Please input any character to continue for player on the Right side"<<endl;
+            cin>>i;
             gameBoard.turnFaceUp(Letter::B, Number::five);
             gameBoard.turnFaceUp(Letter::C, Number::five);
             gameBoard.turnFaceUp(Letter::D, Number::five);
@@ -60,6 +73,7 @@ public:
         cout<<gameBoard<<endl;
         gameBoard.reset();
     }
+    
     Player& getPlayer(){
         if(currentPlayer ==4){
             currentPlayer = 0;
@@ -69,9 +83,11 @@ public:
     
     bool roundFinish() const{
         int activeCount = 0;
+        
         for(auto i: gamePlayers){
             (i.isActive())?(activeCount+=1):(activeCount+=0);
         }
+        cout<<"CHECKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Number of active players: "<< activeCount<<endl;
         return (activeCount ==1);
     }
     

@@ -30,33 +30,36 @@ int main(int argc, const char * argv[]) {
     Player* D = new Player("DD",(Side::right));
     
     //Adding the players and temporily revealing the three cards directly in front of the player
-    string i;
-    cout<<"Please input any character to continue for player 1"<<endl;
-    cin>>i;
+
     myGame->addPlayer(*A);
-    cout<<"Please input any character to continue for player 2"<<endl;
-    cin>>i;
     myGame->addPlayer(*B);
-    cout<<"Please input any character to continue for player 3"<<endl;
-    cin>>i;
     myGame->addPlayer(*C);
-    cout<<"Please input any character to continue for player 4"<<endl;
-    cin>>i;
     myGame->addPlayer(*D);
-    cout<<"Please make sure every player is ready and input any character to continue"<<endl;
-    cin>>i;
     cout<<*myGame<<endl;
+    
     cout<<"Beginning the game"<<endl;
+    
+    // Variables initialization
     int numberOfFaceUp=0;
     int numberOfActivePlayers=4;
     while(endOfGame==false){
+        if(!endOfGame){
+            cout<<"The game has not ended yet!, the status of the game is: "<<endOfGame<<endl;
+        }
         int numberOfCardsInRound=0;
+        A->setActive(true);
+        B->setActive(true);
+        C->setActive(true);
+        D->setActive(true);
+        
     while(rules->roundOver(*myGame)==false){
         cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
+        cout<<"This is the current round number: "<<myGame->getRound()<<endl;
+         cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
         Player& playingNow= myGame->getPlayer();
         while(playingNow.isActive()==false){
             playingNow= myGame->getPlayer();
-        }
+            }
         char r;
         cout<<"Player " << playingNow.getName()<< ", Please input the Character for row "<<endl;
         cin>>r;
@@ -107,49 +110,28 @@ int main(int argc, const char * argv[]) {
         }
         else{
             myGame->gameBoard.turnFaceUp(a, z);
-            int pos=0;
-            switch(r){
-                case 'A':  pos=c-1;
-                    break;
-                case 'B':  pos=c+4;
-                    break;
-                case 'C':  pos=c+9;
-                    break;
-                case 'D':  pos=c+14;
-                    break;
-                case 'E':  pos=c+19;
-                    break;
-                default: break;
-            }
+            numberOfFaceUp++;
             cout<<*myGame<<endl;
             numberOfCardsInRound++;
-            cout<< a <<endl;
-            cout<<z<<endl;
-            cout<<"just index : "<<pos<<endl;
-            cout<<"card pos:"<<gameCdeck->getByPosition(pos)->getPosition()<<endl;;
-            myGame->setCurrentCard(gameCdeck->getByPosition(pos));
+            myGame->setCurrentCard(gameCdeck->getByPosition(a,z));
             if(numberOfCardsInRound>1){
                  if(rules->isValid(*myGame)==true){}
-            else{
-                cout<<"Its not a match"<<endl;
-                playingNow.setDisplayMode(true);
-                numberOfActivePlayers--;
-                if(numberOfActivePlayers<2){
-                    cout<<"this is the end of round1..............."<<endl;
-                    myGame->roundFinish();
-                    myGame->incRound();
-                    cout<<"this is the end of round2..............."<<endl;
-                    playingNow.addReward(*rDeck->getNext());
-                    cout<<"this is the number of rubbies for this player: "<<playingNow.getNRubies()<<endl;
-                    if(myGame->getRound()>6){
-                        endOfGame=true;
-                        cout<<"this is the end of round3..............."<<endl;
+                 else{
+                     cout<<"Its not a match"<<endl;
+                     playingNow.setActive(false);
+                     numberOfActivePlayers--;
+                     if(numberOfActivePlayers<2){
+                         myGame->roundFinish();
+                         myGame->incRound();
+                         cout<<"this is the end of round..............."<<endl;
+                         playingNow.addReward(*rDeck->getNext());
+                         cout<<"this is the number of rubbies for this player: "<<playingNow.getNRubies()<<endl;
+                         numberOfFaceUp=0;
+                        }
                     }
                 }
             }
-            }
-            numberOfFaceUp++;
         }
     }
 }
-}
+
