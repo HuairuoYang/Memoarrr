@@ -134,7 +134,7 @@ public:
     }
     
     
-}
+};
 
 
 #endif /* Game_hpp */
