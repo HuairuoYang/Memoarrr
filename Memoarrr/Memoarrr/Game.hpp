@@ -27,31 +27,37 @@ class Game{
     Card* blocked=nullptr;
     bool blockState=false;
     
+    
 public:
     Board gameBoard;
-    Player topPlayer;
-    Player bottomPlayer;
-    Player leftPlayer;
-    Player rightPlayer;
-    
+    int numOfPlayer = 0;
+    Player* topPlayer;
+    Player* bottomPlayer;
+    Player* leftPlayer;
+    Player* rightPlayer;
+    Game() = default;
     int getRound() const {return gameRound;}
     
     void incRound(){
         gameRound++;
     }
-    void addPlayer (const Player& p){
+    void addPlayer ( Player& p){
         switch (p.getSide()){
             case (Side::top):
-                topPlayer = p;
+                numOfPlayer++;
+                topPlayer = &p;
                 break;
             case (Side::bottom):
-                bottomPlayer = p;
+                numOfPlayer++;
+                bottomPlayer = &p;
                 break;
             case (Side::right):
-                rightPlayer=p;
+                numOfPlayer++;
+                rightPlayer= &p;
                 break;
             case (Side::left):
-                leftPlayer=p;
+                numOfPlayer++;
+                leftPlayer= &p;
                 break;
             default:
                 break;
@@ -61,19 +67,19 @@ public:
     Player& getPlayer(Side s){
         switch (s ){
             case (Side::top):
-                return topPlayer;
+                return *topPlayer;
                 break;
             case (Side::bottom):
-                return bottomPlayer;
+                return *bottomPlayer;
                 break;
             case (Side::right):
-                return rightPlayer;
+                return *rightPlayer;
                 break;
             case (Side::left):
-                return leftPlayer;
+                return *leftPlayer;
                 break;
             default:
-                return topPlayer;
+                return *topPlayer;
                 break;
         }
     }
@@ -204,10 +210,28 @@ public:
     
     friend std::ostream& operator<<(std::ostream& os,Game & g) {
         os << g.gameBoard;
-        os<<g.topPlayer<<endl;
-        os<<g.bottomPlayer<<endl;
-        os<<g.leftPlayer<<endl;
-        os<<g.rightPlayer<<endl;
+        switch (g.numOfPlayer) {
+            case 1:
+                os<<*g.topPlayer<<endl;
+                break;
+            case 2:
+                os<<*g.topPlayer<<endl;
+                os<<*g.bottomPlayer<<endl;
+                break;
+            case 3:
+                os<<*g.topPlayer<<endl;
+                os<<*g.bottomPlayer<<endl;
+                os<<*g.leftPlayer<<endl;
+                break;
+            case 4:
+                os<<*g.topPlayer<<endl;
+                os<<*g.bottomPlayer<<endl;
+                os<<*g.leftPlayer<<endl;
+                os<<*g.rightPlayer<<endl;
+                break;
+            default:
+                break;
+        }
         return os;
     }
     

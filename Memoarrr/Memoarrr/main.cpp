@@ -52,19 +52,19 @@ int main(int argc, const char * argv[]) {
             cout<<"The game has not ended yet!, the status of the game is: "<<endOfGame<<endl;
         }
         int numberOfCardsInRound=0;
-        myGame->topPlayer.setActive(true);
-        myGame->bottomPlayer.setActive(true);
-        myGame->leftPlayer.setActive(true);
-        myGame->rightPlayer.setActive(true);
+        myGame->topPlayer->setActive(true);
+        myGame->bottomPlayer->setActive(true);
+        myGame->leftPlayer->setActive(true);
+        myGame->rightPlayer->setActive(true);
         numberOfActivePlayers=4;
         
     while(rules->roundOver(*myGame)==false){
         cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
         cout<<"This is the current round number: "<<myGame->getRound()<<endl;
          cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
-        Player& playingNow= myGame->getPlayer();
+         Player& playingNow = rules->getNextPlayer(*myGame);
         while(playingNow.isActive()==false){
-            playingNow= myGame->getPlayer();
+             playingNow = rules->getNextPlayer(*myGame);
             }
         char r;
         cout<<"Player " << playingNow.getName()<< ", Please input the Character for row "<<endl;

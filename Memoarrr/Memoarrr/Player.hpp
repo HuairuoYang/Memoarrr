@@ -20,7 +20,6 @@ class Player{
     int countOfRubies = 0;
     bool active = true;
     bool endGame = false;
-    Player(){};
 public:
     std::string getName() const {return name;}
     Side getSide() const {return side;}
@@ -33,10 +32,11 @@ public:
         countOfRubies=countOfRubies+ r.getRubies();
     };
     
-    void setActive(bool trueIfActive){active = trueIfActive;}
+    void setActive(bool trueIfActive) {active = trueIfActive;}
     void setDisplayMode(bool endOfGame){endGame = endOfGame;}
     
     //constructor
+    Player()= default;
     Player(std::string pName, Side pSide) : name{pName}, side{pSide}{};
     
     friend std::ostream& operator<<(std::ostream& os,Player & p) {
