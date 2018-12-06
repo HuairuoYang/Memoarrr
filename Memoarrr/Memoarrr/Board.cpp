@@ -10,7 +10,7 @@
 
 bool Board::isFaceUp(const Letter & let, const Number & num){
     try{
-         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let )*5 +(int)num));
+         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(let,num));
         return c->isFaceUp();
     }
     catch (const std::out_of_range& oor) {
@@ -21,7 +21,7 @@ bool Board::isFaceUp(const Letter & let, const Number & num){
 
 bool Board::turnFaceUp(const Letter & let, const Number & num){
    try{
-        Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let)*5 +(int)num));
+        Card* c =  static_cast<Card*> (gameCdeck->getByPosition(let,num));
         
         c->turnFace(true);
         return true;
@@ -33,7 +33,7 @@ bool Board::turnFaceUp(const Letter & let, const Number & num){
 }
 bool Board::turnFaceDown(const Letter & let, const Number & num){
     try{
-        Card* c =  static_cast<Card*> (gameCdeck->getByPosition(((int)let)*5 +(int)num));
+        Card* c =  static_cast<Card*> (gameCdeck->getByPosition(let,num));
          c->turnFace(false);
         return true;
     }
@@ -44,8 +44,30 @@ bool Board::turnFaceDown(const Letter & let, const Number & num){
 }
 void Board::reset(){
     Card* c;
-    for(int i=0;i<25;i++){
-        c =  static_cast<Card*>(gameCdeck->getByPosition(i));
-        c->turnFace(false);
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++){
+            c =  static_cast<Card*>(gameCdeck->getByPosition((Letter)i,(Number)j));
+            c->turnFace(false);
+        }
+    }
+}
+
+Card* Board::getCard(const Letter& l, const Number& n){
+    try{
+        return gameCdeck->getByPosition(l,n);
+    }
+    catch (const std::out_of_range& oor) {
+        std::cerr << "Out of Range error: " << oor.what() << '\n';
+        return nullptr;
+    }
+}
+void Board::setCard( const Letter& l, const Number& n, Card* c){
+    c->setLetter(l);
+    c->setNumber(n);
+    if (gameCdeck->setByPosition(l,n,c)){
+        cout<<"setCard successful"<<endl;
+    }
+    else{
+        cout<<"setCard NOT successful"<<endl;
     }
 }

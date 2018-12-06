@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include "Utils.hpp"
 
 template <typename C>
 class Deck
@@ -27,6 +28,7 @@ public:
     
     C* getNext() {
         if(isEmpty()){
+            throw std::out_of_range("out of range");
             return nullptr;
         } else {
             C* next = deck.at(iter);
@@ -39,14 +41,26 @@ public:
             delete(i);
         }
     }
-    C* getByPosition(int p){
-        if(isEmpty()||p > deck.size()){
+    C* getByPosition( const Letter& l, const Number& n){
+        if(isEmpty() || l>5 || l<0 || n>5 || n<0 || (int)l*5+(int)n>deck.size()){
+            throw std::out_of_range("out of range");
             return nullptr;
         }
         else {
-            C* pos = deck.at(p);
+            C* pos = deck.at((int)l*5+(int)n);
             return pos;
     
+        }
+    }
+    
+    bool setByPosition( const Letter& l, const Number& n, C* c){
+        if(isEmpty() || l>5 || l<0 || n>5 || n<0 || (int)l*5+(int)n>deck.size()){
+            throw std::out_of_range("out of range");
+            return false;
+        }
+        else {
+            deck.at((int)l*5+(int)n) = c;
+            return true;
         }
     }
 };

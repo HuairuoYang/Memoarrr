@@ -80,8 +80,7 @@ public:
     void setCurrentCard( const Card* c){
         tempCard=currentCard;
         prevCard =tempCard;
-        int pos = c->getPosition();
-        currentCard = gameCdeck->getByPosition(pos);
+        currentCard = gameCdeck->getByPosition(c->getLetter(),c->getNumber());
     }
     
     friend std::ostream& operator<<(std::ostream& os,Game & g) {

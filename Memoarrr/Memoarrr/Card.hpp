@@ -28,7 +28,8 @@ class Card{
 public:
     void setLetter(Letter l){let=l;}
     void setNumber(Number n){num=n;}
-    int getPosition() const{return ((int)let)*5 + (int)num;}
+    Letter getLetter() const {return let;}
+    Number getNumber() const {return num;}
     
     int getAnimal() const {return (int)cardAnimal;}
     std::string getAnimalStr();
