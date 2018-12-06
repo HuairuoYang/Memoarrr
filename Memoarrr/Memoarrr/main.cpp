@@ -40,6 +40,11 @@ int main(int argc, const char * argv[]) {
     cout<<"Beginning the game"<<endl;
     
     // Variables initialization
+    while (true){
+        string mode;
+        cout<<"Please input expert for expert mode or any other words for normal mode: "<<endl;
+        cin>>mode;
+    
     int numberOfFaceUp=0;
     int numberOfActivePlayers=4;
     while(endOfGame==false){
@@ -135,4 +140,4 @@ int main(int argc, const char * argv[]) {
         }
     }
 }
-
+}

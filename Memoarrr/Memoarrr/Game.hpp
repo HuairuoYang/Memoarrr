@@ -99,6 +99,8 @@ public:
         currentCard = gameCdeck->getByPosition(c->getLetter(),c->getNumber());
     }
     
+    bool
+    
     friend std::ostream& operator<<(std::ostream& os,Game & g) {
         os << g.gameBoard;
         for(auto i: g.gamePlayers){
@@ -106,7 +108,9 @@ public:
         }
         return os;
     }
-};
+    
+    
+}
 
 
 #endif /* Game_hpp */
