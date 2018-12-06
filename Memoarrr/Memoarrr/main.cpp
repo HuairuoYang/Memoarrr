@@ -24,10 +24,10 @@ int main(int argc, const char * argv[]) {
     Game* myGame = new Game();
     cout<<*myGame<<endl;
     
-    Player* A = new Player("AA",(PlayerSide::top));
-    Player* B = new Player("BB",(PlayerSide::bottom));
-    Player* C = new Player("CC",(PlayerSide::left));
-    Player* D = new Player("DD",(PlayerSide::right));
+    Player* A = new Player("AA",(Side::top));
+    Player* B = new Player("BB",(Side::bottom));
+    Player* C = new Player("CC",(Side::left));
+    Player* D = new Player("DD",(Side::right));
     
     //Adding the players and temporily revealing the three cards directly in front of the player
     string i;

@@ -10,15 +10,15 @@
 
 std::string Player::getSideString() const{
     switch (side){
-        case PlayerSide::top:
+        case Side::top:
             return "TOP";
-        case PlayerSide::bottom:
+        case Side::bottom:
             return "BOTTOM";
             break;
-        case PlayerSide::left:
+        case Side::left:
             return "LEFT";
             break;
-        case PlayerSide::right:
+        case Side::right:
             return "RIGHT";
             break;
         default:

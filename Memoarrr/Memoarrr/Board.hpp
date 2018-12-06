@@ -25,6 +25,21 @@ public:
     bool turnFaceUp( const Letter&, const Number&);
     bool turnFaceDown( const Letter&, const Number&);
     void reset();
+    
+    Card* getCard(const Letter& l, const Number& num){
+        try{
+            return gameCdeck->getByPosition((int)l*5+(int)num);
+        }
+        catch (const std::out_of_range& oor) {
+            std::cerr << "Out of Range error: " << oor.what() << '\n';
+            return nullptr;
+        }
+    }
+    
+    void setCard( const Letter&, const Number&, Card* ){
+        
+    }
+    
     friend std::ostream& operator<<(std::ostream& os,Board & b) {
          os<<"================================\n";
         if(!gameCdeck->isEmpty()){
