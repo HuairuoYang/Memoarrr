@@ -47,10 +47,11 @@ int main(int argc, const char * argv[]) {
             cout<<"The game has not ended yet!, the status of the game is: "<<endOfGame<<endl;
         }
         int numberOfCardsInRound=0;
-        A->setActive(true);
-        B->setActive(true);
-        C->setActive(true);
-        D->setActive(true);
+        myGame->gamePlayers.at(0).setActive(true);
+        myGame->gamePlayers.at(1).setActive(true);
+        myGame->gamePlayers.at(2).setActive(true);
+        myGame->gamePlayers.at(3).setActive(true);
+        numberOfActivePlayers=4;
         
     while(rules->roundOver(*myGame)==false){
         cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;

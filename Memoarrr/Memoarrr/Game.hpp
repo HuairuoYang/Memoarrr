@@ -26,10 +26,11 @@ class Game{
     int currentPlayer =0; //(0-4)
     int gameRound=1;
 
-    std::vector<Player> gamePlayers;
+
     
 public:
     Board gameBoard;
+    std::vector<Player> gamePlayers;
     int getRound() const {return gameRound;}
     
     void incRound(){
@@ -87,7 +88,6 @@ public:
         for(auto i: gamePlayers){
             (i.isActive())?(activeCount+=1):(activeCount+=0);
         }
-        cout<<"CHECKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Number of active players: "<< activeCount<<endl;
         return (activeCount ==1);
     }
     
