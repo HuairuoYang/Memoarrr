@@ -19,26 +19,61 @@
 using namespace std;
 
 class Game{
- 
+    
     Card* prevCard=nullptr;
     Card* currentCard=nullptr;
     Card* tempCard=nullptr;
-    int currentPlayer =0; //(0-4)
     int gameRound=1;
-
-
     
 public:
     Board gameBoard;
-    std::vector<Player> gamePlayers;
+    Player topPlayer;
+    Player bottomPlayer;
+    Player leftPlayer;
+    Player rightPlayer;
+    
     int getRound() const {return gameRound;}
     
     void incRound(){
         gameRound++;
     }
-    void addPlayer ( const Player& p){
-        gamePlayers.push_back(p);
-        revealCardsForPlayer(p);
+    void addPlayer (const Player& p){
+        switch (p.getSide()){
+            case (Side::top):
+                topPlayer = p;
+                break;
+            case (Side::bottom):
+                bottomPlayer = p;
+                break;
+            case (Side::right):
+                rightPlayer=p;
+                break;
+            case (Side::left):
+                leftPlayer=p;
+                break;
+            default:
+                break;
+        }
+    }
+    
+    Player& getPlayer(Side s){
+        switch (s ){
+            case (Side::top):
+                return topPlayer;
+                break;
+            case (Side::bottom):
+                return bottomPlayer;
+                break;
+            case (Side::right):
+                return rightPlayer;
+                break;
+            case (Side::left):
+                return leftPlayer;
+                break;
+            default:
+                return topPlayer;
+                break;
+        }
     }
     
     void revealCardsForPlayer(const Player& p){
@@ -75,19 +110,10 @@ public:
         gameBoard.reset();
     }
     
-    Player& getPlayer(){
-        if(currentPlayer ==4){
-            currentPlayer = 0;
-        }
-        return (gamePlayers[currentPlayer++]);
-    }
     
     bool roundFinish() const{
         int activeCount = 0;
         
-        for(auto i: gamePlayers){
-            (i.isActive())?(activeCount+=1):(activeCount+=0);
-        }
         return (activeCount ==1);
     }
     
@@ -98,12 +124,12 @@ public:
         prevCard =tempCard;
         currentCard = gameCdeck->getByPosition(c->getLetter(),c->getNumber());
     }
-    
     friend std::ostream& operator<<(std::ostream& os,Game & g) {
         os << g.gameBoard;
-        for(auto i: g.gamePlayers){
-            os<<(i);
-        }
+        os<<g.topPlayer<<endl;
+        os<<g.bottomPlayer<<endl;
+        os<<g.leftPlayer<<endl;
+        os<<g.rightPlayer<<endl;
         return os;
     }
 };

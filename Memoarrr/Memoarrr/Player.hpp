@@ -22,9 +22,10 @@ class Player{
     bool endGame = false;
     Player(){};
 public:
-    std::string getName(){return name;}
-    Side getSide(){return side;}
+    std::string getName() const {return name;}
+    Side getSide() const {return side;}
     std::string getSideString() const;
+    void setSide(Side s) { side = s;}
     
     bool isActive(){return active;}
     int getNRubies(){return countOfRubies;}
