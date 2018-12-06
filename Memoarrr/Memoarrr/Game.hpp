@@ -132,7 +132,9 @@ public:
         os<<g.rightPlayer<<endl;
         return os;
     }
-};
+    
+    
+}
 
 
 #endif /* Game_hpp */
