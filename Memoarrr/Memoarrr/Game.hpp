@@ -137,7 +137,7 @@ public:
         blockState=true;
     }
     
-    *Card crab(const Player& p){
+    Card* crab(const Player& p){
         char r;
         cout<<"Player " << p.getName()<< " you have turned up a Penguim!!!!! You need to turn up an another card now. Please input the Character for row: "<<endl;
         cin>>r;
@@ -189,7 +189,7 @@ public:
         }
         else{
             gameBoard.turnFaceUp(a, z);
-            return *;
+            return gameBoard.getCard(a, z);
         }
     }
     
