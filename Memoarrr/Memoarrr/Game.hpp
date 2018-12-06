@@ -24,6 +24,8 @@ class Game{
     Card* currentCard=nullptr;
     Card* tempCard=nullptr;
     int gameRound=1;
+    Card* blocked=nullptr;
+    bool blockState=false;
     
 public:
     Board gameBoard;
@@ -110,6 +112,80 @@ public:
         gameBoard.reset();
     }
     
+    bool penguin(Number a, Letter z, bool act){
+        if(!act){
+            if(gameBoard.isFaceUp(z, a)){
+                gameBoard.turnFaceDown(z, a);
+                cout<<this<<endl;
+                return true;
+            }
+            else{
+                cout<<"Please double check your input as the card is not turned face up"<<endl;
+                return false;}
+        }
+        return false;
+    }
+    
+    void walrus(Letter a, Number z){
+        blocked= gameBoard.getCard(a, z);
+        blockState=true;
+    }
+    
+    *Card crab(const Player& p){
+        char r;
+        cout<<"Player " << p.getName()<< " you have turned up a Penguim!!!!! You need to turn up an another card now. Please input the Character for row: "<<endl;
+        cin>>r;
+        r= toupper(r);
+        Letter a=Letter::A;
+        switch(r){
+            case 'A':
+                a = Letter::A;
+                break;
+            case 'B':
+                a = Letter::B;
+                break;
+            case 'C':
+                a = Letter::C;
+                break;
+            case 'D':
+                a = Letter::D;
+                break;
+            case 'E':
+                a = Letter::E;
+                break;
+            default: break;
+        }
+        int c;
+        cout<<"please input the number for column"<<endl;
+        cin>>c;
+        Number z=Number::one;
+        switch(c){
+            case 1:
+                z = Number::one;
+                break;
+            case 2:
+                z = Number::two;
+                break;
+            case 3:
+                z = Number::three;
+                break;
+            case 4:
+                z = Number::four;
+                break;
+            case 5:
+                z = Number::five;
+                break;
+            dafault: break;
+        }
+        if(gameBoard.isFaceUp(a, z)==true || (a == Letter::C && z== Number::three)){
+            cout<<"PLease re-enter a card position as the card in position is already face up or invalid"<<endl;
+            return nullptr;
+        }
+        else{
+            gameBoard.turnFaceUp(a, z);
+            return *;
+        }
+    }
     
     bool roundFinish() const{
         int activeCount = 0;
@@ -117,6 +193,7 @@ public:
         return (activeCount ==1);
     }
     
+
     const Card* getPreviousCard() const{return prevCard;}
     const Card* getCurrentCard() const{return currentCard;}
     void setCurrentCard( const Card* c){
@@ -124,6 +201,7 @@ public:
         prevCard =tempCard;
         currentCard = gameCdeck->getByPosition(c->getLetter(),c->getNumber());
     }
+    
     friend std::ostream& operator<<(std::ostream& os,Game & g) {
         os << g.gameBoard;
         os<<g.topPlayer<<endl;
