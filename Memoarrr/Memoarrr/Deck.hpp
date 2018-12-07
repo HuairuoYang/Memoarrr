@@ -76,9 +76,10 @@ public:
     bool swap(C* original, C* swapee, int i){
         switch(i){
             case(0):
-            iter_swap(deck.begin()+(original->getLetter()*5+original->getNumber-1), deck.begin()+(swapee->getLetter()*5+swapee->getNumber-1));
+            iter_swap(deck.begin()+(original->getLetter()*5+original->getNumber()-1), deck.begin()+(swapee->getLetter()*5+swapee->getNumber()-1));
             break;
                 
+    }
     }
 };
 
