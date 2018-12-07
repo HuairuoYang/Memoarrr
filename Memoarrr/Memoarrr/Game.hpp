@@ -36,7 +36,7 @@ public:
     Game() = default;
     int getRound() const {return gameRound;}
     
-    void incRound(){
+    void nextRound(){
         gameRound++;
     }
     void addPlayer ( Player& p){
