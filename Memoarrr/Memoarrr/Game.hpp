@@ -244,12 +244,70 @@ public:
         Number z;
         a= cardToSwap->getLetter();
         z= cardToSwap->getNumber();
-        int swap=rand() % 4;
-        swicth(swap){
+        int position= rand() % 4;
+        while(true){
+            switch(position){
+                case (0):
+                    swap(cardToSwap,0);
+                    break;
+                
+                
+                    
+            }
+            
+        
+            
+               }
+        return false;
+    }
+    
+    bool swap(int i, Card* swapper){
+        Card* swapee;
+        if(i==0){
+            if(swapper->topAvailable){
+                swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()-1), swapper->getNumber());
+                gameCdeck->swap(swapper,swapee,0);
+                swapee->setLetter((Letter)(swapper->getLetter()));
+                swapper->setLetter((Letter)(swapper->getLetter()-1));
+                cout<<"Top side swap successful"<<endl;
+                return true;
+            }
+            else{
+                cout<<"The top side is not avilable, choosing another side..."<<endl;
+                return false;
+            }
+        }
+        if(i==1){
+            if(swapper->bottomAvailable){
+                swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()+1), swapper->getNumber());
+                gameCdeck->swap(swapper,swapee,1);
+                swapee->setLetter((Letter)(swapper->getLetter()));
+                swapper->setLetter((Letter)(swapper->getLetter()+1));
+                cout<<"bottom side swap success"<<endl;
+                return true;
+            }
+            else{
+                cout<<"The bottom side is not avilable, choosing another side..."<<endl;
+                return false;
+            }
+        }
+        if(i==2){
+            if(swapper->leftAvailable){
+                swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()+1), swapper->getNumber());
+                gameCdeck->swap(swapper,swapee,1);
+                swapee->setLetter((Letter)(swapper->getLetter()));
+                swapper->setLetter((Letter)(swapper->getLetter()+1));
+                cout<<"bottom side swap success"<<endl;
+                return true;
+            }
+            else{
+                cout<<"The bottom side is not avilable, choosing another side..."<<endl;
+                return false;
+            }
+
             
             
         }
-        return false;
     }
     
     bool roundFinish() const{
