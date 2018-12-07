@@ -188,9 +188,8 @@ int main(int argc, const char * argv[]) {
                             myGame->gameBoard.turnFaceUp(current->getLetter(), current->getNumber());
                             numberOfFaceUp++;
                             numberOfCardsInRound++;
-                            FaceAnimal animal;
-                            animal = (FaceAnimal)myGame->gameBoard.getCard(current->getLetter(), current->getNumber())->getAnimal();
-                            cout<<"This is the number of cards in roud!!!:  " << numberOfCardsInRound<<endl;
+                            myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
+                           cout<<"This is the number of cards in roud!!!:  " << numberOfCardsInRound<<endl;
                             if(numberOfCardsInRound>1){
                                 if(rules->isValid(*myGame)==true){
                                     cout<<*myGame<<endl;

@@ -253,6 +253,7 @@ public:
     const Card* getPreviousCard() const{return prevCard;}
     const Card* getCurrentCard() const{return currentCard;}
     void setCurrentCard( const Card* c){
+        cout<<"setting current card to"<<c<<endl;
         Card* tempCard=currentCard;
         prevCard =tempCard;
         currentCard = gameCdeck->getByPosition(c->getLetter(),c->getNumber());
