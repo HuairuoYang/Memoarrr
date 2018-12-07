@@ -235,9 +235,21 @@ public:
         }
     }
     
-    bool turtle(){
+    void turtle(){
         skipping=true;
-        return true;
+    }
+    
+    bool octopus(Card* cardToSwap){
+        Letter a;
+        Number z;
+        a= cardToSwap->getLetter();
+        z= cardToSwap->getNumber();
+        int swap=rand() % 4;
+        swicth(swap){
+            
+            
+        }
+        return false;
     }
     
     bool roundFinish() const{
