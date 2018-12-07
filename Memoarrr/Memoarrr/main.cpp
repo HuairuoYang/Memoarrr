@@ -67,14 +67,24 @@ int main(int argc, const char * argv[]) {
                         myGame->setSkip(false);
                     }
                     Card* current;
+                    
+                    //if the walrus is turned up, see if the blocked card is chosen to be turn face up
                     if(!blocking){
                     current=myGame->chooseCard();
                     }
                     else{
-                        bool blockedChosen=false;
-                        while(!blockenChosen)
-                        
+                        bool blockedChosen=true;
+                        while(blockedChosen){
+                            current=myGame->chooseCard();
+                            if(current->getNumber()==myGame->getBlockedNumber()&&current->getLetter()==myGame->getBlockedLetter()){
+                                blockedChosen=true;
+                            }
+                            else{
+                                blockedChosen=false;
+                                blocking=false;
+                            }
                     }
+                        
                     while(myGame->gameBoard.isFaceUp(current->getLetter(), current->getNumber())==false){
                         cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
                     }
@@ -146,6 +156,7 @@ int main(int argc, const char * argv[]) {
                     }
                 }
             }
+        }
             else{
                 int numberOfFaceUp=0;
                 int numberOfActivePlayers=4;
