@@ -189,8 +189,7 @@ public:
         gameBoard.reset();
     }
     
-    bool penguin(const Player& p, bool act){
-        if(act){
+    bool penguin(const Player& p){
             cout<<"Player " << p.getName()<< " you have turned up a Penguin!!!!! You can turn an face-up card to face down."<<endl;
             Card* chosen= chooseCard();
             if(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==false){
@@ -201,7 +200,6 @@ public:
                 gameBoard.turnFaceDown(chosen->getLetter(), chosen->getNumber());
                 return true;
             }
-        }
         return false;
     }
     

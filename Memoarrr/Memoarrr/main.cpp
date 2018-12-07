@@ -93,10 +93,13 @@ int main(int argc, const char * argv[]) {
                         numberOfCardsInRound++;
                         FaceAnimal animal;
                         animal = (FaceAnimal)myGame->gameBoard.getCard(current->getLetter(), current->getNumber())->getAnimal();
+                        
+                        //switch case for skills for different cards
                         Card* cc;
-                        bool go= true;
+                        bool wal= true;
                         switch(animal){
                             case (FaceAnimal::crab):
+                                myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
                                 cc= myGame->crab(playingNow);
                                 current->setLetter(cc->getLetter());
                                 current->setNumber(cc->getNumber());
@@ -105,14 +108,14 @@ int main(int argc, const char * argv[]) {
                                 if(numberOfFaceUp>1){
                                     bool down=false;
                                     while(!down){
-                                        down=myGame->penguin(playingNow, true);
+                                        down=myGame->penguin(playingNow);
                                     }
                                     numberOfFaceUp--;
                                 }
                                 break;
                             case (FaceAnimal::walrus):
-                                while(go){
-                                    go=!myGame->walrus(playingNow);
+                                while(wal){
+                                    wal=!myGame->walrus(playingNow);
                                 }
                                 blocking=true;
                                 break;
