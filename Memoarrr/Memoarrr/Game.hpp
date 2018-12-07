@@ -22,7 +22,6 @@ class Game{
     
     Card* prevCard=nullptr;
     Card* currentCard=nullptr;
-    Card* tempCard=nullptr;
     int gameRound=1;
     Card* blocked=nullptr;
     bool blockState=false;
@@ -213,7 +212,7 @@ public:
     const Card* getPreviousCard() const{return prevCard;}
     const Card* getCurrentCard() const{return currentCard;}
     void setCurrentCard( const Card* c){
-        tempCard=currentCard;
+        Card* tempCard=currentCard;
         prevCard =tempCard;
         currentCard = gameCdeck->getByPosition(c->getLetter(),c->getNumber());
     }
