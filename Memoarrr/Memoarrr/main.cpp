@@ -147,7 +147,7 @@ int main(int argc, const char * argv[]) {
                                 numberOfActivePlayers--;
                                 if(numberOfActivePlayers<2){
                                     myGame->roundFinish();
-                                    myGame->incRound();
+                                    myGame->nextRound();
                                     cout<<"this is the end of round..............."<<endl;
                                     playingNow.addReward(*rDeck->getNext());
                                     cout<<"this is the number of rubbies for this player: "<<playingNow.getNRubies()<<endl;
@@ -174,8 +174,7 @@ int main(int argc, const char * argv[]) {
             else{
                 int numberOfFaceUp=0;
                 int numberOfActivePlayers=4;
-                while(endOfGame==false){
-                    
+                while(rules->gameOver(*myGame)==false){
                     if(!endOfGame){
                         cout<<"The game has not ended yet!, the status of the game is: "<<endOfGame<<endl;
                     }
@@ -214,7 +213,7 @@ int main(int argc, const char * argv[]) {
                                     numberOfActivePlayers--;
                                     if(numberOfActivePlayers<2){
                                         myGame->roundFinish();
-                                        myGame->incRound();
+                                        myGame->nextRound();
                                         cout<<"this is the end of round..............."<<endl;
                                         playingNow.addReward(*rDeck->getNext());
                                         cout<<"this is the number of rubbies for this player: "<<playingNow.getNRubies()<<endl;

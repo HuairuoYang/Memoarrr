@@ -36,7 +36,7 @@ public:
     Game() = default;
     int getRound() const {return gameRound;}
     
-    void incRound(){
+    void nextRound(){
         gameRound++;
     }
     void addPlayer ( Player& p){
@@ -245,10 +245,10 @@ public:
         a= cardToSwap->getLetter();
         z= cardToSwap->getNumber();
         int swap=rand() % 4;
-        swicth(swap){
-            
-            
-        }
+//        swicth(swap){
+//            
+//            
+//        }
         return false;
     }
     
