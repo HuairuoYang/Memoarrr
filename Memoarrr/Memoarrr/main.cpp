@@ -120,6 +120,7 @@ int main(int argc, const char * argv[]) {
             
             numberOfCardsInRound++;
             myGame->setCurrentCard(gameCdeck->getByPosition(a,z));
+            cout<<"This is the number of cards in roud!!!:  " << numberOfCardsInRound<<endl;
             if(numberOfCardsInRound>1){
                  if(rules->isValid(*myGame)==true){
                      cout<<*myGame<<endl;
@@ -139,6 +140,7 @@ int main(int argc, const char * argv[]) {
                          playingNow.addReward(*rDeck->getNext());
                          cout<<"this is the number of rubbies for this player: "<<playingNow.getNRubies()<<endl;
                          numberOfFaceUp=0;
+                         numberOfCardsInRound=0;
                         }
                     }
                 }
