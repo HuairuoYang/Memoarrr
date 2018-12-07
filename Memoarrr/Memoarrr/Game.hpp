@@ -26,6 +26,7 @@ class Game{
     int gameRound=1;
     Card* blocked=nullptr;
     bool blockState=false;
+    bool skipping=false;
 
     
     
@@ -126,10 +127,10 @@ public:
     }
     
     bool penguin(Number a, Letter z, bool act){
-        if(!act){
+        if(act){
             if(gameBoard.isFaceUp(z, a)){
                 gameBoard.turnFaceDown(z, a);
-                cout<<this<<endl;
+                cout<<*this<<endl;
                 return true;
             }
             else{
@@ -139,14 +140,18 @@ public:
         return false;
     }
     
-    void walrus(Letter a, Number z){
+    bool walrus(Letter a, Number z){
+        if(!gameBoard.isFaceUp(a, z)){
         blocked= gameBoard.getCard(a, z);
         blockState=true;
+        return true;
+        }
+        else return false;
     }
     
     Card* crab(const Player& p){
         char r;
-        cout<<"Player " << p.getName()<< " you have turned up a Penguim!!!!! You need to turn up an another card now. Please input the Character for row: "<<endl;
+        cout<<"Player " << p.getName()<< " you have turned up a Crab!!!!! You need to turn up an another card now. Please input the Character for row: "<<endl;
         cin>>r;
         r= toupper(r);
         Letter a=Letter::A;
@@ -198,6 +203,11 @@ public:
             gameBoard.turnFaceUp(a, z);
             return gameBoard.getCard(a, z);
         }
+    }
+    
+    bool turtle(){
+        skipping=true;
+        return true;
     }
     
     bool roundFinish() const{
