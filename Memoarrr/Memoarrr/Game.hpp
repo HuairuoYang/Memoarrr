@@ -283,7 +283,7 @@ public:
                 gameCdeck->swap(swapper,swapee,1);
                 swapee->setLetter((Letter)(swapper->getLetter()));
                 swapper->setLetter((Letter)(swapper->getLetter()+1));
-                cout<<"bottom side swap success"<<endl;
+                cout<<"bottom side swap successful"<<endl;
                 return true;
             }
             else{
@@ -293,20 +293,17 @@ public:
         }
         if(i==2){
             if(swapper->leftAvailable){
-                swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()+1), swapper->getNumber());
+                swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()), (Number)(swapper->getNumber()-1));
                 gameCdeck->swap(swapper,swapee,1);
                 swapee->setLetter((Letter)(swapper->getLetter()));
                 swapper->setLetter((Letter)(swapper->getLetter()+1));
-                cout<<"bottom side swap success"<<endl;
+                cout<<"left side swap successful"<<endl;
                 return true;
             }
             else{
-                cout<<"The bottom side is not avilable, choosing another side..."<<endl;
+                cout<<"The left side is not available, choosing another side..."<<endl;
                 return false;
             }
-
-            
-            
         }
     }
     
