@@ -73,7 +73,13 @@ public:
         return blockState;
     }
     
-
+    bool getSkip(){
+        return skipping;
+    }
+    
+    void setSkip(bool skip){
+        skipping=skip;
+    }
     
     Player& getPlayer  (Side s) const{
         switch (s ){
@@ -148,12 +154,9 @@ public:
         }
         else{
             valid=true;
-            return gameBoard.getCard(a,z);
+            }
         }
-            
-        }
-        return nullptr;
-        
+         return gameBoard.getCard(a,z);
     }
     
     void revealCardsForPlayer(const Player& p){
@@ -282,6 +285,9 @@ public:
         return os;
     }
     
+    Card* getBlockedCard(){
+        return blocked;
+    }
     
 };
 
