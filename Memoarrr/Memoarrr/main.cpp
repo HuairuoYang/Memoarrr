@@ -52,10 +52,10 @@ int main(int argc, const char * argv[]) {
             cout<<"The game has not ended yet!, the status of the game is: "<<endOfGame<<endl;
         }
         int numberOfCardsInRound=0;
-        myGame->topPlayer->setActive(true);
-        myGame->bottomPlayer->setActive(true);
-        myGame->leftPlayer->setActive(true);
-        myGame->rightPlayer->setActive(true);
+        myGame->getPlayer(Side::top).setActive(true);
+        myGame->getPlayer(Side::bottom).setActive(true);
+        myGame->getPlayer(Side::left).setActive(true);
+        myGame->getPlayer(Side::right).setActive(true);
         numberOfActivePlayers=4;
         
     while(rules->roundOver(*myGame)==false){
@@ -117,14 +117,20 @@ int main(int argc, const char * argv[]) {
         else{
             myGame->gameBoard.turnFaceUp(a, z);
             numberOfFaceUp++;
-            cout<<*myGame<<endl;
+            
             numberOfCardsInRound++;
             myGame->setCurrentCard(gameCdeck->getByPosition(a,z));
             if(numberOfCardsInRound>1){
-                 if(rules->isValid(*myGame)==true){}
+                 if(rules->isValid(*myGame)==true){
+                     cout<<*myGame<<endl;
+                     cout<<"MATCH!!!!!"<<endl;
+                     currentPlayer++;
+                 }
                  else{
-                     cout<<"Its not a match"<<endl;
                      playingNow.setActive(false);
+                     cout<<*myGame<<endl;
+                     cout<<"Its not a match"<<endl;
+                     
                      numberOfActivePlayers--;
                      if(numberOfActivePlayers<2){
                          myGame->roundFinish();
@@ -136,6 +142,9 @@ int main(int argc, const char * argv[]) {
                         }
                     }
                 }
+            else{
+                cout<<*myGame<<endl;
+            }
             }
         }
     }

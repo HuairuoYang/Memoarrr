@@ -33,37 +33,32 @@ bool Rules::roundOver(const Game& g){
     return g.roundFinish();
 }
  Player& Rules::getNextPlayer(const Game& g){
-    switch (currentPlayer){
-        case 0:
-            currentPlayer++;
-            if (currentPlayer == g.numOfPlayer){
-                currentPlayer =0;
-            }
-            return *g.topPlayer;
-            break;
-        case 1:
-            currentPlayer++;
-            if (currentPlayer == g.numOfPlayer){
-                currentPlayer =0;
-            }
-            return *g.bottomPlayer;
-            break;
-        case 2:
-            currentPlayer++;
-            if (currentPlayer == g.numOfPlayer){
-                currentPlayer =0;
-            }
-            return *g.leftPlayer;
-            break;
-        case 3:
-            currentPlayer++;
-            if (currentPlayer == g.numOfPlayer){
-                currentPlayer =0;
-            }
-            return *g.rightPlayer;
-            break;
-        default:
-            return *g.topPlayer;
-            break;
-    }
+     Player* temp =nullptr;
+     while(temp == nullptr || !temp->isActive()){
+
+         switch (currentPlayer){
+             case 0:
+                 temp = &g.getPlayer(Side::top);
+                 break;
+             case 1:
+                 temp = &g.getPlayer(Side::bottom);
+                 break;
+             case 2:
+                 temp = &g.getPlayer(Side::left);
+                 break;
+             case 3:
+                 temp = &g.getPlayer(Side::right);
+                 break;
+             default:
+                 temp = nullptr;
+                 break;
+         }
+         currentPlayer++;
+         if (currentPlayer ==g.numOfPlayer){
+             currentPlayer = 0;
+         }
+         
+     }
+     return *temp;
+     
 }

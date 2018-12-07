@@ -17,7 +17,7 @@
 #include "Card.hpp"
 #include "Board.hpp"
 using namespace std;
-
+static int currentPlayer =0;
 class Game{
     
     Card* prevCard=nullptr;
@@ -26,11 +26,13 @@ class Game{
     int gameRound=1;
     Card* blocked=nullptr;
     bool blockState=false;
+
     
     
 public:
     Board gameBoard;
     int numOfPlayer = 0;
+
     Player* topPlayer;
     Player* bottomPlayer;
     Player* leftPlayer;
@@ -46,25 +48,30 @@ public:
             case (Side::top):
                 numOfPlayer++;
                 topPlayer = &p;
+                revealCardsForPlayer(*topPlayer);
                 break;
             case (Side::bottom):
                 numOfPlayer++;
                 bottomPlayer = &p;
+                revealCardsForPlayer(*bottomPlayer);
                 break;
             case (Side::right):
                 numOfPlayer++;
                 rightPlayer= &p;
+                revealCardsForPlayer(*rightPlayer);
                 break;
             case (Side::left):
                 numOfPlayer++;
                 leftPlayer= &p;
+                revealCardsForPlayer(*leftPlayer);
                 break;
             default:
                 break;
         }
+        
     }
     
-    Player& getPlayer(Side s){
+    Player& getPlayer  (Side s) const{
         switch (s ){
             case (Side::top):
                 return *topPlayer;
