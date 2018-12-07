@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include <iostream>
 #include "Utils.hpp"
 
 template <typename C>
@@ -27,7 +28,7 @@ public:
     bool isEmpty(){return deck.empty();}
     
     C* getNext() {
-        if(isEmpty()){
+        if(deck.empty()){
             throw std::out_of_range("out of range");
             return nullptr;
         } else {
@@ -42,7 +43,11 @@ public:
         }
     }
     C* getByPosition( const Letter& l, const Number& n){
-        if(isEmpty() || l>5 || l<0 || n>5 || n<0 || (int)l*5+(int)n>deck.size()){
+        if(deck.empty() ){
+            std::cout<<"empty deck"<<std::endl;
+            return nullptr;
+        }
+        if( l>5 || l<0 || n>5 || n<0 || (int)l*5+(int)n>deck.size()){
             throw std::out_of_range("out of range");
             return nullptr;
         }
@@ -54,7 +59,11 @@ public:
     }
     
     bool setByPosition( const Letter& l, const Number& n, C* c){
-        if(isEmpty() || l>5 || l<0 || n>5 || n<0 || (int)l*5+(int)n>deck.size()){
+        if(isEmpty() ){
+            std::cout<<"empty deck"<<std::endl;
+            return nullptr;
+        }
+        if( l>5 || l<0 || n>5 || n<0 || (int)l*5+(int)n>deck.size()){
             throw std::out_of_range("out of range");
             return false;
         }

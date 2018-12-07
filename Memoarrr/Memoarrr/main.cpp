@@ -159,6 +159,12 @@ int main(int argc, const char * argv[]) {
                     }
                 }
             }
+            cout<<"7 rounds expert mode end"<<endl;
+            myGame->getPlayer(Side::top).setDisplayMode(true);
+            myGame->getPlayer(Side::bottom).setDisplayMode(true);
+            myGame->getPlayer(Side::left).setDisplayMode(true);
+            myGame->getPlayer(Side::right).setDisplayMode(true);
+            cout<<*myGame<<endl;
         }
         
         //normal mode
@@ -217,12 +223,20 @@ int main(int argc, const char * argv[]) {
                             cout<<"shuffling all cards"<<endl;
                             gameCdeck->roundOverShuffle=true;
                             gameCdeck->make_CardDeck();
+                            gameCdeck->roundOverShuffle=false;
+                            gameCdeck->make_CardDeck();
                             myGame->gameBoard.reset();
                             numberOfFaceUp=0;
-                            gameCdeck->roundOverShuffle=false;
+                            
                         }
                     }
                 }
+                cout<<"7 rounds NORMAL mode end"<<endl;
+                myGame->getPlayer(Side::top).setDisplayMode(true);
+                myGame->getPlayer(Side::bottom).setDisplayMode(true);
+                myGame->getPlayer(Side::left).setDisplayMode(true);
+                myGame->getPlayer(Side::right).setDisplayMode(true);
+                cout<<*myGame<<endl;
             }
         }
     }

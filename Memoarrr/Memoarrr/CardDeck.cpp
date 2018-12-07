@@ -11,10 +11,8 @@ CardDeck* CardDeck::myCDeck = nullptr;
 bool CardDeck::roundOverShuffle = false;
 
 CardDeck& CardDeck::make_CardDeck(){
-    if(myCDeck == nullptr || roundOverShuffle == true){
-        cout<<"generating new game board"<<endl;
-        delete(myCDeck);
-        myCDeck = nullptr;
+    if(myCDeck == nullptr){
+        cout<<"Preparing a new game board"<<endl;
         myCDeck = new CardDeck();
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -30,14 +28,42 @@ CardDeck& CardDeck::make_CardDeck(){
                 n = 0;
                 l++;
             }
-            if (l == 5){
-                cout<<"error occured during giving pos"<<endl;
+        }
+        if(myCDeck->deck.empty()){
+            cout<<"error: empty deck"<<endl;
+            roundOverShuffle = true;
+            myCDeck->make_CardDeck();
+            roundOverShuffle = false;
+        }
+        return *myCDeck;
+    }
+    else if(roundOverShuffle == true){
+        myCDeck->shuffle();
+        int l=0,n=0;
+        for(auto k : myCDeck->deck){
+            k->setLetter((Letter)l);
+            k->setNumber((Number)n++);
+            if(n==5){
+                n = 0;
+                l++;
             }
+        }
+        if(myCDeck->deck.empty()){
+            cout<<"error: empty deck"<<endl;
+            roundOverShuffle = true;
+            myCDeck->make_CardDeck();
+            roundOverShuffle = false;
         }
         return *myCDeck;
     }
     else{
-        cout<<"returning previous game board"<<endl;
+        if(myCDeck->deck.empty()){
+            cout<<"error: empty deck"<<endl;
+            roundOverShuffle = true;
+            myCDeck->make_CardDeck();
+            roundOverShuffle = false;
+        }
+        cout<<"Deck size:"<<myCDeck->deck.size()<<endl;
         return *myCDeck;
     }
 }
