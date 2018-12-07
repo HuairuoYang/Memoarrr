@@ -32,7 +32,7 @@ bool Rules::gameOver(const Game& g){
 bool Rules::roundOver(const Game& g){
     return g.roundFinish();
 }
- Player& Rules::getNextPlayer(const Game& g){
+const Player& Rules::getNextPlayer(const Game& g){
      Player* temp =nullptr;
      while(temp == nullptr || !temp->isActive()){
 

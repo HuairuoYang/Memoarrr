@@ -63,10 +63,7 @@ int main(int argc, const char * argv[]) {
         cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
         cout<<"This is the current round number: "<<myGame->getRound()<<endl;
          cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
-         Player& playingNow = rules->getNextPlayer(*myGame);
-        while(playingNow.isActive()==false){
-             playingNow = rules->getNextPlayer(*myGame);
-            }
+        Player& playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
         char r;
         cout<<"Player " << playingNow.getName()<< ", Please input the Character for row "<<endl;
         cin>>r;
