@@ -202,7 +202,10 @@ public:
     
     bool roundFinish() const{
         int activeCount = 0;
-        
+        getPlayer(Side::top).isActive()?(activeCount++):(activeCount+=0);
+        getPlayer(Side::bottom).isActive()?(activeCount++):(activeCount+=0);
+        getPlayer(Side::left).isActive()?(activeCount++):(activeCount+=0);
+        getPlayer(Side::right).isActive()?(activeCount++):(activeCount+=0);
         return (activeCount ==1);
     }
     

@@ -48,6 +48,7 @@ int main(int argc, const char * argv[]) {
     int numberOfFaceUp=0;
     int numberOfActivePlayers=4;
     while(endOfGame==false){
+        cout<<"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"<<endl;
         if(!endOfGame){
             cout<<"The game has not ended yet!, the status of the game is: "<<endOfGame<<endl;
         }
