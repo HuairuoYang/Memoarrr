@@ -22,13 +22,13 @@ class Game{
     Card* prevCard=nullptr;
     Card* currentCard=nullptr;
     int gameRound=1;
-    Card* blocked=nullptr;
-    bool blockState=false;
     bool skipping=false;
+    Letter blockedLetter =Letter::C;
+    Number blockedNumber = Number::three;
+    
 public:
     Board gameBoard;
     int numOfPlayer = 0;
-
     Player* topPlayer;
     Player* bottomPlayer;
     Player* leftPlayer;
@@ -65,11 +65,6 @@ public:
                 break;
         }
         
-    }
-    
-    bool setBlockState(bool valid){
-        blockState=valid;
-        return blockState;
     }
     
     bool getSkip(){
@@ -210,17 +205,23 @@ public:
         return false;
     }
     
+    
+    Letter getBlockedLetter(){
+        return blockedLetter;
+    }
+    Number getBlockedNumber(){
+        return blockedNumber;
+    }
     bool walrus(const Player& p){
         cout<<"Player " << p.getName()<< " you have turned up a Walrus!!!!! You can Block a Card."<<endl;
         Card* chosen= chooseCard();
-        if(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
+        while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
             cout<<"PLease re-enter a card position as the card in position is face up and cannot be blocked, Please retry....."<<endl;
-            return false;
+             chosen= chooseCard();
         }
-        else{
-            blocked=chosen;
-            return true;
-        }
+        blockedLetter=chosen->getLetter();
+        blockedNumber=chosen->getNumber();
+        return true;
     }
     
     Card* crab(const Player& p){
@@ -286,10 +287,7 @@ public:
         return os;
     }
     
-    Card* getBlockedCard(){
-        return blocked;
-    }
-    
+
 };
 
 
