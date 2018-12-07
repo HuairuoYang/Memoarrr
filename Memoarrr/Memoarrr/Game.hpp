@@ -102,11 +102,13 @@ public:
     
     Card* chooseCard(){
         bool valid= false;
+        Letter a=Letter::A;
+        Number z=Number::one;
         while(!valid){
         char r;
         cin>>r;
         r= toupper(r);
-        Letter a=Letter::A;
+ 
         switch(r){
             case 'A':
                 a = Letter::A;
@@ -128,7 +130,7 @@ public:
         int c;
         cout<<"please input the number for column: "<<endl;
         cin>>c;
-        Number z=Number::one;
+
         switch(c){
             case 1:
                 z = Number::one;
