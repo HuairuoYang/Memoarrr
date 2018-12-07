@@ -20,6 +20,8 @@ class CardDeck : public Deck<Card> {
     CardDeck(const CardDeck&) = delete;
     CardDeck& operator= ( const CardDeck & ) = delete;
 public:
+    static bool roundOverShuffle;
+    
     static CardDeck& make_CardDeck();
 };
 

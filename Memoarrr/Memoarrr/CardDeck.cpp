@@ -8,9 +8,11 @@
 
 #include "CardDeck.hpp"
 CardDeck* CardDeck::myCDeck = nullptr;
+bool CardDeck::roundOverShuffle = false;
 
 CardDeck& CardDeck::make_CardDeck(){
     if(myCDeck == nullptr || roundOverShuffle == true){
+        cout<<"generating new game board"<<endl;
         delete(myCDeck);
         myCDeck = nullptr;
         myCDeck = new CardDeck();
@@ -35,6 +37,7 @@ CardDeck& CardDeck::make_CardDeck(){
         return *myCDeck;
     }
     else{
+        cout<<"returning previous game board"<<endl;
         return *myCDeck;
     }
 }

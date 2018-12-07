@@ -44,6 +44,7 @@ bool Board::turnFaceDown(const Letter & let, const Number & num){
 }
 void Board::reset(){
     Card* c;
+    cout<<"reseting board"<<endl;
     for(int i=0;i<5;i++){
         for(int j=0;j<5;j++){
             c =  static_cast<Card*>(gameCdeck->getByPosition((Letter)i,(Number)j));

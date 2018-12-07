@@ -10,6 +10,7 @@
 #include <string>
 #include <iostream>
 #include "Board.hpp"
+#include "CardDeck.hpp"
 #include "Utils.hpp"
 #include "Game.hpp"
 #include "Rules.hpp"
@@ -216,10 +217,12 @@ int main(int argc, const char * argv[]) {
                             }
                         }
                         if(numberOfFaceUp>23){
-                            roundOverShuffle=true;
-                            gameCdeck->shuffle();
+                            cout<<"shuffling all cards"<<endl;
+                            gameCdeck->roundOverShuffle=true;
+                            gameCdeck->make_CardDeck();
+                            myGame->gameBoard.reset();
                             numberOfFaceUp=0;
-                            roundOverShuffle=false;
+                            gameCdeck->roundOverShuffle=false;
                         }
                     }
                 }
