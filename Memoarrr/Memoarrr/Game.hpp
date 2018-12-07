@@ -19,15 +19,12 @@
 using namespace std;
 static int currentPlayer =0;
 class Game{
-    
     Card* prevCard=nullptr;
     Card* currentCard=nullptr;
     int gameRound=1;
     Card* blocked=nullptr;
     bool blockState=false;
-
-    
-    
+    bool skipping=false;
 public:
     Board gameBoard;
     int numOfPlayer = 0;
@@ -70,6 +67,19 @@ public:
         
     }
     
+    bool setBlockState(bool valid){
+        blockState=valid;
+        return blockState;
+    }
+    
+    bool getSkip(){
+        return skipping;
+    }
+    
+    void setSkip(bool skip){
+        skipping=skip;
+    }
+    
     Player& getPlayer  (Side s) const{
         switch (s ){
             case (Side::top):
@@ -88,6 +98,64 @@ public:
                 return *topPlayer;
                 break;
         }
+    }
+    
+    Card* chooseCard(){
+        bool valid= false;
+        while(!valid){
+        char r;
+        cin>>r;
+        r= toupper(r);
+        Letter a=Letter::A;
+        switch(r){
+            case 'A':
+                a = Letter::A;
+                break;
+            case 'B':
+                a = Letter::B;
+                break;
+            case 'C':
+                a = Letter::C;
+                break;
+            case 'D':
+                a = Letter::D;
+                break;
+            case 'E':
+                a = Letter::E;
+                break;
+            default: break;
+        }
+        int c;
+        cout<<"please input the number for column: "<<endl;
+        cin>>c;
+        Number z=Number::one;
+        switch(c){
+            case 1:
+                z = Number::one;
+                break;
+            case 2:
+                z = Number::two;
+                break;
+            case 3:
+                z = Number::three;
+                break;
+            case 4:
+                z = Number::four;
+                break;
+            case 5:
+                z = Number::five;
+                break;
+            dafault: break;
+        }
+        if(a == Letter::C && z== Number::three){
+            cout<<"You have entered an invalid card position, please retry......"<<endl;
+            valid=false;
+        }
+        else{
+            valid=true;
+            }
+        }
+         return gameBoard.getCard(a,z);
     }
     
     void revealCardsForPlayer(const Player& p){
@@ -124,79 +192,51 @@ public:
         gameBoard.reset();
     }
     
-    bool penguin(Number a, Letter z, bool act){
-        if(!act){
-            if(gameBoard.isFaceUp(z, a)){
-                gameBoard.turnFaceDown(z, a);
-                cout<<this<<endl;
-                return true;
+    bool penguin(const Player& p, bool act){
+        if(act){
+            cout<<"Player " << p.getName()<< " you have turned up a Penguin!!!!! You can turn an face-up card to face down."<<endl;
+            Card* chosen= chooseCard();
+            if(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==false){
+                cout<<"PLease re-enter a card position as the card in position is still face down"<<endl;
+                return false;
             }
             else{
-                cout<<"Please double check your input as the card is not turned face up"<<endl;
-                return false;}
+                gameBoard.turnFaceDown(chosen->getLetter(), chosen->getNumber());
+                return true;
+            }
         }
         return false;
     }
     
-    void walrus(Letter a, Number z){
-        blocked= gameBoard.getCard(a, z);
-        blockState=true;
+    bool walrus(const Player& p){
+        cout<<"Player " << p.getName()<< " you have turned up a Walrus!!!!! You can Block a Card."<<endl;
+        Card* chosen= chooseCard();
+        if(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
+            cout<<"PLease re-enter a card position as the card in position is face up and cannot be blocked, Please retry....."<<endl;
+            return false;
+        }
+        else{
+            blocked=chosen;
+            return true;
+        }
     }
     
     Card* crab(const Player& p){
-        char r;
-        cout<<"Player " << p.getName()<< " you have turned up a Penguim!!!!! You need to turn up an another card now. Please input the Character for row: "<<endl;
-        cin>>r;
-        r= toupper(r);
-        Letter a=Letter::A;
-        switch(r){
-            case 'A':
-                a = Letter::A;
-                break;
-            case 'B':
-                a = Letter::B;
-                break;
-            case 'C':
-                a = Letter::C;
-                break;
-            case 'D':
-                a = Letter::D;
-                break;
-            case 'E':
-                a = Letter::E;
-                break;
-            default: break;
-        }
-        int c;
-        cout<<"please input the number for column"<<endl;
-        cin>>c;
-        Number z=Number::one;
-        switch(c){
-            case 1:
-                z = Number::one;
-                break;
-            case 2:
-                z = Number::two;
-                break;
-            case 3:
-                z = Number::three;
-                break;
-            case 4:
-                z = Number::four;
-                break;
-            case 5:
-                z = Number::five;
-                break;
-            dafault: break;
-        }
-        if(gameBoard.isFaceUp(a, z)==true || (a == Letter::C && z== Number::three)){
-            cout<<"PLease re-enter a card position as the card in position is already face up or invalid"<<endl;
+        cout<<"Player " << p.getName()<< " you have turned up a Crab!!!!! You need to turn up an another card now. Please input the Character for row: "<<endl;
+        Card* chosen= chooseCard();
+        if(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
+            cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
             return nullptr;
         }
         else{
-            gameBoard.turnFaceUp(a, z);
-            return gameBoard.getCard(a, z);
+            gameBoard.turnFaceUp(chosen->getLetter(), chosen->getNumber());
+            return gameBoard.getCard(chosen->getLetter(), chosen->getNumber());
         }
+    }
+    
+    bool turtle(){
+        skipping=true;
+        return true;
     }
     
     bool roundFinish() const{
@@ -244,6 +284,9 @@ public:
         return os;
     }
     
+    Card* getBlockedCard(){
+        return blocked;
+    }
     
 };
 
