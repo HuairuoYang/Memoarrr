@@ -42,6 +42,8 @@ int main(int argc, const char * argv[]) {
         string mode;
         cout<<"Please input expert for expert mode or any other words for normal mode: "<<endl;
         cin>>mode;
+        
+        //expert mode
         if(mode=="expert"){
             int numberOfFaceUp=0;
             int numberOfActivePlayers=4;
@@ -160,6 +162,8 @@ int main(int argc, const char * argv[]) {
                 }
             }
         }
+        
+        //normal mode
             else{
                 int numberOfFaceUp=0;
                 int numberOfActivePlayers=4;
@@ -179,7 +183,7 @@ int main(int argc, const char * argv[]) {
                         cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
                         cout<<"This is the current round number: "<<myGame->getRound()<<endl;
                         cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
-                           Player& playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                        Player& playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
                         Card* current = myGame->chooseCard();
                         if(myGame->gameBoard.isFaceUp(current->getLetter(), current->getNumber())==true){
                             cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
