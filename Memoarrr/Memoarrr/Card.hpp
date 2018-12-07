@@ -26,8 +26,30 @@ class Card{
     Card(FaceAnimal animal, FaceBackground background): cardAnimal(animal), cardColor(background){};
     
 public:
-    void setLetter(Letter l){let=l;}
-    void setNumber(Number n){num=n;}
+    bool topAvailable=true;
+    bool bottomAvailable=true;
+    bool rightAvailable=true;
+    bool leftAvailable=true;
+    
+    void setLetter(Letter l){
+        if(l==Letter::A){
+            topAvailable=false;
+        }
+        if(l==Letter::E){
+            bottomAvailable=false;
+        }
+        let=l;
+    }
+    
+    void setNumber(Number n){
+        if(n==Number::one){
+            leftAvailable=false;
+        }
+        if(n==Number::five){
+            rightAvailable=false;
+        }
+        num=n;
+    }
     Letter getLetter() const {return let;}
     Number getNumber() const {return num;}
     

@@ -48,10 +48,7 @@ int main(int argc, const char * argv[]) {
         if(mode=="expert"){
             int numberOfFaceUp=0;
             int numberOfActivePlayers=4;
-            while(endOfGame==false){
-                if(!endOfGame){
-                    cout<<"The game has not ended yet!, the status of the game is: "<<endOfGame<<endl;
-                }
+            while(rules->gameOver(*myGame)==false){
                 int numberOfCardsInRound=0;
                 myGame->getPlayer(Side::top).setActive(true);
                 myGame->getPlayer(Side::bottom).setActive(true);
@@ -175,9 +172,6 @@ int main(int argc, const char * argv[]) {
                 int numberOfFaceUp=0;
                 int numberOfActivePlayers=4;
                 while(rules->gameOver(*myGame)==false){
-                    if(!endOfGame){
-                        cout<<"The game has not ended yet!, the status of the game is: "<<endOfGame<<endl;
-                    }
                     int numberOfCardsInRound=0;
                     myGame->getPlayer(Side::top).setActive(true);
                     myGame->getPlayer(Side::bottom).setActive(true);
@@ -246,3 +240,5 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
+
+
