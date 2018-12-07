@@ -18,7 +18,7 @@ public:
     bool isValid(const Game&);
     bool gameOver(const Game&);
     bool roundOver(const Game&);
-    Player& getNextPlayer(const Game&);
+    const Player& getNextPlayer(const Game&);
 };
 
 

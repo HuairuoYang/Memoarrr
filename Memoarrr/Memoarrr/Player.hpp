@@ -26,14 +26,14 @@ public:
     std::string getSideString() const;
     void setSide(Side s) { side = s;}
     
-    bool isActive(){return active;}
-    int getNRubies(){return countOfRubies;}
-    void addReward(Reward& r){
+    bool isActive() const {return active;}
+    int getNRubies() const {return countOfRubies;}
+    void addReward(Reward& r) {
         countOfRubies=countOfRubies+ r.getRubies();
     };
     
-    void setActive(bool trueIfActive) {active = trueIfActive;}
-    void setDisplayMode(bool endOfGame){endGame = endOfGame;}
+    void setActive(bool trueIfActive)  {active = trueIfActive;}
+    void setDisplayMode(bool endOfGame)  {endGame = endOfGame;}
     
     //constructor
     Player()= default;

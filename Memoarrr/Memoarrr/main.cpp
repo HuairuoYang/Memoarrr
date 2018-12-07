@@ -58,72 +58,55 @@ int main(int argc, const char * argv[]) {
                 myGame->getPlayer(Side::left).setActive(true);
                 myGame->getPlayer(Side::right).setActive(true);
                 numberOfActivePlayers=4;
-                
+                bool blocking=false;
                 while(rules->roundOver(*myGame)==false){
                     cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
                     cout<<"This is the current round number: "<<myGame->getRound()<<endl;
                     cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
-                    Player& playingNow = rules->getNextPlayer(*myGame);
-                    while(playingNow.isActive()==false){
-                        playingNow = rules->getNextPlayer(*myGame);
-                    }
-                    char r;
-                    cout<<"Player " << playingNow.getName()<< ", Please input the Character for row "<<endl;
-                    cin>>r;
-                    r= toupper(r);
-                    Letter a=Letter::A;
-                    switch(r){
-                        case 'A':
-                            a = Letter::A;
-                            break;
-                        case 'B':
-                            a = Letter::B;
-                            break;
-                        case 'C':
-                            a = Letter::C;
-                            break;
-                        case 'D':
-                            a = Letter::D;
-                            break;
-                        case 'E':
-                            a = Letter::E;
-                            break;
-                        default: break;
-                    }
-                    int c;
-                    cout<<"please input the number for column"<<endl;
-                    cin>>c;
-                    Number z=Number::one;
-                    switch(c){
-                        case 1:
-                            z = Number::one;
-                            break;
-                        case 2:
-                            z = Number::two;
-                            break;
-                        case 3:
-                            z = Number::three;
-                            break;
-                        case 4:
-                            z = Number::four;
-                            break;
-                        case 5:
-                            z = Number::five;
-                            break;
-                        dafault: break;
-                    }
-                    if(myGame->gameBoard.isFaceUp(a, z)==true || (a == Letter::C && z== Number::three)){
+                    Player& playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                    Card* current=myGame->chooseCard();
+                    if(myGame->gameBoard.isFaceUp(current->getLetter(), current->getNumber())==true){
                         cout<<"PLease re-enter a card position as the card in position is already face up or invalid"<<endl;
                     }
                     else{
-                        myGame->gameBoard.turnFaceUp(a, z);
+                        myGame->gameBoard.turnFaceUp(current->getLetter(), current->getNumber());
                         numberOfFaceUp++;
                         numberOfCardsInRound++;
-                        myGame->
-                        switch{
-                            myGame->gameBoard.
+                        FaceAnimal animal;
+                        animal = (FaceAnimal)myGame->gameBoard.getCard(current->getLetter(), current->getNumber())->getAnimal();
+                        Card* cc;
+                        bool go= true;
+                        switch(animal){
+                            case (FaceAnimal::crab):
+                                cc= myGame->crab(playingNow);
+                                current->setLetter(cc->getLetter());
+                                current->setNumber(cc->getNumber());
+                                break;
+                            case (FaceAnimal::penguin):
+                                if(numberOfFaceUp>1){
+                                    bool down=false;
+                                    while(!down){
+                                        down=myGame->penguin(playingNow, true);
+                                    }
+                                    numberOfFaceUp--;
+                                }
+                                break;
+                            case (FaceAnimal::walrus):
+                                while(go){
+                                    go=!myGame->walrus(playingNow);
+                                }
+                                blocking=true;
+                                break;
+                            case (FaceAnimal::turtle):
+                                myGame->turtle();
+                                break;
+                            case (FaceAnimal::octopus):
+                                
+                                break;
+                            default:
+                                break;
                         }
-                        myGame->setCurrentCard(gameCdeck->getByPosition(a,z));
+                        myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
                         cout<<"This is the number of cards in roud!!!:  " << numberOfCardsInRound<<endl;
                         if(numberOfCardsInRound>1){
                             if(rules->isValid(*myGame)==true){
@@ -173,10 +156,7 @@ int main(int argc, const char * argv[]) {
                         cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
                         cout<<"This is the current round number: "<<myGame->getRound()<<endl;
                         cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
-                        Player& playingNow = rules->getNextPlayer(*myGame);
-                        while(playingNow.isActive()==false){
-                            playingNow = rules->getNextPlayer(*myGame);
-                        }
+                           Player& playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
                         char r;
                         cout<<"Player " << playingNow.getName()<< ", Please input the Character for row "<<endl;
                         cin>>r;
