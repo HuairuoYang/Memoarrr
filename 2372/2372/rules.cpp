@@ -6,7 +6,7 @@
 //  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
 //
 
-#include "Rules.hpp"
+#include "rules.hpp"
 
 bool Rules::isValid(const Game& g){
     if(g.getPreviousCard()->getAnimal() ==g.getCurrentCard()->getAnimal() || g.getPreviousCard()->getColor() ==g.getCurrentCard()->getColor()){

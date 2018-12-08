@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <vector>
 #include <iostream>
-#include "Utils.hpp"
+#include "utils.hpp"
 using namespace std;
 template <typename C>
 class Deck

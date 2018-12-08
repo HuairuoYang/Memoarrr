@@ -1,0 +1,323 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9E0D47FF21BC53BD0074B711 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D47FE21BC53BD0074B711 /* main.cpp */; };
+		9E0D481521BC53EF0074B711 /* rewarddeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D480921BC53EF0074B711 /* rewarddeck.cpp */; };
+		9E0D481621BC53EF0074B711 /* carddeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D480A21BC53EF0074B711 /* carddeck.cpp */; };
+		9E0D481721BC53EF0074B711 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D480B21BC53EF0074B711 /* player.cpp */; };
+		9E0D481821BC53EF0074B711 /* card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D480E21BC53EF0074B711 /* card.cpp */; };
+		9E0D481921BC53EF0074B711 /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D481221BC53EF0074B711 /* board.cpp */; };
+		9E0D481A21BC53EF0074B711 /* rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9E0D481421BC53EF0074B711 /* rules.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9E0D47F921BC53BD0074B711 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		9E0D47FB21BC53BD0074B711 /* 2372 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2372; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E0D47FE21BC53BD0074B711 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		9E0D480521BC53EF0074B711 /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
+		9E0D480621BC53EF0074B711 /* game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
+		9E0D480721BC53EF0074B711 /* board.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = board.hpp; sourceTree = "<group>"; };
+		9E0D480821BC53EF0074B711 /* card.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = card.hpp; sourceTree = "<group>"; };
+		9E0D480921BC53EF0074B711 /* rewarddeck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rewarddeck.cpp; sourceTree = "<group>"; };
+		9E0D480A21BC53EF0074B711 /* carddeck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = carddeck.cpp; sourceTree = "<group>"; };
+		9E0D480B21BC53EF0074B711 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
+		9E0D480C21BC53EF0074B711 /* reward.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = reward.hpp; sourceTree = "<group>"; };
+		9E0D480D21BC53EF0074B711 /* player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
+		9E0D480E21BC53EF0074B711 /* card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = card.cpp; sourceTree = "<group>"; };
+		9E0D480F21BC53EF0074B711 /* carddeck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = carddeck.hpp; sourceTree = "<group>"; };
+		9E0D481021BC53EF0074B711 /* rewarddeck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rewarddeck.hpp; sourceTree = "<group>"; };
+		9E0D481121BC53EF0074B711 /* rules.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rules.hpp; sourceTree = "<group>"; };
+		9E0D481221BC53EF0074B711 /* board.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = board.cpp; sourceTree = "<group>"; };
+		9E0D481321BC53EF0074B711 /* deck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deck.hpp; sourceTree = "<group>"; };
+		9E0D481421BC53EF0074B711 /* rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rules.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9E0D47F821BC53BD0074B711 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9E0D47F221BC53BD0074B711 = {
+			isa = PBXGroup;
+			children = (
+				9E0D47FD21BC53BD0074B711 /* 2372 */,
+				9E0D47FC21BC53BD0074B711 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9E0D47FC21BC53BD0074B711 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E0D47FB21BC53BD0074B711 /* 2372 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9E0D47FD21BC53BD0074B711 /* 2372 */ = {
+			isa = PBXGroup;
+			children = (
+				9E0D481221BC53EF0074B711 /* board.cpp */,
+				9E0D480721BC53EF0074B711 /* board.hpp */,
+				9E0D480E21BC53EF0074B711 /* card.cpp */,
+				9E0D480821BC53EF0074B711 /* card.hpp */,
+				9E0D480A21BC53EF0074B711 /* carddeck.cpp */,
+				9E0D480F21BC53EF0074B711 /* carddeck.hpp */,
+				9E0D481321BC53EF0074B711 /* deck.hpp */,
+				9E0D480621BC53EF0074B711 /* game.hpp */,
+				9E0D480B21BC53EF0074B711 /* player.cpp */,
+				9E0D480D21BC53EF0074B711 /* player.hpp */,
+				9E0D480C21BC53EF0074B711 /* reward.hpp */,
+				9E0D480921BC53EF0074B711 /* rewarddeck.cpp */,
+				9E0D481021BC53EF0074B711 /* rewarddeck.hpp */,
+				9E0D481421BC53EF0074B711 /* rules.cpp */,
+				9E0D481121BC53EF0074B711 /* rules.hpp */,
+				9E0D480521BC53EF0074B711 /* utils.hpp */,
+				9E0D47FE21BC53BD0074B711 /* main.cpp */,
+			);
+			path = 2372;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9E0D47FA21BC53BD0074B711 /* 2372 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E0D480221BC53BD0074B711 /* Build configuration list for PBXNativeTarget "2372" */;
+			buildPhases = (
+				9E0D47F721BC53BD0074B711 /* Sources */,
+				9E0D47F821BC53BD0074B711 /* Frameworks */,
+				9E0D47F921BC53BD0074B711 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 2372;
+			productName = 2372;
+			productReference = 9E0D47FB21BC53BD0074B711 /* 2372 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9E0D47F321BC53BD0074B711 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Huairuo Yang(7895717)";
+				TargetAttributes = {
+					9E0D47FA21BC53BD0074B711 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 9E0D47F621BC53BD0074B711 /* Build configuration list for PBXProject "2372" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9E0D47F221BC53BD0074B711;
+			productRefGroup = 9E0D47FC21BC53BD0074B711 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9E0D47FA21BC53BD0074B711 /* 2372 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9E0D47F721BC53BD0074B711 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E0D481721BC53EF0074B711 /* player.cpp in Sources */,
+				9E0D47FF21BC53BD0074B711 /* main.cpp in Sources */,
+				9E0D481921BC53EF0074B711 /* board.cpp in Sources */,
+				9E0D481621BC53EF0074B711 /* carddeck.cpp in Sources */,
+				9E0D481821BC53EF0074B711 /* card.cpp in Sources */,
+				9E0D481521BC53EF0074B711 /* rewarddeck.cpp in Sources */,
+				9E0D481A21BC53EF0074B711 /* rules.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		9E0D480021BC53BD0074B711 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9E0D480121BC53BD0074B711 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9E0D480321BC53BD0074B711 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9E0D480421BC53BD0074B711 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9E0D47F621BC53BD0074B711 /* Build configuration list for PBXProject "2372" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E0D480021BC53BD0074B711 /* Debug */,
+				9E0D480121BC53BD0074B711 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E0D480221BC53BD0074B711 /* Build configuration list for PBXNativeTarget "2372" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E0D480321BC53BD0074B711 /* Debug */,
+				9E0D480421BC53BD0074B711 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9E0D47F321BC53BD0074B711 /* Project object */;
+}

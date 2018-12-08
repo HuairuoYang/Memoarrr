@@ -85,7 +85,7 @@ int main(int argc, const char * argv[]) {
                     cout<<endl;
                     cout<<"------------------Game phase for player: "<< playingNow->getName()<<"  --------------------"<<endl;
                     
-                    Card* current;
+                    Card* current = nullptr;
                     //if the walrus is turned up, see if the blocked card is chosen to be turn face up
                     if(!blocking){
                         current=myGame->chooseCard();

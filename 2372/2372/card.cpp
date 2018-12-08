@@ -6,7 +6,7 @@
 //  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
 //
 
-#include "Card.hpp"
+#include "card.hpp"
 
 std::string Card::getAnimalStr(){
     switch (cardAnimal){

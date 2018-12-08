@@ -6,7 +6,7 @@
 //  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
 //
 
-#include "Player.hpp"
+#include "player.hpp"
 
 std::string Player::getSideString() const{
     switch (side){

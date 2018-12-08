@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "Deck.hpp"
-#include "Card.hpp"
+#include "deck.hpp"
+#include "card.hpp"
 
 class CardDeck : public Deck<Card> {
     static CardDeck* myCDeck;

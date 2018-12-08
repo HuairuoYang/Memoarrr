@@ -13,9 +13,9 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include "Player.hpp"
-#include "Card.hpp"
-#include "Board.hpp"
+#include "player.hpp"
+#include "card.hpp"
+#include "board.hpp"
 using namespace std;
 static int nextPlayer =0;
 class Game{

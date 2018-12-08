@@ -6,7 +6,7 @@
 //  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
 //
 
-#include "CardDeck.hpp"
+#include "carddeck.hpp"
 CardDeck* CardDeck::myCDeck = nullptr;
 bool CardDeck::roundOverShuffle = false;
 

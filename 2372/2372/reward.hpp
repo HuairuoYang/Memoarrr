@@ -10,7 +10,7 @@
 #define Reward_hpp
 
 #include <stdio.h>
-#include "Utils.hpp"
+#include "utils.hpp"
 #include <iostream>
 
 class Reward{

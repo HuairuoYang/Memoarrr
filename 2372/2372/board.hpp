@@ -11,11 +11,11 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "Utils.hpp"
-#include "Card.hpp"
-#include "Reward.hpp"
-#include "CardDeck.hpp"
-#include "RewardDeck.hpp"
+#include "utils.hpp"
+#include "card.hpp"
+#include "reward.hpp"
+#include "carddeck.hpp"
+#include "rewarddeck.hpp"
 
 static CardDeck* gameCdeck = &(CardDeck::make_CardDeck());
 static RewardDeck* rDeck = &(RewardDeck::make_CardDeck());

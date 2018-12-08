@@ -6,7 +6,7 @@
 //  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
 //
 
-#include "Board.hpp"
+#include "board.hpp"
 
 bool Board::isFaceUp(const Letter & let, const Number & num){
     try{

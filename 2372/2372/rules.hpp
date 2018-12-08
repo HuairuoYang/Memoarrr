@@ -10,8 +10,8 @@
 #define Rules_hpp
 
 #include <stdio.h>
-#include "Game.hpp"
-#include "Utils.hpp"
+#include "game.hpp"
+#include "utils.hpp"
 
 class Rules{
 public:

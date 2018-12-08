@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 #include <string>
-#include "Reward.hpp"
-#include "Utils.hpp"
+#include "reward.hpp"
+#include "utils.hpp"
 
 class Player{
     std::string name;

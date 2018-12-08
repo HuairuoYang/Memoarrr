@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "Deck.hpp"
-#include "Reward.hpp"
+#include "reward.hpp"
 
 class RewardDeck : public Deck<Reward>{
     static RewardDeck* myRDeck;

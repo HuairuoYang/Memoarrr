@@ -6,7 +6,7 @@
 //  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
 //
 
-#include "RewardDeck.hpp"
+#include "rewarddeck.hpp"
 RewardDeck* RewardDeck::myRDeck = nullptr;
 
 RewardDeck& RewardDeck::make_CardDeck(){
