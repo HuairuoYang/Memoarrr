@@ -314,6 +314,8 @@ public:
                 gameCdeck->swap(swapper,swapee);
                 swapee->setLetter((Letter)(swapper->getLetter()));
                 swapper->setLetter((Letter)(swapee->getLetter()-1));
+                adjustSwapAvailability(swapee);
+                adjustSwapAvailability(swapper);
                 cout<<"Successfully swapped with top side"<<endl;
                 return true;
             }
@@ -328,6 +330,8 @@ public:
                 gameCdeck->swap(swapper,swapee);
                 swapee->setLetter((Letter)(swapper->getLetter()));
                 swapper->setLetter((Letter)(swapee->getLetter()+1));
+                adjustSwapAvailability(swapee);
+                adjustSwapAvailability(swapper);
                 cout<<"Successfully swapped with bottom side"<<endl;
                 return true;
             }
@@ -342,6 +346,8 @@ public:
                 gameCdeck->swap(swapper,swapee);
                 swapee->setNumber((Number)(swapper->getNumber()));
                 swapper->setNumber((Number)(swapee->getNumber()-1));
+                adjustSwapAvailability(swapee);
+                adjustSwapAvailability(swapper);
                 cout<<"Successfully swapped with left side"<<endl;
                 return true;
             }
@@ -357,6 +363,8 @@ public:
                 gameCdeck->swap(swapper,swapee);
                 swapee->setNumber((Number)(swapper->getNumber()));
                 swapper->setNumber((Number)(swapee->getNumber()+1));
+                adjustSwapAvailability(swapee);
+                adjustSwapAvailability(swapper);
                 cout<<"Successfully swapped with right side"<<endl;
                 return true;
             }
@@ -414,7 +422,25 @@ public:
         return os;
     }
     
-
+    
+    bool adjustSwapAvailability(Card* card){
+        cout<<"adjusting cards position in process...."<<endl;
+        Letter a=card->getLetter();
+        Number z=card->getNumber();
+        if (a==Letter::B&&z==Number::three){
+            card->bottomAvailable=false;
+        }
+        if (a==Letter::C&&z==Number::two){
+            card->rightAvailable=false;
+        }
+        if (a==Letter::B&&z==Number::four){
+            card->leftAvailable=false;
+        }
+        if (a==Letter::D&&z==Number::three){
+            card->topAvailable=false;
+        }
+        return false;
+    }
 };
 
 

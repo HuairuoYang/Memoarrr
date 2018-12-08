@@ -77,6 +77,7 @@ public:
         iter_swap(deck.begin()+(original->getLetter()*5+original->getNumber()), deck.begin()+(swapee->getLetter()*5+swapee->getNumber()));
         return true;
     }
+    
 };
 
 #endif /* Deck_hpp */
