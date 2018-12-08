@@ -25,7 +25,7 @@ int main(int argc, const char * argv[]) {
     string mode;
     cout<<"Please input \"expert\" for expert mode or any for normal mode: "<<endl;
     cin>>mode;
-
+    expertMode = (mode == "expert");
     cout<<"Please enter the number of players (2-4): "<<endl;
     while(!(cin >> myGame->numOfPlayer)||myGame->numOfPlayer < 2 || myGame->numOfPlayer>4){
         cin.clear();
@@ -65,7 +65,7 @@ int main(int argc, const char * argv[]) {
     
         cout<<" "<<endl;
         //expert mode
-        if(mode=="expert"){
+        if(expertMode){
             int numberOfFaceUp=0;
             int numberOfActivePlayers=myGame->numOfPlayer;;
             while(rules->gameOver(*myGame)==false){
@@ -194,17 +194,19 @@ int main(int argc, const char * argv[]) {
                     //checking player and game status
                     //myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
                     //cout<<"This is the number of cards in roud!!!:  " << numberOfCardsInRound<<endl;
+                    cout<<*myGame<<endl;
                     if(numberOfCardsInRound>1){
                         if(rules->isValid(*myGame)==true){
                             cout<<*myGame<<endl;
                             cout<<"EXPERT: It is a match!"<<endl;
-
+                            cout<<"--------Player: "<<playingNow->getName()<<" finished--------"<<endl;
                             // nextPlayer++;
                         }
                         else{
                             playingNow->setActive(false);
                             cout<<*myGame<<endl;
                             cout<<"EXPERT: It is not a match. "<<playingNow->getName()<<" is out."<<endl;
+                             cout<<"--------Player: "<<playingNow->getName()<<" finished--------"<<endl;
                             numberOfActivePlayers--;
                             if(numberOfActivePlayers<2){
 
@@ -212,7 +214,6 @@ int main(int argc, const char * argv[]) {
                                 cout<<"EXPERT: Congratulations! The winner for this round is: "<< playingNow->getName()<<endl;
                                 playingNow->addReward(*rDeck->getNext());
                                  cout<<"********EXPERT: Round "<<myGame->getRound()<<" finish********"<<endl;
-                                cout<<endl;
                                 cout<<endl;
                                 cout<<endl;
                                 myGame->roundFinish();
@@ -223,10 +224,7 @@ int main(int argc, const char * argv[]) {
                             }
                         }
                     }
-                    else{
-                        cout<<*myGame<<endl;
-                        cout<<"--------Player: "<<playingNow->getName()<<" finished--------"<<endl;
-                    }
+                    
                     if(numberOfFaceUp>23){
                         cout<<"shuffling all cards"<<endl;
                         gameCdeck->roundOverShuffle=true;
@@ -239,7 +237,7 @@ int main(int argc, const char * argv[]) {
                     }
                 }
             }
-
+            cout<<"##########EXPERT: GAME OVER##########"<<endl;
             cout<<"EXPERT: 7 rounds expert mode end"<<endl;
             myGame->getPlayer(Side::top).setDisplayMode(true);
             myGame->getPlayer(Side::bottom).setDisplayMode(true);
@@ -248,10 +246,9 @@ int main(int argc, const char * argv[]) {
                 if(myGame->numOfPlayer>3){
                     myGame->getPlayer(Side::right).setDisplayMode(true);
                 }
-
             }
-
             cout<<*myGame<<endl;
+            cout<<"##########EXPERT: GAME OVER##########"<<endl;
         }
 
 
@@ -296,14 +293,12 @@ int main(int argc, const char * argv[]) {
 
                             if(rules->isValid(*myGame)==true){
                                 cout<<"It is a match!"<<endl;
-
                                 cout<<"--------Player "<<playingNow.getName()<<" finish--------"<<endl;;
                                 // nextPlayer++;
                             }
                             else{
                                 playingNow.setActive(false);
                                 cout<<"It is not a match. "<<playingNow.getName()<<" is out."<<endl;
-
                                 cout<<"--------Player "<<playingNow.getName()<<" finish--------"<<endl;;
                                 numberOfActivePlayers--;
                                 if(numberOfActivePlayers<2){
@@ -312,7 +307,6 @@ int main(int argc, const char * argv[]) {
                                     cout<<endl;
                                      cout<<"Congratulations! The winner for this round is: "<< winner.getName()<<endl;
                                     winner.addReward(*rDeck->getNext());
-
                                     cout<<"********Round: "<<myGame->getRound()<<" finish********"<<endl;
                                     myGame->roundFinish();
                                     myGame->nextRound();
