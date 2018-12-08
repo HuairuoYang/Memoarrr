@@ -94,10 +94,10 @@ public:
         bool valid= false;
         Letter a=Letter::A;
         Number z=Number::one;
-        cout<<"Please input the character for rows: "<<endl;
+        cout<<"Please input the position(eg: A1 or a1): "<<endl;
         while(!valid){
         char r;
-        while(!(cin >> r)||toupper(r)!='A'||toupper(r)!='B'||toupper(r)!='C'||toupper(r)!='D'||toupper(r)!='E'){
+        while(!(cin >> r)||(toupper(r)!='A'&&toupper(r)!='B'&&toupper(r)!='C'&&toupper(r)!='D'&&toupper(r)!='E')){
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Input invalid, try again"<<endl;
@@ -122,12 +122,11 @@ public:
             default: break;
         }
         int c;
-        cout<<"please input the number for column: "<<endl;
-            while(!(cin >> c)||c<1||c>5){
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Input invalid, try again"<<endl;
-            }
+                while(!(cin >> c)||c<1||c>5){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Input invalid, try again"<<endl;
+                }
         switch(c){
             case 1:
                 z = Number::one;

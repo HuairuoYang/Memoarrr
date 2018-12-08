@@ -35,12 +35,12 @@ int main(int argc, const char * argv[]) {
     cout<<"please enter the name for Player at top:"<<endl;
     cin >>topName;
     Player* A = new Player(topName,(Side::top));
-    
+    myGame->addPlayer(*A);
     string botName;
     cout<<"please enter the name for Player at bottom:"<<endl;
     cin >>botName;
     Player* B = new Player(botName,(Side::bottom));
-    myGame->addPlayer(*A);
+    
     myGame->addPlayer(*B);
     if(myGame->numOfPlayer>2){
         string leftName;
@@ -64,7 +64,7 @@ int main(int argc, const char * argv[]) {
     string begin;
     cout<<"Please make sure every player is ready and input any character to begin the game-------------------"<<endl;
     cin>>begin;
-     cout<<*myGame<<endl;
+
     while (true){
         cout<<endl;
         cout<<endl;
@@ -80,6 +80,7 @@ int main(int argc, const char * argv[]) {
                 cout<<endl;
                 cout<<endl;
                 cout<<"======================This is the beginning of round number "<< myGame->getRound()<<"=============================="<<endl;
+                     cout<<*myGame<<endl;
                 int numberOfCardsInRound=0;
                 myGame->getPlayer(Side::top).setActive(true);
                 myGame->getPlayer(Side::bottom).setActive(true);
@@ -266,6 +267,7 @@ int main(int argc, const char * argv[]) {
             int numberOfActivePlayers=myGame->numOfPlayer;
             while(rules->gameOver(*myGame)==false){
                 cout<<"Round: "<<myGame->getRound()<<"start======================================="<<endl;
+                     cout<<*myGame<<endl;
                 int numberOfCardsInRound=0;
                 myGame->getPlayer(Side::top).setActive(true);
                 myGame->getPlayer(Side::bottom).setActive(true);
