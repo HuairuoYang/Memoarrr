@@ -12,6 +12,7 @@ std::string Player::getSideString() const{
     switch (side){
         case Side::top:
             return "TOP";
+            break;
         case Side::bottom:
             return "BOTTOM";
             break;

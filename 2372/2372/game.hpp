@@ -23,7 +23,7 @@ class Game{
     Card* currentCard=nullptr;
     int gameRound=1;
     bool skipping=false;
-    Letter blockedLetter =Letter::C;
+    Letter blockedLetter = Letter::C;
     Number blockedNumber = Number::three;
     
 public:
@@ -42,29 +42,24 @@ public:
     void addPlayer ( Player& p){
         switch (p.getSide()){
             case (Side::top):
-                numOfPlayer++;
                 topPlayer = &p;
                 revealCardsForPlayer(*topPlayer);
                 break;
             case (Side::bottom):
-                numOfPlayer++;
                 bottomPlayer = &p;
                 revealCardsForPlayer(*bottomPlayer);
                 break;
             case (Side::right):
-                numOfPlayer++;
                 rightPlayer= &p;
                 revealCardsForPlayer(*rightPlayer);
                 break;
             case (Side::left):
-                numOfPlayer++;
                 leftPlayer= &p;
                 revealCardsForPlayer(*leftPlayer);
                 break;
             default:
                 break;
         }
-        
     }
     
     bool getSkip(){
@@ -94,44 +89,7 @@ public:
                 break;
         }
     }
-    Player& getWinner () const{
-        if(numOfPlayer == 2){
-            if(topPlayer->isActive() && !bottomPlayer->isActive() ){
-                return *topPlayer;
-            }
-            else if(!topPlayer->isActive() && bottomPlayer->isActive() ){
-                return * bottomPlayer;
-            }
-            
-        }
-        if(numOfPlayer == 3){
-            if(topPlayer->isActive() && !bottomPlayer->isActive() && !leftPlayer->isActive() ){
-                return *topPlayer;
-            }
-            else if(!topPlayer->isActive() && bottomPlayer->isActive() && !leftPlayer->isActive() ){
-                return * bottomPlayer;
-            }
-            else if(!topPlayer->isActive() && !bottomPlayer->isActive() && leftPlayer->isActive() ){
-                return *leftPlayer;
-            }
-        }
-        if(numOfPlayer == 4){
-            if(topPlayer->isActive() && !bottomPlayer->isActive() && !leftPlayer->isActive() && !rightPlayer->isActive()){
-                return *topPlayer;
-            }
-            else if(!topPlayer->isActive() && bottomPlayer->isActive() && !leftPlayer->isActive() && !rightPlayer->isActive()){
-                return * bottomPlayer;
-            }
-            else if(!topPlayer->isActive() && !bottomPlayer->isActive() && leftPlayer->isActive() && !rightPlayer->isActive()){
-                return *leftPlayer;
-            }
-            else if(!topPlayer->isActive() && !bottomPlayer->isActive() && !leftPlayer->isActive() && rightPlayer->isActive()){
-                return *rightPlayer;
-            }
-        }
-        return *topPlayer;
-    }
-    
+
     Card* chooseCard(){
         bool valid= false;
         Letter a=Letter::A;
@@ -139,9 +97,12 @@ public:
         cout<<"Please input the character for rows: "<<endl;
         while(!valid){
         char r;
-        cin>>r;
+        while(!(cin >> r)||toupper(r)!='A'||toupper(r)!='B'||toupper(r)!='C'||toupper(r)!='D'||toupper(r)!='E'){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Input invalid, try again"<<endl;
+        }
         r= toupper(r);
- 
         switch(r){
             case 'A':
                 a = Letter::A;
@@ -162,8 +123,11 @@ public:
         }
         int c;
         cout<<"please input the number for column: "<<endl;
-        cin>>c;
-
+            while(!(cin >> c)||c<1||c>5){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Input invalid, try again"<<endl;
+            }
         switch(c){
             case 1:
                 z = Number::one;
@@ -228,7 +192,8 @@ public:
     }
     
     bool penguin(const Player& p){
-            cout<<"Player " << p.getName()<< " you have turned up a Penguin!!!!! You can turn an face-up card to face down."<<endl;
+        cout<<"Player " << p.getName()<< " you have turned up a Penguin!!!!!"<<endl;
+        cout<<"You can turn an face-up card to face down."<<endl;
             Card* chosen= chooseCard();
             while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==false){
                 cout<<"PLease re-enter a card position as the card in position is still face down"<<endl;
@@ -245,7 +210,8 @@ public:
         return blockedNumber;
     }
     bool walrus(const Player& p){
-        cout<<"Player " << p.getName()<< " you have turned up a Walrus!!!!! You can Block a Card."<<endl;
+        cout<<"Player " << p.getName()<< " you have turned up a Walrus!!!!!"<<endl;
+        cout<<" You can Block a Card."<<endl;
         Card* chosen= chooseCard();
         while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
             cout<<"PLease re-enter a card position as the card in position is face up and cannot be blocked, Please retry....."<<endl;
@@ -258,7 +224,8 @@ public:
     }
     
     Card* crab(const Player& p){
-        cout<<"Player " << p.getName()<< "  you have turned up a Crab!!!!! You need to turn up an another card now. Please input the Character for row: "<<endl;
+        cout<<"Player " << p.getName()<< "  you have turned up a Crab!!!!!"<<endl;
+        cout<<" You need to turn up an another card now. Please input the Character for row: "<<endl;
         Card* chosen= chooseCard();
         if(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
             cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
@@ -275,7 +242,8 @@ public:
     }
     
     bool octopus(Card* cardToSwap, const Player& p){
-        cout<<"Player " << p.getName()<< ", you have turned up an octopus!!!!! Your chosen card will be swapped with a randomly chosen adjacent card!!! "<<endl;
+        cout<<"Player " << p.getName()<< ", you have turned up an octopus!!!!!"<<endl;
+        cout<<" Your chosen card will be swapped with a randomly chosen adjacent card!!! "<<endl;
         cout<<endl;
         cout<<endl;
         Letter a;
@@ -363,6 +331,7 @@ public:
                 gameCdeck->swap(swapper,swapee);
                 swapee->setNumber((Number)(swapper->getNumber()));
                 swapper->setNumber((Number)(swapee->getNumber()+1));
+
                 adjustSwapAvailability(swapee);
                 adjustSwapAvailability(swapper);
                 cout<<"Successfully swapped with right side"<<endl;
@@ -381,8 +350,12 @@ public:
         int activeCount = 0;
         getPlayer(Side::top).isActive()?(activeCount++):(activeCount+=0);
         getPlayer(Side::bottom).isActive()?(activeCount++):(activeCount+=0);
-        getPlayer(Side::left).isActive()?(activeCount++):(activeCount+=0);
-        getPlayer(Side::right).isActive()?(activeCount++):(activeCount+=0);
+        if(numOfPlayer>2){
+            getPlayer(Side::left).isActive()?(activeCount++):(activeCount+=0);
+            if(numOfPlayer>3){
+                getPlayer(Side::right).isActive()?(activeCount++):(activeCount+=0);
+            }
+        }
         return (activeCount ==1);
     }
     

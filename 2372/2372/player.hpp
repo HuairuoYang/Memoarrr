@@ -29,7 +29,7 @@ public:
     bool isActive() const {return active;}
     int getNRubies() const {return countOfRubies;}
     void addReward(Reward& r) {
-        std::cout<<name<<"you have been rewarded "<<r.getRubies()<<" Rubies************"<<std::endl;
+        std::cout<<name<<"you have been rewarded "<<r.getRubies()<<" Rubies"<<std::endl;
         countOfRubies=countOfRubies+ r.getRubies();
     };
     
