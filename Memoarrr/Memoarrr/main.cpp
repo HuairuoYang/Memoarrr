@@ -70,20 +70,20 @@ int main(int argc, const char * argv[]) {
 //                    cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
 //                    cout<<"This is the current round number: "<<myGame->getRound()<<endl;
 //                    cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
-                    Player& playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                    Player* playingNow = &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
                     //getting the next active player if the previous player have got a turtle
 //                    cout<<"checking Blocking state: ----"<<blocking<<endl;
 //                    cout<<"checking the skipping state: ----"<< myGame->getSkip()<<endl;
                     if(myGame->getSkip()){
                         cout<<"skipping the next player"<<endl;
-                        cout<<"---------Player "<< playingNow.getName()<<", you are skipped!!! Please have the next player to play----------"<<endl;
-                        playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
-                        cout<<playingNow.getName()<<": YOU ARE NEXT!!!!!!!!!!"<<endl;
+                        cout<<"---------Player "<< playingNow->getName()<<", you are skipped!!! Please have the next player to play----------"<<endl;
+                        playingNow = &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                        cout<<playingNow->getName()<<": YOU ARE NEXT!!!!!!!!!!"<<endl;
                         myGame->setSkip(false);
                     }
                     cout<<endl;
                     cout<<endl;
-                    cout<<"------------------Game phase for player: "<< playingNow.getName()<<"  --------------------"<<endl;
+                    cout<<"------------------Game phase for player: "<< playingNow->getName()<<"  --------------------"<<endl;
                     
                     Card* current;
                     //if the walrus is turned up, see if the blocked card is chosen to be turn face up
@@ -131,19 +131,19 @@ int main(int argc, const char * argv[]) {
                     switch(animal){
                         case (FaceAnimal::crab):
                             myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
-                            cc= myGame->crab(playingNow);
+                            cc= myGame->crab(*playingNow);
                             current->setLetter(cc->getLetter());
                             current->setNumber(cc->getNumber());
                             break;
                         case (FaceAnimal::penguin):
                             if(numberOfFaceUp>1){
-                                    myGame->penguin(playingNow);
+                                    myGame->penguin(*playingNow);
                                 }
                                 numberOfFaceUp--;
                             break;
                         case (FaceAnimal::walrus):
                             while(wal){
-                                wal=!myGame->walrus(playingNow);
+                                wal=!myGame->walrus(*playingNow);
                             }
                             blocking=true;
                             break;
@@ -151,7 +151,7 @@ int main(int argc, const char * argv[]) {
                             myGame->turtle();
                             break;
                         case (FaceAnimal::octopus):
-                            myGame->octopus(current, playingNow);
+                            myGame->octopus(current, *playingNow);
                             break;
                         default:
                             break;
@@ -170,7 +170,7 @@ int main(int argc, const char * argv[]) {
                            // nextPlayer++;
                         }
                         else{
-                            playingNow.setActive(false);
+                            playingNow->setActive(false);
                             cout<<*myGame<<endl;
                             cout<<"Unfortuantely, its not a match. end of round for current player"<<endl;
                             cout<<endl;
@@ -183,10 +183,10 @@ int main(int argc, const char * argv[]) {
                                 myGame->roundFinish();
                                 myGame->nextRound();
                                 cout<<"This is the end of this round..............."<<endl;
-                                playingNow=myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
-                                cout<<"Congratulations! The winner for this round is: "<< playingNow.getName()<<endl;
-                                playingNow.addReward(*rDeck->getNext());
-                                cout<<"this is the number of rubbies for this player: "<<playingNow.getNRubies()<<endl;
+                                playingNow= &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                                cout<<"Congratulations! The winner for this round is: "<< playingNow->getName()<<endl;
+                                playingNow->addReward(*rDeck->getNext());
+                                cout<<"this is the number of rubbies for this player: "<<playingNow->getNRubies()<<endl;
                                 numberOfFaceUp=0;
                                 numberOfCardsInRound=0;
                             }
@@ -194,7 +194,7 @@ int main(int argc, const char * argv[]) {
                     }
                     else{
                         cout<<*myGame<<endl;
-                        cout<<"_______End of gaming phase for player: "<<playingNow.getName()<<"   ----------------------------"<<endl;
+                        cout<<"_______End of gaming phase for player: "<<playingNow->getName()<<"   ----------------------------"<<endl;
                         cout<<endl;
                         cout<<endl;
                         cout<<endl;
