@@ -12,12 +12,15 @@
 #include <stdio.h>
 #include <vector>
 #include <string>
+#include <limits>
 #include <iostream>
 #include "player.hpp"
 #include "card.hpp"
 #include "board.hpp"
+
 using namespace std;
 static int nextPlayer =0;
+
 class Game{
     Card* prevCard=nullptr;
     Card* currentCard=nullptr;
