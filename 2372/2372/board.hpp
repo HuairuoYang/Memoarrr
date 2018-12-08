@@ -30,7 +30,7 @@ public:
     void setCard( const Letter&, const Number&, Card* );
     
     friend std::ostream& operator<<(std::ostream& os,Board & b) {
-        if(!expertMode){
+       // if(!expertMode){
          os<<"======================\n";
         if(!gameCdeck->isEmpty()){
         for(int row = 0;row < gameCdeck->getByPosition((Letter)0,(Number)0)->getNRows();row++){
@@ -86,13 +86,12 @@ public:
         }
         os<<"----------------------\n";
         return os;
-        }
-        else{
+        //}else{
             os<<"======================\n";
             
             os<<"----------------------\n";
             return os;
-        }
+       // }
     }
 };
 
