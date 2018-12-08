@@ -184,7 +184,7 @@ int main(int argc, const char * argv[]) {
                                 myGame->nextRound();
                                 cout<<"This is the end of this round..............."<<endl;
                                 playingNow=myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
-                                cout<<"Congratulations! The winner for this round is: "<< playingNow.getName()<<", and the winner have got a card of rubbies!!!"<<endl;
+                                cout<<"Congratulations! The winner for this round is: "<< playingNow.getName()<<endl;
                                 playingNow.addReward(*rDeck->getNext());
                                 cout<<"this is the number of rubbies for this player: "<<playingNow.getNRubies()<<endl;
                                 numberOfFaceUp=0;
@@ -216,6 +216,7 @@ int main(int argc, const char * argv[]) {
         int numberOfFaceUp=0;
         int numberOfActivePlayers=4;
         while(rules->gameOver(*myGame)==false){
+          cout<<"Round: "<<myGame->getRound()<<"start======================================="<<endl;
             int numberOfCardsInRound=0;
             myGame->getPlayer(Side::top).setActive(true);
             myGame->getPlayer(Side::bottom).setActive(true);
@@ -224,9 +225,9 @@ int main(int argc, const char * argv[]) {
             numberOfActivePlayers=4;
             
             while(rules->roundOver(*myGame)==false){
-//                cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
-//                cout<<"This is the current round number: "<<myGame->getRound()<<endl;
-//                cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
+                cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
+                cout<<"This is the current round number: "<<myGame->getRound()<<endl;
+                cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
                 Player& playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
                 cout<<"Player "<<playingNow.getName()<<"======================="<<endl;;
                 Card* current = myGame->chooseCard();
@@ -254,8 +255,10 @@ int main(int argc, const char * argv[]) {
                                 myGame->roundFinish();
                                 myGame->nextRound();
                                 cout<<"this is the end of round..............."<<endl;
-                                playingNow.addReward(*rDeck->getNext());
-                                cout<<"this is the number of rubbies for this player: "<<playingNow.getNRubies()<<endl;
+                                Player& winner = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                                winner.addReward(*rDeck->getNext());
+                                cout<<winner.getName()<<" now has "<<winner.getNRubies()<<"Rubies ******************"<<endl;
+                                
                                 numberOfCardsInRound=0;
                             }
                         }

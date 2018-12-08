@@ -94,6 +94,43 @@ public:
                 break;
         }
     }
+    Player& getWinner () const{
+        if(numOfPlayer == 2){
+            if(topPlayer->isActive() && !bottomPlayer->isActive() ){
+                return *topPlayer;
+            }
+            else if(!topPlayer->isActive() && bottomPlayer->isActive() ){
+                return * bottomPlayer;
+            }
+            
+        }
+        if(numOfPlayer == 3){
+            if(topPlayer->isActive() && !bottomPlayer->isActive() && !leftPlayer->isActive() ){
+                return *topPlayer;
+            }
+            else if(!topPlayer->isActive() && bottomPlayer->isActive() && !leftPlayer->isActive() ){
+                return * bottomPlayer;
+            }
+            else if(!topPlayer->isActive() && !bottomPlayer->isActive() && leftPlayer->isActive() ){
+                return *leftPlayer;
+            }
+        }
+        if(numOfPlayer == 4){
+            if(topPlayer->isActive() && !bottomPlayer->isActive() && !leftPlayer->isActive() && !rightPlayer->isActive()){
+                return *topPlayer;
+            }
+            else if(!topPlayer->isActive() && bottomPlayer->isActive() && !leftPlayer->isActive() && !rightPlayer->isActive()){
+                return * bottomPlayer;
+            }
+            else if(!topPlayer->isActive() && !bottomPlayer->isActive() && leftPlayer->isActive() && !rightPlayer->isActive()){
+                return *leftPlayer;
+            }
+            else if(!topPlayer->isActive() && !bottomPlayer->isActive() && !leftPlayer->isActive() && rightPlayer->isActive()){
+                return *rightPlayer;
+            }
+        }
+        return *topPlayer;
+    }
     
     Card* chooseCard(){
         bool valid= false;

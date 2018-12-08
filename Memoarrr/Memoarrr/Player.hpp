@@ -29,6 +29,7 @@ public:
     bool isActive() const {return active;}
     int getNRubies() const {return countOfRubies;}
     void addReward(Reward& r) {
+        std::cout<<name<<"you have been rewarded "<<r.getRubies()<<" Rubies************"<<std::endl;
         countOfRubies=countOfRubies+ r.getRubies();
     };
     
@@ -41,7 +42,7 @@ public:
     
     friend std::ostream& operator<<(std::ostream& os,Player & p) {
         if(!p.display){
-            os<<p.name+": " + p.getSideString() + "(" + (p.isActive()? "ACTIVE":"DISPLAY") + ")\n";
+            os<<p.name+": " + p.getSideString() + "(" + (p.isActive()? "ACTIVE":"INACTIVE") + ")\n";
         } else {
            os<<p.name + ": " + std::to_string(p.countOfRubies) + " rubies\n";
         }

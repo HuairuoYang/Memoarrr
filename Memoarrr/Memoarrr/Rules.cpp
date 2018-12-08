@@ -18,7 +18,7 @@ bool Rules::isValid(const Game& g){
 }
 
 bool Rules::gameOver(const Game& g){
-    if(g.getRound() == 7){
+    if(g.getRound() > 7){
         endOfGame = true;
         return endOfGame;
     }
