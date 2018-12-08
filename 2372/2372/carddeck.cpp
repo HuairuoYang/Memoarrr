@@ -12,7 +12,6 @@ bool CardDeck::roundOverShuffle = false;
 
 CardDeck& CardDeck::make_CardDeck(){
     if(myCDeck == nullptr){
-        cout<<"Preparing a new game board"<<endl;
         myCDeck = new CardDeck();
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {

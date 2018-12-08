@@ -22,64 +22,60 @@ int main(int argc, const char * argv[]) {
     Rules* rules= new Rules();
     Game* myGame = new Game();
     string mode;
-    cout<<"Please input expert for expert mode or any other words for normal mode: "<<endl;
+    cout<<"Please input \"expert\" for expert mode or any for normal mode: "<<endl;
     cin>>mode;
     
-    cout<<"please enter the number of players (2-4): "<<endl;
+    cout<<"Please enter the number of players (2-4): "<<endl;
     while(!(cin >> myGame->numOfPlayer)||myGame->numOfPlayer < 2 || myGame->numOfPlayer>4){
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Input invalid, try again"<<endl;
     }
     string topName;
-    cout<<"please enter the name for Player at top:"<<endl;
+    cout<<"Please enter the name for Player at top:"<<endl;
     cin >>topName;
     Player* A = new Player(topName,(Side::top));
     myGame->addPlayer(*A);
     string botName;
-    cout<<"please enter the name for Player at bottom:"<<endl;
+    cout<<"Please enter the name for Player at bottom:"<<endl;
     cin >>botName;
     Player* B = new Player(botName,(Side::bottom));
     
     myGame->addPlayer(*B);
     if(myGame->numOfPlayer>2){
         string leftName;
-        cout<<"please enter the name for Player at left:"<<endl;
+        cout<<"Please enter the name for Player at left:"<<endl;
         cin >>leftName;
         Player* C = new Player(leftName,(Side::left));
         myGame->addPlayer(*C);
         if(myGame->numOfPlayer>3){
             string rightName;
-            cout<<"please enter the name for Player at right:"<<endl;
+            cout<<"Please enter the name for Player at right:"<<endl;
             cin >>rightName;
             Player* D = new Player(rightName,(Side::right));
             myGame->addPlayer(*D);
         }
     }
-    
+    cout<<" "<<endl;
+    cout<<" "<<endl;
+    cout<<" "<<endl;
     //Adding the players and temporily revealing the three cards directly in front of the player
     cout<<"========GAME START========"<<endl;
     
     // Variables initialization
     string begin;
-    cout<<"Please make sure every player is ready and input any character to begin the game-------------------"<<endl;
+    cout<<"Enter anykey to start the game:"<<endl;
     cin>>begin;
-
     while (true){
-        cout<<endl;
-        cout<<endl;
-        cout<<endl;
-       
-        
+        cout<<" "<<endl;
         //expert mode
         if(mode=="expert"){
-            cout<<"You are in expert mode!!!!!!!!!!!!"<<endl;
             int numberOfFaceUp=0;
             int numberOfActivePlayers=myGame->numOfPlayer;;
             while(rules->gameOver(*myGame)==false){
                 cout<<endl;
                 cout<<endl;
-                cout<<"======================This is the beginning of round number "<< myGame->getRound()<<"=============================="<<endl;
+                cout<<"========EXPERT MODE: Round: "<< myGame->getRound()<<"========"<<endl;
                      cout<<*myGame<<endl;
                 int numberOfCardsInRound=0;
                 myGame->getPlayer(Side::top).setActive(true);
@@ -226,7 +222,6 @@ int main(int argc, const char * argv[]) {
                                 myGame->roundFinish();
                                 myGame->nextRound();
                                 myGame->setSkip(false);
-                                cout<<"This is the end of this round..............."<<endl;
                                 playingNow= &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
                                 cout<<"Congratulations! The winner for this round is: "<< playingNow->getName()<<endl;
                                 playingNow->addReward(*rDeck->getNext());
@@ -266,7 +261,10 @@ int main(int argc, const char * argv[]) {
             int numberOfFaceUp=0;
             int numberOfActivePlayers=myGame->numOfPlayer;
             while(rules->gameOver(*myGame)==false){
-                cout<<"Round: "<<myGame->getRound()<<"start======================================="<<endl;
+                char a;
+                cout<<"Enter any key to start round: "<<myGame->getRound()<<endl;
+                cin>>a;
+                cout<<"********Round: "<<myGame->getRound()<<" start********"<<endl;
                      cout<<*myGame<<endl;
                 int numberOfCardsInRound=0;
                 myGame->getPlayer(Side::top).setActive(true);
@@ -280,11 +278,10 @@ int main(int argc, const char * argv[]) {
                 numberOfActivePlayers=myGame->numOfPlayer;
                 
                 while(rules->roundOver(*myGame)==false){
-                    cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
-                    cout<<"This is the current round number: "<<myGame->getRound()<<endl;
-                    cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
+                    cout<<endl;
+                    cout<<endl;
                     Player& playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
-                    cout<<"Player "<<playingNow.getName()<<"======================="<<endl;;
+                    cout<<"--------Player "<<playingNow.getName()<<"--------"<<endl;;
                     Card* current = myGame->chooseCard();
                     if(myGame->gameBoard.isFaceUp(current->getLetter(), current->getNumber())==true){
                         cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
@@ -298,22 +295,23 @@ int main(int argc, const char * argv[]) {
                         if(numberOfCardsInRound>1){
                             if(rules->isValid(*myGame)==true){
                                 cout<<*myGame<<endl;
-                                cout<<"MATCH!!!!!"<<endl;
+                                cout<<"It is a match!"<<endl;
                                 // nextPlayer++;
                             }
                             else{
                                 playingNow.setActive(false);
                                 cout<<*myGame<<endl;
-                                cout<<"Its not a match"<<endl;
+                                cout<<"It is not a match. You are out."<<endl;
                                 numberOfActivePlayers--;
                                 if(numberOfActivePlayers<2){
-                                    myGame->roundFinish();
-                                    myGame->nextRound();
-                                    cout<<"this is the end of round..............."<<endl;
                                     Player& winner = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
                                     winner.addReward(*rDeck->getNext());
-                                    cout<<winner.getName()<<" now has "<<winner.getNRubies()<<"Rubies ******************"<<endl;
-                                    
+                                    cout<<"********Round: "<<myGame->getRound()<<" finish********"<<endl;
+                                    myGame->roundFinish();
+                                    myGame->nextRound();
+                                    cout<<endl;
+                                    cout<<endl;
+                                    cout<<endl;
                                     numberOfCardsInRound=0;
                                 }
                             }
