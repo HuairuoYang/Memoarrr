@@ -23,6 +23,20 @@ CardDeck& CardDeck::make_CardDeck(){
         for(auto k : myCDeck->deck){
             k->setLetter((Letter)l);
             k->setNumber((Number)n++);
+            Letter a=k->getLetter();
+            Number z=k->getNumber();
+            if (a==Letter::B&&z==Number::three){
+                k->bottomAvailable=false;
+            }
+            if (a==Letter::C&&z==Number::two){
+                k->rightAvailable=false;
+            }
+            if (a==Letter::B&&z==Number::four){
+                k->leftAvailable=false;
+            }
+            if (a==Letter::D&&z==Number::three){
+                k->topAvailable=false;
+            }
             if(n==5){
                 n = 0;
                 l++;
@@ -41,6 +55,20 @@ CardDeck& CardDeck::make_CardDeck(){
         for(auto k : myCDeck->deck){
             k->setLetter((Letter)l);
             k->setNumber((Number)n++);
+            Letter a=k->getLetter();
+            Number z=k->getNumber();
+            if (a==Letter::B&&z==Number::three){
+                k->bottomAvailable=false;
+            }
+            if (a==Letter::C&&z==Number::two){
+                k->rightAvailable=false;
+            }
+            if (a==Letter::B&&z==Number::four){
+                k->leftAvailable=false;
+            }
+            if (a==Letter::D&&z==Number::three){
+                k->topAvailable=false;
+            }
             if(n==5){
                 n = 0;
                 l++;

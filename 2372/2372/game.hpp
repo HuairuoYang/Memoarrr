@@ -255,15 +255,19 @@ public:
             switch(position){
                 case (0):
                     swapFinish=swap(0, cardToSwap);
+                    position= rand() % 4;
                     break;
                 case (1):
                     swapFinish=swap(1, cardToSwap);
+                    position= rand() % 4;
                     break;
                 case (2):
                     swapFinish=swap(2, cardToSwap);
+                    position= rand() % 4;
                     break;
                 case (3):
                     swapFinish=swap(3, cardToSwap);
+                    position= rand() % 4;
                     break;
                 default:
                     cout<<"wrong number"<<endl;
@@ -411,7 +415,7 @@ public:
         if (a==Letter::D&&z==Number::three){
             card->topAvailable=false;
         }
-        return false;
+        return true;
     }
 };
 

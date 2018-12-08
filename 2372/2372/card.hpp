@@ -32,22 +32,14 @@ public:
     bool leftAvailable=true;
     
     void setLetter(Letter l){
-        if(l==Letter::A){
-            topAvailable=false;
-        }
-        if(l==Letter::E){
-            bottomAvailable=false;
-        }
+        cout<<"This is the availability top, bot, right, left in set letter: "<<topAvailable<<bottomAvailable<<rightAvailable<<leftAvailable<<endl;
+        changeAvailabilityLetter(l);
         let=l;
     }
     
     void setNumber(Number n){
-        if(n==Number::one){
-            leftAvailable=false;
-        }
-        if(n==Number::five){
-            rightAvailable=false;
-        }
+        cout<<"This is the availability top, bot, right, left in set number: "<<topAvailable<<bottomAvailable<<rightAvailable<<leftAvailable<<endl;
+        changeAvailabilityNumber(n);
         num=n;
     }
     Letter getLetter() const {return let;}
@@ -76,6 +68,24 @@ public:
                     return (" "+(getColorStr()+getColorStr()+getColorStr()));
                 }
             }
+    }
+    
+    void changeAvailabilityLetter(Letter l){
+        if(l==Letter::A){
+            topAvailable=false;
+        }
+        if(l==Letter::E){
+            bottomAvailable=false;
+        }
+    }
+    
+    void changeAvailabilityNumber(Number n){
+        if(n==Number::one){
+            leftAvailable=false;
+        }
+        if(n==Number::five){
+            rightAvailable=false;
+        }
     }
 };
 
