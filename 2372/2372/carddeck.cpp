@@ -30,7 +30,6 @@ CardDeck& CardDeck::make_CardDeck(){
             }
         }
         if(myCDeck->deck.empty()){
-            cout<<"error: empty deck"<<endl;
             roundOverShuffle = true;
             myCDeck->make_CardDeck();
             roundOverShuffle = false;
@@ -49,7 +48,6 @@ CardDeck& CardDeck::make_CardDeck(){
             }
         }
         if(myCDeck->deck.empty()){
-            cout<<"error: empty deck"<<endl;
             roundOverShuffle = true;
             myCDeck->make_CardDeck();
             roundOverShuffle = false;
@@ -58,12 +56,10 @@ CardDeck& CardDeck::make_CardDeck(){
     }
     else{
         if(myCDeck->deck.empty()){
-            cout<<"error: empty deck"<<endl;
             roundOverShuffle = true;
             myCDeck->make_CardDeck();
             roundOverShuffle = false;
         }
-        cout<<"Deck size:"<<myCDeck->deck.size()<<endl;
         return *myCDeck;
     }
 }

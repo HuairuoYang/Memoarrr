@@ -44,7 +44,6 @@ bool Board::turnFaceDown(const Letter & let, const Number & num){
 }
 void Board::reset(){
     Card* c;
-    cout<<"reseting board"<<endl;
     gameCdeck->make_CardDeck();
     for(int i=0;i<5;i++){
         for(int j=0;j<5;j++){
@@ -57,7 +56,6 @@ void Board::reset(){
             }
         }
     }
-    cout<<"finish reseting board"<<endl;
 }
 
 Card* Board::getCard(const Letter& l, const Number& n){
