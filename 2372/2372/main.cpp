@@ -56,6 +56,9 @@ int main(int argc, const char * argv[]) {
             int numberOfFaceUp=0;
             int numberOfActivePlayers=4;
             while(rules->gameOver(*myGame)==false){
+                cout<<endl;
+                cout<<endl;
+                cout<<"======================This is the beginning of round number "<< myGame->getRound()<<"=============================="<<endl;
                 int numberOfCardsInRound=0;
                 myGame->getPlayer(Side::top).setActive(true);
                 myGame->getPlayer(Side::bottom).setActive(true);
@@ -128,33 +131,47 @@ int main(int argc, const char * argv[]) {
                     cout<<endl;
                     Card* cc;
                     bool wal= true;
+                    bool crabturned=false;
+                    while(!crabturned){
                     switch(animal){
                         case (FaceAnimal::crab):
                             myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
                             cc= myGame->crab(*playingNow);
+                            numberOfFaceUp++;
+                            numberOfCardsInRound++;
                             current->setLetter(cc->getLetter());
                             current->setNumber(cc->getNumber());
+                            myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
+                            animal = (FaceAnimal)myGame->gameBoard.getCard(current->getLetter(), current->getNumber())->getAnimal();
+                            crabturned=false;
                             break;
                         case (FaceAnimal::penguin):
                             if(numberOfFaceUp>1){
                                     myGame->penguin(*playingNow);
                                 }
                                 numberOfFaceUp--;
+                            crabturned=true;
                             break;
                         case (FaceAnimal::walrus):
+                            if(numberOfFaceUp<24){
                             while(wal){
                                 wal=!myGame->walrus(*playingNow);
+                                }
                             }
                             blocking=true;
+                            crabturned=true;
                             break;
                         case (FaceAnimal::turtle):
                             myGame->turtle();
+                            crabturned=true;
                             break;
                         case (FaceAnimal::octopus):
                             myGame->octopus(current, *playingNow);
+                            crabturned=true;
                             break;
                         default:
                             break;
+                    }
                     }
                     
                     //checking player and game status
@@ -182,6 +199,7 @@ int main(int argc, const char * argv[]) {
                             if(numberOfActivePlayers<2){
                                 myGame->roundFinish();
                                 myGame->nextRound();
+                                myGame->setSkip(false);
                                 cout<<"This is the end of this round..............."<<endl;
                                 playingNow= &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
                                 cout<<"Congratulations! The winner for this round is: "<< playingNow->getName()<<endl;

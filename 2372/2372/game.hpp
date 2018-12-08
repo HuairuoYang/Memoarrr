@@ -232,7 +232,7 @@ public:
             Card* chosen= chooseCard();
             while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==false){
                 cout<<"PLease re-enter a card position as the card in position is still face down"<<endl;
-                return false;
+                chosen= chooseCard();
             }
                 gameBoard.turnFaceDown(chosen->getLetter(), chosen->getNumber());
                 return true;
