@@ -3,7 +3,7 @@
 //  Memoarrr
 //
 //  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839)(7895717). All rights reserved.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #include <iostream>
@@ -301,7 +301,7 @@ int main(int argc, const char * argv[]) {
                             else{
                                 playingNow.setActive(false);
                                 cout<<*myGame<<endl;
-                                cout<<"It is not a match. You are out."<<endl;
+                                cout<<"It is not a match. "<<playingNow.getName()<<" is out."<<endl;
                                 numberOfActivePlayers--;
                                 if(numberOfActivePlayers<2){
                                     Player& winner = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
