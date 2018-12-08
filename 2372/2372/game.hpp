@@ -341,7 +341,7 @@ public:
                 swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()), (Number)(swapper->getNumber()-1));
                 gameCdeck->swap(swapper,swapee);
                 swapee->setNumber((Number)(swapper->getNumber()));
-                swapper->setNumber((Number)(swapee->getNumber()+1));
+                swapper->setNumber((Number)(swapee->getNumber()-1));
                 cout<<"Successfully swapped with left side"<<endl;
                 return true;
             }
@@ -356,7 +356,7 @@ public:
                 swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()), (Number)(swapper->getNumber()+1));
                 gameCdeck->swap(swapper,swapee);
                 swapee->setNumber((Number)(swapper->getNumber()));
-                swapper->setNumber((Number)(swapee->getNumber()-1));
+                swapper->setNumber((Number)(swapee->getNumber()+1));
                 cout<<"Successfully swapped with right side"<<endl;
                 return true;
             }
