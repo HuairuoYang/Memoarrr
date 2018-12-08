@@ -2,13 +2,13 @@
 //  main.cpp
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #include <iostream>
 #include <string>
-#include<limits>
+#include <limits>
 #include <iostream>
 #include "board.hpp"
 #include "carddeck.hpp"
@@ -24,7 +24,7 @@ int main(int argc, const char * argv[]) {
     string mode;
     cout<<"Please input \"expert\" for expert mode or any for normal mode: "<<endl;
     cin>>mode;
-    
+
     cout<<"Please enter the number of players (2-4): "<<endl;
     while(!(cin >> myGame->numOfPlayer)||myGame->numOfPlayer < 2 || myGame->numOfPlayer>4){
         cin.clear();
@@ -40,7 +40,7 @@ int main(int argc, const char * argv[]) {
     cout<<"Please enter the name for Player at bottom:"<<endl;
     cin >>botName;
     Player* B = new Player(botName,(Side::bottom));
-    
+
     myGame->addPlayer(*B);
     if(myGame->numOfPlayer>2){
         string leftName;
@@ -61,7 +61,7 @@ int main(int argc, const char * argv[]) {
     cout<<" "<<endl;
     //Adding the players and temporily revealing the three cards directly in front of the player
     cout<<"========GAME START========"<<endl;
-    
+
     // Variables initialization
     string begin;
     cout<<"Enter anykey to start the game:"<<endl;
@@ -73,10 +73,11 @@ int main(int argc, const char * argv[]) {
             int numberOfFaceUp=0;
             int numberOfActivePlayers=myGame->numOfPlayer;;
             while(rules->gameOver(*myGame)==false){
-                cout<<endl;
-                cout<<endl;
-                cout<<"========EXPERT MODE: Round: "<< myGame->getRound()<<"========"<<endl;
-                     cout<<*myGame<<endl;
+                char a;
+                cout<<"EXPERT: Enter any key to start round: "<<myGame->getRound()<<endl;
+                cin>>a;
+                cout<<"********EXPERT: Round "<<myGame->getRound()<<" start********"<<endl;
+                cout<<*myGame<<endl;
                 int numberOfCardsInRound=0;
                 myGame->getPlayer(Side::top).setActive(true);
                 myGame->getPlayer(Side::bottom).setActive(true);
@@ -100,37 +101,35 @@ int main(int argc, const char * argv[]) {
                     //                    cout<<"checking Blocking state: ----"<<blocking<<endl;
                     //                    cout<<"checking the skipping state: ----"<< myGame->getSkip()<<endl;
                     if(myGame->getSkip()){
-                        cout<<"skipping the next player"<<endl;
-                        cout<<"---------Player "<< playingNow->getName()<<", you are skipped!!! Please have the next player to play----------"<<endl;
+                        cout<<"EXPERT: skipping the next player"<< playingNow->getName()<<endl;
                         playingNow = &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
-                        cout<<playingNow->getName()<<": YOU ARE NEXT!!!!!!!!!!"<<endl;
                         myGame->setSkip(false);
                     }
                     cout<<endl;
                     cout<<endl;
-                    cout<<"------------------Game phase for player: "<< playingNow->getName()<<"  --------------------"<<endl;
-                    
+                    cout<<"--------EXPERT: Player "<<playingNow->getName()<<"--------"<<endl;;
+
                     Card* current = nullptr;
                     //if the walrus is turned up, see if the blocked card is chosen to be turn face up
                     if(!blocking){
                         current=myGame->chooseCard();
                         while(myGame->gameBoard.isFaceUp(current->getLetter(), current->getNumber())==true){
-                            cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
+                            cout<<"Already face up"<<endl;
                             current=myGame->chooseCard();
                         }
                     }
                     else{
                         bool blockedChosen=true;
-                        cout<<"The card in position: "<<myGame->getBlockedLetter()<<" "<<myGame->getBlockedNumber()<<" is blocked for you to turn face up..."<<endl;
+                        cout<<"EXPERT: The card : "<<myGame->getBlockedLetter()<<" "<<myGame->getBlockedNumber()<<" is blocked"<<endl;
                         while(blockedChosen){
                             current=myGame->chooseCard();
                             if(myGame->gameBoard.isFaceUp(current->getLetter(), current->getNumber())==true){
-                                cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
+                                cout<<"EXPERT: Already face up"<<endl;
                                 blockedChosen=true;
                             }
                             else {
                                 if(current->getNumber()==myGame->getBlockedNumber()&&current->getLetter()==myGame->getBlockedLetter()){
-                                    cout<<"The card chosen is blocked! Please choose another card!"<<endl;
+                                    cout<<"EXPERT: The card is blocked! Please choose another card!"<<endl;
                                     blockedChosen=true;
                                 }
                                 else{
@@ -140,7 +139,7 @@ int main(int argc, const char * argv[]) {
                             }
                         }
                     }
-                    
+
                     myGame->gameBoard.turnFaceUp(current->getLetter(), current->getNumber());
                     numberOfFaceUp++;
                     numberOfCardsInRound++;
@@ -195,37 +194,34 @@ int main(int argc, const char * argv[]) {
                                 break;
                         }
                     }
-                    
+
                     //checking player and game status
                     //myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
                     //cout<<"This is the number of cards in roud!!!:  " << numberOfCardsInRound<<endl;
-                    cout<<endl;
-                    cout<<endl;
-                    cout<<"------- Current game board and player status---------"<<endl;
                     if(numberOfCardsInRound>1){
                         if(rules->isValid(*myGame)==true){
                             cout<<*myGame<<endl;
-                            cout<<"Congratulations!!! Your card have matched with the previous card!!!"<<endl;
+                            cout<<"EXPERT: It is a match!"<<endl;
+
                             // nextPlayer++;
                         }
                         else{
                             playingNow->setActive(false);
                             cout<<*myGame<<endl;
-                            cout<<"Unfortuantely, its not a match. end of round for current player"<<endl;
-                            cout<<endl;
-                            cout<<endl;
-                            cout<<"..................................................."<<endl;
-                            cout<<endl;
-                            cout<<endl;
+                            cout<<"EXPERT: It is not a match. "<<playingNow->getName()<<" is out."<<endl;
                             numberOfActivePlayers--;
                             if(numberOfActivePlayers<2){
+
+                                playingNow= &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                                cout<<"EXPERT: Congratulations! The winner for this round is: "<< playingNow->getName()<<endl;
+                                playingNow->addReward(*rDeck->getNext());
+                                 cout<<"********EXPERT: Round "<<myGame->getRound()<<" finish********"<<endl;
+                                cout<<endl;
+                                cout<<endl;
+                                cout<<endl;
                                 myGame->roundFinish();
                                 myGame->nextRound();
                                 myGame->setSkip(false);
-                                playingNow= &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
-                                cout<<"Congratulations! The winner for this round is: "<< playingNow->getName()<<endl;
-                                playingNow->addReward(*rDeck->getNext());
-                                cout<<"this is the number of rubbies for this player: "<<playingNow->getNRubies()<<endl;
                                 numberOfFaceUp=0;
                                 numberOfCardsInRound=0;
                             }
@@ -238,10 +234,20 @@ int main(int argc, const char * argv[]) {
                         cout<<endl;
                         cout<<endl;
                     }
+                    if(numberOfFaceUp>23){
+                        cout<<"shuffling all cards"<<endl;
+                        gameCdeck->roundOverShuffle=true;
+                        gameCdeck->make_CardDeck();
+                        gameCdeck->roundOverShuffle=false;
+                        gameCdeck->make_CardDeck();
+                        myGame->gameBoard.reset();
+                        numberOfFaceUp=0;
+
+                    }
                 }
             }
-            
-            cout<<"7 rounds expert mode end"<<endl;
+
+            cout<<"EXPERT: 7 rounds expert mode end"<<endl;
             myGame->getPlayer(Side::top).setDisplayMode(true);
             myGame->getPlayer(Side::bottom).setDisplayMode(true);
             if(myGame->numOfPlayer>2){
@@ -249,13 +255,13 @@ int main(int argc, const char * argv[]) {
                 if(myGame->numOfPlayer>3){
                     myGame->getPlayer(Side::right).setDisplayMode(true);
                 }
-                
+
             }
-            
+
             cout<<*myGame<<endl;
         }
-        
-        
+
+
         //normal mode
         else{
             int numberOfFaceUp=0;
@@ -264,7 +270,7 @@ int main(int argc, const char * argv[]) {
                 char a;
                 cout<<"Enter any key to start round: "<<myGame->getRound()<<endl;
                 cin>>a;
-                cout<<"********Round: "<<myGame->getRound()<<" start********"<<endl;
+                cout<<"********Round "<<myGame->getRound()<<" start********"<<endl;
                      cout<<*myGame<<endl;
                 int numberOfCardsInRound=0;
                 myGame->getPlayer(Side::top).setActive(true);
@@ -276,7 +282,7 @@ int main(int argc, const char * argv[]) {
                     }
                 }
                 numberOfActivePlayers=myGame->numOfPlayer;
-                
+
                 while(rules->roundOver(*myGame)==false){
                     cout<<endl;
                     cout<<endl;
@@ -284,7 +290,7 @@ int main(int argc, const char * argv[]) {
                     cout<<"--------Player "<<playingNow.getName()<<"--------"<<endl;;
                     Card* current = myGame->chooseCard();
                     if(myGame->gameBoard.isFaceUp(current->getLetter(), current->getNumber())==true){
-                        cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
+                        cout<<"Already face up"<<endl;
                     }
                     else{
                         myGame->gameBoard.turnFaceUp(current->getLetter(), current->getNumber());
@@ -301,11 +307,13 @@ int main(int argc, const char * argv[]) {
                             else{
                                 playingNow.setActive(false);
                                 cout<<*myGame<<endl;
-                                cout<<"It is not a match. You are out."<<endl;
+                                cout<<"It is not a match. "<<playingNow.getName()<<" is out."<<endl;
                                 numberOfActivePlayers--;
                                 if(numberOfActivePlayers<2){
                                     Player& winner = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                                     cout<<"Congratulations! The winner for this round is: "<< winner.getName()<<endl;
                                     winner.addReward(*rDeck->getNext());
+
                                     cout<<"********Round: "<<myGame->getRound()<<" finish********"<<endl;
                                     myGame->roundFinish();
                                     myGame->nextRound();
@@ -328,7 +336,7 @@ int main(int argc, const char * argv[]) {
                         gameCdeck->make_CardDeck();
                         myGame->gameBoard.reset();
                         numberOfFaceUp=0;
-                        
+
                     }
                 }
             }
@@ -340,12 +348,12 @@ int main(int argc, const char * argv[]) {
                 if(myGame->numOfPlayer>3){
                     myGame->getPlayer(Side::right).setDisplayMode(true);
                 }
-                
+
             }
-            
+
             cout<<*myGame<<endl;
         }
     }
-    
-    
+
+
 }

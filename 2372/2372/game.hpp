@@ -2,8 +2,8 @@
 //  Game.hpp
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #ifndef Game_hpp
@@ -12,12 +12,15 @@
 #include <stdio.h>
 #include <vector>
 #include <string>
+#include <limits>
 #include <iostream>
 #include "player.hpp"
 #include "card.hpp"
 #include "board.hpp"
+
 using namespace std;
 static int nextPlayer =0;
+
 class Game{
     Card* prevCard=nullptr;
     Card* currentCard=nullptr;
