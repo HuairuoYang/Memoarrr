@@ -78,6 +78,7 @@ int main(int argc, const char * argv[]) {
                         cout<<"skipping the next player"<<endl;
                         cout<<"---------Player "<< playingNow.getName()<<", you are skipped!!! Please have the next player to play----------"<<endl;
                         playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                        cout<<playingNow.getName()<<": YOU ARE NEXT!!!!!!!!!!"<<endl;
                         myGame->setSkip(false);
                     }
                     cout<<endl;
@@ -166,7 +167,7 @@ int main(int argc, const char * argv[]) {
                         if(rules->isValid(*myGame)==true){
                             cout<<*myGame<<endl;
                             cout<<"Congratulations!!! Your card have matched with the previous card!!!"<<endl;
-                            currentPlayer++;
+                           // nextPlayer++;
                         }
                         else{
                             playingNow.setActive(false);
@@ -227,6 +228,7 @@ int main(int argc, const char * argv[]) {
 //                cout<<"This is the current round number: "<<myGame->getRound()<<endl;
 //                cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
                 Player& playingNow = myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                cout<<"Player "<<playingNow.getName()<<"======================="<<endl;;
                 Card* current = myGame->chooseCard();
                 if(myGame->gameBoard.isFaceUp(current->getLetter(), current->getNumber())==true){
                     cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
@@ -241,7 +243,7 @@ int main(int argc, const char * argv[]) {
                         if(rules->isValid(*myGame)==true){
                             cout<<*myGame<<endl;
                             cout<<"MATCH!!!!!"<<endl;
-                            currentPlayer++;
+                           // nextPlayer++;
                         }
                         else{
                             playingNow.setActive(false);

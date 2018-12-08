@@ -17,7 +17,7 @@
 #include "Card.hpp"
 #include "Board.hpp"
 using namespace std;
-static int currentPlayer =0;
+static int nextPlayer =0;
 class Game{
     Card* prevCard=nullptr;
     Card* currentCard=nullptr;

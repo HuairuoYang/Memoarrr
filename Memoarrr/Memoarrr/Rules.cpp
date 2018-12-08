@@ -34,27 +34,32 @@ const Player& Rules::getNextPlayer(const Game& g){
      Player* temp =nullptr;
      while(temp == nullptr || !temp->isActive()){
 
-         switch (currentPlayer){
+         switch (nextPlayer){
              case 0:
+                 cout<<"getting top"<<endl;
                  temp = &g.getPlayer(Side::top);
                  break;
              case 1:
+                 cout<<"getting bot"<<endl;
                  temp = &g.getPlayer(Side::bottom);
                  break;
              case 2:
+                 cout<<"getting left"<<endl;
                  temp = &g.getPlayer(Side::left);
                  break;
              case 3:
+                 cout<<"getting right"<<endl;
                  temp = &g.getPlayer(Side::right);
                  break;
              default:
                  temp = nullptr;
                  break;
          }
-         currentPlayer++;
-         if (currentPlayer ==g.numOfPlayer){
-             currentPlayer = 0;
+         nextPlayer++;
+         if (nextPlayer ==g.numOfPlayer){
+             nextPlayer = 0;
          }
+         cout<<"next player : "<<nextPlayer<<endl;
          
      }
      return *temp;
