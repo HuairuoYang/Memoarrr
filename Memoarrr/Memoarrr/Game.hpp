@@ -99,6 +99,7 @@ public:
         bool valid= false;
         Letter a=Letter::A;
         Number z=Number::one;
+        cout<<"Please input the character for rows: "<<endl;
         while(!valid){
         char r;
         cin>>r;
@@ -192,17 +193,13 @@ public:
     bool penguin(const Player& p){
             cout<<"Player " << p.getName()<< " you have turned up a Penguin!!!!! You can turn an face-up card to face down."<<endl;
             Card* chosen= chooseCard();
-            if(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==false){
+            while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==false){
                 cout<<"PLease re-enter a card position as the card in position is still face down"<<endl;
                 return false;
             }
-            else{
                 gameBoard.turnFaceDown(chosen->getLetter(), chosen->getNumber());
                 return true;
-            }
-        return false;
     }
-    
     
     Letter getBlockedLetter(){
         return blockedLetter;
@@ -219,11 +216,12 @@ public:
         }
         blockedLetter=chosen->getLetter();
         blockedNumber=chosen->getNumber();
+        cout<<"The card: "<<chosen->getLetter() <<" "<<chosen->getNumber() <<" is blocked for next player! .."<<endl;
         return true;
     }
     
     Card* crab(const Player& p){
-        cout<<"Player " << p.getName()<< " you have turned up a Crab!!!!! You need to turn up an another card now. Please input the Character for row: "<<endl;
+        cout<<"Player " << p.getName()<< "  you have turned up a Crab!!!!! You need to turn up an another card now. Please input the Character for row: "<<endl;
         Card* chosen= chooseCard();
         if(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
             cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
@@ -239,26 +237,36 @@ public:
         skipping=true;
     }
     
-    bool octopus(Card* cardToSwap){
+    bool octopus(Card* cardToSwap, const Player& p){
+        cout<<"Player " << p.getName()<< ", you have turned up an octopus!!!!! Your chosen card will be swapped with a randomly chosen adjacent card!!! "<<endl;
+        cout<<endl;
+        cout<<endl;
         Letter a;
         Number z;
         a= cardToSwap->getLetter();
         z= cardToSwap->getNumber();
         int position= rand() % 4;
-        while(true){
+        bool swapFinish=false;
+        while(!swapFinish){
             switch(position){
                 case (0):
-                    swap(cardToSwap,0);
+                    swapFinish=swap(0, cardToSwap);
                     break;
-                
-                
-                    
+                case (1):
+                    swapFinish=swap(1, cardToSwap);
+                    break;
+                case (2):
+                    swapFinish=swap(2, cardToSwap);
+                    break;
+                case (3):
+                    swapFinish=swap(3, cardToSwap);
+                    break;
+                default:
+                    cout<<"wrong number"<<endl;
+                    break;
             }
-            
-        
-            
-               }
-        return false;
+        }
+        return true;
     }
     
     bool swap(int i, Card* swapper){
@@ -266,10 +274,10 @@ public:
         if(i==0){
             if(swapper->topAvailable){
                 swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()-1), swapper->getNumber());
-                gameCdeck->swap(swapper,swapee,0);
+                gameCdeck->swap(swapper,swapee);
                 swapee->setLetter((Letter)(swapper->getLetter()));
-                swapper->setLetter((Letter)(swapper->getLetter()-1));
-                cout<<"Top side swap successful"<<endl;
+                swapper->setLetter((Letter)(swapee->getLetter()-1));
+                cout<<"Successfully swapped with top side"<<endl;
                 return true;
             }
             else{
@@ -280,10 +288,10 @@ public:
         if(i==1){
             if(swapper->bottomAvailable){
                 swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()+1), swapper->getNumber());
-                gameCdeck->swap(swapper,swapee,1);
+                gameCdeck->swap(swapper,swapee);
                 swapee->setLetter((Letter)(swapper->getLetter()));
-                swapper->setLetter((Letter)(swapper->getLetter()+1));
-                cout<<"bottom side swap successful"<<endl;
+                swapper->setLetter((Letter)(swapee->getLetter()+1));
+                cout<<"Successfully swapped with bottom side"<<endl;
                 return true;
             }
             else{
@@ -294,17 +302,34 @@ public:
         if(i==2){
             if(swapper->leftAvailable){
                 swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()), (Number)(swapper->getNumber()-1));
-                gameCdeck->swap(swapper,swapee,1);
-                swapee->setLetter((Letter)(swapper->getLetter()));
-                swapper->setLetter((Letter)(swapper->getLetter()+1));
-                cout<<"left side swap successful"<<endl;
+                gameCdeck->swap(swapper,swapee);
+                swapee->setNumber((Number)(swapper->getNumber()));
+                swapper->setNumber((Number)(swapee->getNumber()+1));
+                cout<<"Successfully swapped with left side"<<endl;
                 return true;
             }
+    
             else{
                 cout<<"The left side is not available, choosing another side..."<<endl;
                 return false;
             }
         }
+        if(i==3){
+            if(swapper->rightAvailable){
+                swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()), (Number)(swapper->getNumber()+1));
+                gameCdeck->swap(swapper,swapee);
+                swapee->setNumber((Number)(swapper->getNumber()));
+                swapper->setNumber((Number)(swapee->getNumber()-1));
+                cout<<"Successfully swapped with right side"<<endl;
+                return true;
+            }
+            else{
+                cout<<"The right side is not available, choosing another side..."<<endl;
+                return false;
+            }
+        }
+        cout<<"integer for side is incorrect, please double check the program"<<endl;
+        return false;
     }
     
     bool roundFinish() const{
@@ -320,7 +345,6 @@ public:
     const Card* getPreviousCard() const{return prevCard;}
     const Card* getCurrentCard() const{return currentCard;}
     void setCurrentCard( const Card* c){
-        cout<<"setting current card to"<<c<<endl;
         Card* tempCard=currentCard;
         prevCard =tempCard;
         currentCard = gameCdeck->getByPosition(c->getLetter(),c->getNumber());

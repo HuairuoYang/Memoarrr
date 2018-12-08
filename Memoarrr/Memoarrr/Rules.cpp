@@ -10,11 +10,9 @@
 
 bool Rules::isValid(const Game& g){
     if(g.getPreviousCard()->getAnimal() ==g.getCurrentCard()->getAnimal() || g.getPreviousCard()->getColor() ==g.getCurrentCard()->getColor()){
-        cout<<"match"<<endl;
         return true;
     }
     else{
-        cout<<"not match"<<endl;
         return false;
     }
 }

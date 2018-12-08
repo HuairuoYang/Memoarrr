@@ -13,7 +13,7 @@
 #include <vector>
 #include <iostream>
 #include "Utils.hpp"
-
+using namespace std;
 template <typename C>
 class Deck
 {
@@ -73,13 +73,9 @@ public:
         }
     }
     
-    bool swap(C* original, C* swapee, int i){
-        switch(i){
-            case(0):
-            iter_swap(deck.begin()+(original->getLetter()*5+original->getNumber()-1), deck.begin()+(swapee->getLetter()*5+swapee->getNumber()-1));
-            break;
-                
-    }
+    bool swap(C* original, C* swapee){
+        iter_swap(deck.begin()+(original->getLetter()*5+original->getNumber()), deck.begin()+(swapee->getLetter()*5+swapee->getNumber()));
+        return true;
     }
 };
 
