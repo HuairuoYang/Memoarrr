@@ -98,12 +98,4 @@ std::string Card::getPositionString(){
 }
 void Card::turnFace(bool trueForUp){
     faceUp = trueForUp;
-    if(faceUp){
-        cardsFaceup.push_back((int)let*5 + (int)num);
-    }
-    else{
-        if(!cardsFaceup.empty()){
-            cardsFaceup.erase(std::remove(cardsFaceup.begin(), cardsFaceup.end(), ((int)let*5 + (int)num)), cardsFaceup.end());
-        }
-    }
 }

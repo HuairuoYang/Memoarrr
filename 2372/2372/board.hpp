@@ -19,12 +19,14 @@
 
 static CardDeck* gameCdeck = &(CardDeck::make_CardDeck());
 static RewardDeck* rDeck = &(RewardDeck::make_CardDeck());
+
 class Board{
 public:
     bool isFaceUp( const Letter&, const Number&);
     bool turnFaceUp( const Letter&, const Number&);
     bool turnFaceDown( const Letter&, const Number&);
     void reset();
+    static std::vector<int> cardsFaceup;
     
     Card* getCard(const Letter& l, const Number& n);
     void setCard( const Letter&, const Number&, Card* );
@@ -88,7 +90,10 @@ public:
 //        return os;
         //}else{
         os<<"======================\n";
-        if(!cardsFaceup.empty()){
+        for (auto i:cardsFaceup){
+            cout<<i<<endl;
+        }
+        if(cardsFaceup.size()!=0){
             int count =0;
             int line = (int)cardsFaceup.size()/(int)5;
             int extra = cardsFaceup.size()%5;

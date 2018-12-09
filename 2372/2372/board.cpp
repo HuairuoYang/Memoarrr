@@ -7,6 +7,7 @@
 //
 
 #include "board.hpp"
+vector <int> Board::cardsFaceup ={};
 
 bool Board::isFaceUp(const Letter & let, const Number & num){
     try{
@@ -24,6 +25,12 @@ bool Board::turnFaceUp(const Letter & let, const Number & num){
         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(let,num));
         
         c->turnFace(true);
+           cout<<"push card"<<c->getPositionString()<<endl;
+           cardsFaceup.push_back((int)let*5 + (int)num);
+           for (auto i:cardsFaceup){
+               cout<<i<<endl;
+           }
+       
         return true;
     }
     catch (const std::out_of_range& oor) {
@@ -35,6 +42,10 @@ bool Board::turnFaceDown(const Letter & let, const Number & num){
     try{
         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(let,num));
          c->turnFace(false);
+        cout<<"removing"<<endl;
+        if(!cardsFaceup.empty()){
+            cardsFaceup.erase(std::remove(cardsFaceup.begin(), cardsFaceup.end(), ((int)let*5 + (int)num)), cardsFaceup.end());
+        }
         return true;
     }
     catch (const std::out_of_range& oor) {

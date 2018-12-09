@@ -14,6 +14,7 @@
 #include "utils.hpp"
 using namespace std;
 
+
 class Card{
     friend class CardDeck;
     FaceAnimal cardAnimal;
