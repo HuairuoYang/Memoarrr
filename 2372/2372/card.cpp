@@ -102,6 +102,8 @@ void Card::turnFace(bool trueForUp){
         cardsFaceup.push_back((int)let*5 + (int)num);
     }
     else{
-        cardsFaceup.erase(find (cardsFaceup.begin(), cardsFaceup.end(), (int)let*5 + (int)num));
+        if(!cardsFaceup.empty()){
+            cardsFaceup.erase(std::remove(cardsFaceup.begin(), cardsFaceup.end(), ((int)let*5 + (int)num)), cardsFaceup.end());
+        }
     }
 }
