@@ -97,7 +97,7 @@ int main(int argc, const char * argv[]) {
                     //                    cout<<"checking Blocking state: ----"<<blocking<<endl;
                     //                    cout<<"checking the skipping state: ----"<< myGame->getSkip()<<endl;
                     if(myGame->getSkip()){
-                        cout<<"EXPERT: skipping the next player"<< playingNow->getName()<<endl;
+                        cout<<"EXPERT: skipping the next player  "<< playingNow->getName()<<endl;
                         playingNow = &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
                         myGame->setSkip(false);
                     }
@@ -159,8 +159,7 @@ int main(int argc, const char * argv[]) {
                                 cc= myGame->crab(*playingNow);
                                 numberOfFaceUp++;
                                 numberOfCardsInRound++;
-                                current->setLetter(cc->getLetter());
-                                current->setNumber(cc->getNumber());
+                                current->setIndex(cc->getLetter(),cc->getNumber());
                                 myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
                                 animal = (FaceAnimal)myGame->gameBoard.getCard(current->getLetter(), current->getNumber())->getAnimal();
                                 crabturned=false;
@@ -215,7 +214,6 @@ int main(int argc, const char * argv[]) {
                              cout<<"--------Player: "<<playingNow->getName()<<" finished--------"<<endl;
                             numberOfActivePlayers--;
                             if(numberOfActivePlayers<2){
-
                                 playingNow= &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
                                 cout<<"EXPERT: Congratulations! The winner for this round is: "<< playingNow->getName()<<endl;
                                 playingNow->addReward(*rDeck->getNext());

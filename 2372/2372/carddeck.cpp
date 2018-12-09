@@ -21,8 +21,7 @@ CardDeck& CardDeck::make_CardDeck(){
         myCDeck->shuffle();
         int l=0,n=0;
         for(auto k : myCDeck->deck){
-            k->setLetter((Letter)l);
-            k->setNumber((Number)n++);
+            k->setIndex((Letter)l,(Number)n++);
             Letter a=k->getLetter();
             Number z=k->getNumber();
             if (a==Letter::B&&z==Number::three){
@@ -31,7 +30,7 @@ CardDeck& CardDeck::make_CardDeck(){
             if (a==Letter::C&&z==Number::two){
                 k->rightAvailable=false;
             }
-            if (a==Letter::B&&z==Number::four){
+            if (a==Letter::C&&z==Number::four){
                 k->leftAvailable=false;
             }
             if (a==Letter::D&&z==Number::three){
@@ -53,8 +52,7 @@ CardDeck& CardDeck::make_CardDeck(){
         myCDeck->shuffle();
         int l=0,n=0;
         for(auto k : myCDeck->deck){
-            k->setLetter((Letter)l);
-            k->setNumber((Number)n++);
+            k->setIndex((Letter)l,(Number)n++);
             Letter a=k->getLetter();
             Number z=k->getNumber();
             if (a==Letter::B&&z==Number::three){

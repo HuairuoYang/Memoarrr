@@ -68,8 +68,7 @@ Card* Board::getCard(const Letter& l, const Number& n){
     }
 }
 void Board::setCard( const Letter& l, const Number& n, Card* c){
-    c->setLetter(l);
-    c->setNumber(n);
+    c->setIndex(l,n);
     if (gameCdeck->setByPosition(l,n,c)){
         cout<<"setCard successful"<<endl;
     }
