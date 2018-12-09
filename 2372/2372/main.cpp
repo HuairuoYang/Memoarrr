@@ -87,14 +87,7 @@ int main(int argc, const char * argv[]) {
                 while(rules->roundOver(*myGame)==false){
                     cout<<endl;
                     cout<<endl;
-                    //                    cout<<"Game status printing at beginning---------"<<endl;
-                    //                    cout<<"This is the number of players: "<< numberOfActivePlayers<<endl;
-                    //                    cout<<"This is the current round number: "<<myGame->getRound()<<endl;
-                    //                    cout<<"This is the current number of Faceup for round: "<<numberOfFaceUp<<endl;
                     Player* playingNow = &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
-                    //getting the next active player if the previous player have got a turtle
-                    //                    cout<<"checking Blocking state: ----"<<blocking<<endl;
-                    //                    cout<<"checking the skipping state: ----"<< myGame->getSkip()<<endl;
                     if(myGame->getSkip()){
                         cout<<"EXPERT: skipping the next player  "<< playingNow->getName()<<endl;
                         playingNow = &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
@@ -195,10 +188,6 @@ int main(int argc, const char * argv[]) {
                                 break;
                         }
                     }
-
-                    //checking player and game status
-                    //myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
-                    //cout<<"This is the number of cards in roud!!!:  " << numberOfCardsInRound<<endl;
                     if(numberOfCardsInRound<2){
                         cout<<"--------Player: "<<playingNow->getName()<<" finished--------"<<endl;
                     }

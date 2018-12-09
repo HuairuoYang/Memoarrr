@@ -104,7 +104,6 @@ public:
                         //each card row
                         os <<(*gameCdeck->getByPosition(cardsFaceup.at(count+col)))(row);
                     }
-                    
                     os <<"\n";
                 }
                 for(int col1 = 0; col1 < 5; col1++){

@@ -194,7 +194,7 @@ public:
     }
     
     bool penguin(const Player& p){
-        cout<<"Player " << p.getName()<< " you have turned up a Penguin!!!!!"<<endl;
+        cout<<"Player " << p.getName()<< " you have turned up a Penguin"<<endl;
         cout<<"You can turn an face-up card to face down."<<endl;
             Card* chosen= chooseCard();
             while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==false){
@@ -218,7 +218,7 @@ public:
         cout<<" You can Block a Card."<<endl;
         Card* chosen= chooseCard();
         while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
-            cout<<"PLease re-enter a card position as the card in position is face up and cannot be blocked, Please retry....."<<endl;
+            cout<<"PLease re-enter a card position as the card in position is face up"<<endl;
              chosen= chooseCard();
         }
         blockedLetter=chosen->getLetter();
@@ -230,8 +230,8 @@ public:
     
     
     Card* crab(const Player& p){
-        cout<<"Player " << p.getName()<< "  you have turned up a Crab!!!!!"<<endl;
-        cout<<" You need to turn up an another card now. Please input the Character for row: "<<endl;
+        cout<<"Player " << p.getName()<< "  you have turned up a Crab"<<endl;
+        cout<<" You need to turn up an another card now"<<endl;
         Card* chosen= chooseCard();
         while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
             cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
@@ -251,7 +251,7 @@ public:
     
     bool octopus(Card* cardToSwap, const Player& p){
         cout<<"Player " << p.getName()<< ", you have turned up an octopus"<<endl;
-        cout<<"Your chosen card will be swapped with a randomly chosen adjacent card!!! "<<endl;
+        cout<<"Your chosen card will be swapped with a randomly chosen adjacent card"<<endl;
         cout<<"(It will not go over the edges, corners and the volcano card)"<<endl;
         cout<<endl;
         Letter a;

@@ -23,11 +23,8 @@ bool Board::isFaceUp(const Letter & let, const Number & num){
 bool Board::turnFaceUp(const Letter & let, const Number & num){
    try{
         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(let,num));
-        
         c->turnFace(true);
            cardsFaceup.push_back((int)let*5 + (int)num);
-       
-       
         return true;
     }
     catch (const std::out_of_range& oor) {
