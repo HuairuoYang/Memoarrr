@@ -40,6 +40,7 @@ public:
     
     Letter getLetter() const {return let;}
     Number getNumber() const {return num;}
+    std::string getPositionString();
     
     int getAnimal() const {return (int)cardAnimal;}
     std::string getAnimalStr();

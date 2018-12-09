@@ -51,3 +51,48 @@ std::string Card::getColorStr(){
             break;
     }
 }
+
+std::string Card::getPositionString(){
+    std::string rtn = "";
+    switch (let){
+        case (Letter::A):
+            rtn+= "A";
+            break;
+        case (Letter::B):
+            rtn+=  "B";
+            break;
+        case (Letter::C):
+            rtn+=  "C";
+            break;
+        case (Letter::D):
+            rtn+=  "D";
+            break;
+        case (Letter::E):
+            rtn+=  "E";
+            break;
+        default:
+            rtn+=  " ";
+            break;
+    }
+    switch (num){
+        case (Number::one):
+            rtn+= "1";
+            break;
+        case (Number::two):
+            rtn+=  "2";
+            break;
+        case (Number::three):
+            rtn+=  "3";
+            break;
+        case (Number::four):
+            rtn+=  "4";
+            break;
+        case (Number::five):
+            rtn+=  "5";
+            break;
+        default:
+            rtn+=  " ";
+            break;
+    }
+    return rtn;
+}
