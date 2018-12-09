@@ -2,16 +2,16 @@
 //  utils.h
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #ifndef utils_hpp
 #define utils_hpp
-
+#include <vector>
 const int rewardList[7] ={1,1,1,2,2,3,4};
 static bool endOfGame = false;
-
+static bool expertMode = false;
 
 enum Side{
     top = 0,

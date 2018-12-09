@@ -2,8 +2,8 @@
 //  CardDeck.cpp
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #include "carddeck.hpp"
@@ -12,7 +12,6 @@ bool CardDeck::roundOverShuffle = false;
 
 CardDeck& CardDeck::make_CardDeck(){
     if(myCDeck == nullptr){
-        cout<<"Preparing a new game board"<<endl;
         myCDeck = new CardDeck();
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -22,15 +21,27 @@ CardDeck& CardDeck::make_CardDeck(){
         myCDeck->shuffle();
         int l=0,n=0;
         for(auto k : myCDeck->deck){
-            k->setLetter((Letter)l);
-            k->setNumber((Number)n++);
+            k->setIndex((Letter)l,(Number)n++);
+            Letter a=k->getLetter();
+            Number z=k->getNumber();
+            if (a==Letter::B&&z==Number::three){
+                k->bottomAvailable=false;
+            }
+            if (a==Letter::C&&z==Number::two){
+                k->rightAvailable=false;
+            }
+            if (a==Letter::C&&z==Number::four){
+                k->leftAvailable=false;
+            }
+            if (a==Letter::D&&z==Number::three){
+                k->topAvailable=false;
+            }
             if(n==5){
                 n = 0;
                 l++;
             }
         }
         if(myCDeck->deck.empty()){
-            cout<<"error: empty deck"<<endl;
             roundOverShuffle = true;
             myCDeck->make_CardDeck();
             roundOverShuffle = false;
@@ -41,15 +52,27 @@ CardDeck& CardDeck::make_CardDeck(){
         myCDeck->shuffle();
         int l=0,n=0;
         for(auto k : myCDeck->deck){
-            k->setLetter((Letter)l);
-            k->setNumber((Number)n++);
+            k->setIndex((Letter)l,(Number)n++);
+            Letter a=k->getLetter();
+            Number z=k->getNumber();
+            if (a==Letter::B&&z==Number::three){
+                k->bottomAvailable=false;
+            }
+            if (a==Letter::C&&z==Number::two){
+                k->rightAvailable=false;
+            }
+            if (a==Letter::B&&z==Number::four){
+                k->leftAvailable=false;
+            }
+            if (a==Letter::D&&z==Number::three){
+                k->topAvailable=false;
+            }
             if(n==5){
                 n = 0;
                 l++;
             }
         }
         if(myCDeck->deck.empty()){
-            cout<<"error: empty deck"<<endl;
             roundOverShuffle = true;
             myCDeck->make_CardDeck();
             roundOverShuffle = false;
@@ -58,12 +81,10 @@ CardDeck& CardDeck::make_CardDeck(){
     }
     else{
         if(myCDeck->deck.empty()){
-            cout<<"error: empty deck"<<endl;
             roundOverShuffle = true;
             myCDeck->make_CardDeck();
             roundOverShuffle = false;
         }
-        cout<<"Deck size:"<<myCDeck->deck.size()<<endl;
         return *myCDeck;
     }
 }

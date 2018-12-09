@@ -36,7 +36,7 @@ public:
     Player* bottomPlayer;
     Player* leftPlayer;
     Player* rightPlayer;
-    Game() = default;
+    Game()=default;
     int getRound() const {return gameRound;}
     
     void nextRound(){
@@ -92,99 +92,118 @@ public:
                 break;
         }
     }
-
+    
     Card* chooseCard(){
         bool valid= false;
         Letter a=Letter::A;
         Number z=Number::one;
+#ifndef TEST_BOARD
         cout<<"Please input the position(eg: A1 or a1): "<<endl;
+#endif
         while(!valid){
-        char r;
-        while(!(cin >> r)||(toupper(r)!='A'&&toupper(r)!='B'&&toupper(r)!='C'&&toupper(r)!='D'&&toupper(r)!='E')){
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Input invalid, try again"<<endl;
-        }
-        r= toupper(r);
-        switch(r){
-            case 'A':
-                a = Letter::A;
-                break;
-            case 'B':
-                a = Letter::B;
-                break;
-            case 'C':
-                a = Letter::C;
-                break;
-            case 'D':
-                a = Letter::D;
-                break;
-            case 'E':
-                a = Letter::E;
-                break;
-            default: break;
-        }
-        int c;
-                while(!(cin >> c)||c<1||c>5){
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "Input invalid, try again"<<endl;
-                }
-        switch(c){
-            case 1:
-                z = Number::one;
-                break;
-            case 2:
-                z = Number::two;
-                break;
-            case 3:
-                z = Number::three;
-                break;
-            case 4:
-                z = Number::four;
-                break;
-            case 5:
-                z = Number::five;
-                break;
-            dafault: break;
-        }
-        if(a == Letter::C && z== Number::three){
-            cout<<"You have entered an invalid card position, please retry......"<<endl;
-            valid=false;
-        }
-        else{
-            valid=true;
+#ifndef TEST_BOARD
+            char r;
+            
+            while(!(cin >> r)||(toupper(r)!='A'&&toupper(r)!='B'&&toupper(r)!='C'&&toupper(r)!='D'&&toupper(r)!='E')){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Input invalid, try again"<<endl;
+            }
+            r= toupper(r);
+            switch(r){
+                case 'A':
+                    a = Letter::A;
+                    break;
+                case 'B':
+                    a = Letter::B;
+                    break;
+                case 'C':
+                    a = Letter::C;
+                    break;
+                case 'D':
+                    a = Letter::D;
+                    break;
+                case 'E':
+                    a = Letter::E;
+                    break;
+                default: break;
+            }
+            int c;
+            while(!(cin >> c)||c<1||c>5){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Input invalid, try again"<<endl;
+            }
+            switch(c){
+                case 1:
+                    z = Number::one;
+                    break;
+                case 2:
+                    z = Number::two;
+                    break;
+                case 3:
+                    z = Number::three;
+                    break;
+                case 4:
+                    z = Number::four;
+                    break;
+                case 5:
+                    z = Number::five;
+                    break;
+                dafault: break;
+            }
+#endif
+#ifdef TEST_BOARD
+            a = (Letter)(rand()%5);
+            z= (Number)(rand()%5);
+#endif
+            if(a == Letter::C && z== Number::three){
+#ifndef TEST_BOARD
+                cout<<"You have entered an invalid card position, please retry......"<<endl;
+#endif
+                valid=false;
+            }
+            else{
+                valid=true;
             }
         }
-         return gameBoard.getCard(a,z);
+        return gameBoard.getCard(a,z);
     }
     
     void revealCardsForPlayer(const Player& p){
         string i;
         if(p.getSideString()=="TOP"){
+#ifndef TEST_BOARD
             cout<<"Please input any character to continue for player on the Top side"<<endl;
             cin>>i;
+#endif
             gameBoard.turnFaceUp(Letter::A, Number::two);
             gameBoard.turnFaceUp(Letter::A, Number::three);
             gameBoard.turnFaceUp(Letter::A, Number::four);
         }
         if(p.getSideString()=="BOTTOM"){
+#ifndef TEST_BOARD
             cout<<"Please input any character to continue for player on the Bottom side"<<endl;
             cin>>i;
+#endif
             gameBoard.turnFaceUp(Letter::E, Number::two);
             gameBoard.turnFaceUp(Letter::E, Number::three);
             gameBoard.turnFaceUp(Letter::E, Number::four);
         }
         if(p.getSideString()=="LEFT"){
+#ifndef TEST_BOARD
             cout<<"Please input any character to continue for player on the Left side"<<endl;
             cin>>i;
+#endif
             gameBoard.turnFaceUp(Letter::B, Number::one);
             gameBoard.turnFaceUp(Letter::C, Number::one);
             gameBoard.turnFaceUp(Letter::D, Number::one);
         }
         else if(p.getSideString()=="RIGHT"){
+#ifndef TEST_BOARD
             cout<<"Please input any character to continue for player on the Right side"<<endl;
             cin>>i;
+#endif
             gameBoard.turnFaceUp(Letter::B, Number::five);
             gameBoard.turnFaceUp(Letter::C, Number::five);
             gameBoard.turnFaceUp(Letter::D, Number::five);
@@ -196,13 +215,15 @@ public:
     bool penguin(const Player& p){
         cout<<"Player " << p.getName()<< " you have turned up a Penguin"<<endl;
         cout<<"You can turn an face-up card to face down."<<endl;
-            Card* chosen= chooseCard();
-            while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==false){
-                cout<<"PLease re-enter a card position as the card in position is still face down"<<endl;
-                chosen= chooseCard();
-            }
-                gameBoard.turnFaceDown(chosen->getLetter(), chosen->getNumber());
-                return true;
+        Card* chosen= chooseCard();
+        while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==false){
+#ifndef TEST_BOARD
+            cout<<"PLease re-enter a card position as the card in position is still face down"<<endl;
+#endif
+            chosen= chooseCard();
+        }
+        gameBoard.turnFaceDown(chosen->getLetter(), chosen->getNumber());
+        return true;
     }
     
     Letter getBlockedLetter(){
@@ -218,8 +239,10 @@ public:
         cout<<" You can Block a Card."<<endl;
         Card* chosen= chooseCard();
         while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
+            // #ifndef TEST_BOARD
             cout<<"PLease re-enter a card position as the card in position is face up"<<endl;
-             chosen= chooseCard();
+            chosen= chooseCard();
+            //#endif
         }
         blockedLetter=chosen->getLetter();
         blockedNumber=chosen->getNumber();
@@ -234,11 +257,13 @@ public:
         cout<<" You need to turn up an another card now"<<endl;
         Card* chosen= chooseCard();
         while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
+#ifndef TEST_BOARD
             cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
+#endif
             chosen= chooseCard();
         }
-            gameBoard.turnFaceUp(chosen->getLetter(), chosen->getNumber());
-            return gameBoard.getCard(chosen->getLetter(), chosen->getNumber());
+        gameBoard.turnFaceUp(chosen->getLetter(), chosen->getNumber());
+        return gameBoard.getCard(chosen->getLetter(), chosen->getNumber());
     }
     
     
@@ -301,7 +326,7 @@ public:
                 adjustSwapMidAvailability(swapee);
                 adjustSwapMidAvailability(swapper);
                 cout<<"It swapped with top side"<<endl;
-        
+                
                 
                 return true;
             }
@@ -341,7 +366,7 @@ public:
                 cout<<"It swapped with left side"<<endl;
                 return true;
             }
-    
+            
             else{
                 return false;
             }
@@ -373,14 +398,14 @@ public:
             std::vector<int>::iterator it;
             it = find(gameBoard.cardsFaceup.begin(),gameBoard.cardsFaceup.end(),swappee->getLetter()*5+swappee->getNumber());
             gameBoard.cardsFaceup.at(it-gameBoard.cardsFaceup.begin()) =swapper->getLetter()*5+swapper->getNumber();
-           
+            
         }
         else{
             if(!gameBoard.cardsFaceup.empty()){
                 gameBoard.cardsFaceup.erase(std::remove(gameBoard.cardsFaceup.begin(), gameBoard.cardsFaceup.end(), ((int)swapper->getLetter()*5 + (int)swapper->getNumber())), gameBoard.cardsFaceup.end());
             }
         }
-         gameBoard.cardsFaceup.push_back(swappee->getLetter()*5+swappee->getNumber());
+        gameBoard.cardsFaceup.push_back(swappee->getLetter()*5+swappee->getNumber());
         return true;
     }
     
@@ -397,7 +422,7 @@ public:
         return (activeCount ==1);
     }
     
-
+    
     const Card* getPreviousCard() const{return prevCard;}
     const Card* getCurrentCard() const{return currentCard;}
     void setCurrentCard( const Card* c){

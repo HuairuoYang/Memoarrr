@@ -2,8 +2,8 @@
 //  Card.hpp
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #ifndef Card_hpp
@@ -13,6 +13,7 @@
 #include <string>
 #include "utils.hpp"
 using namespace std;
+
 
 class Card{
     friend class CardDeck;
@@ -31,27 +32,16 @@ public:
     bool rightAvailable=true;
     bool leftAvailable=true;
     
-    void setLetter(Letter l){
-        if(l==Letter::A){
-            topAvailable=false;
-        }
-        if(l==Letter::E){
-            bottomAvailable=false;
-        }
+    void setIndex(Letter l, Number n){
+        changeAvailabilityLetter(l);
+        changeAvailabilityNumber(n);
         let=l;
-    }
-    
-    void setNumber(Number n){
-        if(n==Number::one){
-            leftAvailable=false;
-        }
-        if(n==Number::five){
-            rightAvailable=false;
-        }
         num=n;
     }
+    
     Letter getLetter() const {return let;}
     Number getNumber() const {return num;}
+    std::string getPositionString();
     
     int getAnimal() const {return (int)cardAnimal;}
     std::string getAnimalStr();
@@ -59,7 +49,7 @@ public:
     std::string getColorStr();
     
     bool isFaceUp(){return faceUp;}
-    void turnFace(bool trueForUp){faceUp = trueForUp;}
+    void turnFace(bool trueForUp);
     
     Card(const Card&) = delete;
     Card& operator= ( const Card & ) = delete;
@@ -76,6 +66,31 @@ public:
                     return (" "+(getColorStr()+getColorStr()+getColorStr()));
                 }
             }
+    }
+    
+    void changeAvailabilityLetter(Letter l){
+        if(l==Letter::A){
+            topAvailable=false;
+        }
+        if(l==Letter::E){
+            bottomAvailable=false;
+        }
+    }
+    
+    void changeAvailabilityNumber(Number n){
+        if(n==Number::one){
+            leftAvailable=false;
+        }
+        if(n==Number::five){
+            rightAvailable=false;
+        }
+    }
+    
+    void resetAvailability(){
+        topAvailable=true;
+        bottomAvailable=true;
+        leftAvailable=true;
+        rightAvailable=true;
     }
 };
 

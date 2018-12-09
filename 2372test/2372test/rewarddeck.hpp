@@ -2,15 +2,15 @@
 //  RewardDeck.hpp
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #ifndef RewardDeck_hpp
 #define RewardDeck_hpp
 
 #include <stdio.h>
-#include "Deck.hpp"
+#include "deck.hpp"
 #include "reward.hpp"
 
 class RewardDeck : public Deck<Reward>{
@@ -20,6 +20,9 @@ class RewardDeck : public Deck<Reward>{
     RewardDeck& operator= ( const RewardDeck & ) = delete;
 public:
     static RewardDeck& make_CardDeck();
+    virtual ~RewardDeck(){
+        myRDeck = nullptr;
+    }
 };
 
 #endif /* RewardDeck_hpp */

@@ -2,8 +2,8 @@
 //  Player.hpp
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #ifndef Player_hpp
@@ -29,7 +29,7 @@ public:
     bool isActive() const {return active;}
     int getNRubies() const {return countOfRubies;}
     void addReward(Reward& r) {
-        std::cout<<name<<"you have been rewarded "<<r.getRubies()<<" Rubies************"<<std::endl;
+        std::cout<<name<<": you have been rewarded "<<r.getRubies()<<" rubies"<<std::endl;
         countOfRubies=countOfRubies+ r.getRubies();
     };
     
@@ -42,9 +42,9 @@ public:
     
     friend std::ostream& operator<<(std::ostream& os,Player & p) {
         if(!p.display){
-            os<<p.name+": " + p.getSideString() + "(" + (p.isActive()? "ACTIVE":"INACTIVE") + ")\n";
+            os<<p.name+": " + p.getSideString() + " (" + (p.isActive()? "ACTIVE":"INACTIVE") + ")";
         } else {
-           os<<p.name + ": " + std::to_string(p.countOfRubies) + " rubies\n";
+           os<<p.name + ": " + std::to_string(p.countOfRubies) + " rubies";
         }
 
         return os;

@@ -2,11 +2,12 @@
 //  Board.cpp
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #include "board.hpp"
+vector <int> Board::cardsFaceup ={};
 
 bool Board::isFaceUp(const Letter & let, const Number & num){
     try{
@@ -22,8 +23,8 @@ bool Board::isFaceUp(const Letter & let, const Number & num){
 bool Board::turnFaceUp(const Letter & let, const Number & num){
    try{
         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(let,num));
-        
         c->turnFace(true);
+           cardsFaceup.push_back((int)let*5 + (int)num);
         return true;
     }
     catch (const std::out_of_range& oor) {
@@ -35,6 +36,9 @@ bool Board::turnFaceDown(const Letter & let, const Number & num){
     try{
         Card* c =  static_cast<Card*> (gameCdeck->getByPosition(let,num));
          c->turnFace(false);
+        if(!cardsFaceup.empty()){
+            cardsFaceup.erase(std::remove(cardsFaceup.begin(), cardsFaceup.end(), ((int)let*5 + (int)num)), cardsFaceup.end());
+        }
         return true;
     }
     catch (const std::out_of_range& oor) {
@@ -43,21 +47,12 @@ bool Board::turnFaceDown(const Letter & let, const Number & num){
      return false;
 }
 void Board::reset(){
-    Card* c;
-    cout<<"reseting board"<<endl;
     gameCdeck->make_CardDeck();
     for(int i=0;i<5;i++){
         for(int j=0;j<5;j++){
-            c =  static_cast<Card*>(gameCdeck->getByPosition((Letter)i,(Number)j));
-            if(c!=nullptr){
-                c->turnFace(false);
-            }
-            else{
-                cout<<"error: card deck empty"<<endl;
-            }
+            turnFaceDown((Letter)i,(Number) j);
         }
     }
-    cout<<"finish reseting board"<<endl;
 }
 
 Card* Board::getCard(const Letter& l, const Number& n){
@@ -70,8 +65,7 @@ Card* Board::getCard(const Letter& l, const Number& n){
     }
 }
 void Board::setCard( const Letter& l, const Number& n, Card* c){
-    c->setLetter(l);
-    c->setNumber(n);
+    c->setIndex(l,n);
     if (gameCdeck->setByPosition(l,n,c)){
         cout<<"setCard successful"<<endl;
     }

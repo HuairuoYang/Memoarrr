@@ -2,8 +2,8 @@
 //  Deck.hpp
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #ifndef Deck_hpp
@@ -42,6 +42,21 @@ public:
             delete(i);
         }
     }
+    C* getByPosition( int n){
+        if(deck.empty() ){
+            std::cout<<"empty deck"<<std::endl;
+            return nullptr;
+        }
+        if( n>deck.size() || n<0){
+            throw std::out_of_range("out of range");
+            return nullptr;
+        }
+        else {
+            C* pos = deck.at(n);
+            return pos;
+            
+        }
+    }
     C* getByPosition( const Letter& l, const Number& n){
         if(deck.empty() ){
             std::cout<<"empty deck"<<std::endl;
@@ -77,6 +92,7 @@ public:
         iter_swap(deck.begin()+(original->getLetter()*5+original->getNumber()), deck.begin()+(swapee->getLetter()*5+swapee->getNumber()));
         return true;
     }
+    
 };
 
 #endif /* Deck_hpp */

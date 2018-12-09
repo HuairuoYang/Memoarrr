@@ -20,6 +20,9 @@ class RewardDeck : public Deck<Reward>{
     RewardDeck& operator= ( const RewardDeck & ) = delete;
 public:
     static RewardDeck& make_CardDeck();
+    virtual ~RewardDeck(){
+        myRDeck = nullptr;
+    }
 };
 
 #endif /* RewardDeck_hpp */

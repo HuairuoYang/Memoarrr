@@ -23,6 +23,9 @@ public:
     static bool roundOverShuffle;
     
     static CardDeck& make_CardDeck();
+    virtual ~CardDeck(){
+        myCDeck = nullptr;
+    }
 };
 
 #endif /* CardDeck_hpp */

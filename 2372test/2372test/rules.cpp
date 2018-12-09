@@ -2,8 +2,8 @@
 //  Rules.cpp
 //  Memoarrr
 //
-//  Created by Huairuo Yang on 2018-11-12.
-//  Copyright © 2018 Huairuo Yang(7895717). All rights reserved.
+//  Created by Huairuo Yang(7895717) & Yifei Du(7824839) on 2018-11-12.
+//  Copyright © 2018 Huairuo Yang(7895717) & Yifei Du(7824839). All rights reserved.
 //
 
 #include "rules.hpp"
@@ -36,19 +36,15 @@ const Player& Rules::getNextPlayer(const Game& g){
 
          switch (nextPlayer){
              case 0:
-                 cout<<"getting top"<<endl;
                  temp = &g.getPlayer(Side::top);
                  break;
              case 1:
-                 cout<<"getting bot"<<endl;
                  temp = &g.getPlayer(Side::bottom);
                  break;
              case 2:
-                 cout<<"getting left"<<endl;
                  temp = &g.getPlayer(Side::left);
                  break;
              case 3:
-                 cout<<"getting right"<<endl;
                  temp = &g.getPlayer(Side::right);
                  break;
              default:
@@ -59,8 +55,6 @@ const Player& Rules::getNextPlayer(const Game& g){
          if (nextPlayer ==g.numOfPlayer){
              nextPlayer = 0;
          }
-         cout<<"next player : "<<nextPlayer<<endl;
-         
      }
      return *temp;
      

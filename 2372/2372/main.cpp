@@ -21,7 +21,6 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     Rules* rules= new Rules();
     Game* myGame = new Game();
-    while (true){
     string mode;
     cout<<"Please input \"expert\" for expert mode or any for normal mode: "<<endl;
     cin>>mode;
@@ -62,7 +61,7 @@ int main(int argc, const char * argv[]) {
     cout<<" "<<endl;
     //Adding the players and temporily revealing the three cards directly in front of the player
     cout<<"========GAME START========"<<endl;
-    
+
         cout<<" "<<endl;
         //expert mode
         if(expertMode){
@@ -97,7 +96,7 @@ int main(int argc, const char * argv[]) {
                     cout<<endl;
                     cout<<*myGame<<endl;
                     cout<<"--------EXPERT: Player "<<playingNow->getName()<<" start--------"<<endl;;
-                    
+
 
                     Card* current = nullptr;
                     //if the walrus is turned up, see if the blocked card is chosen to be turn face up
@@ -152,7 +151,7 @@ int main(int argc, const char * argv[]) {
                                 cc= myGame->crab(*playingNow);
                                 numberOfFaceUp++;
                                 numberOfCardsInRound++;
-                                current->setIndex(cc->getLetter(),cc->getNumber());
+                                current=cc;
                                 myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
                                 animal = (FaceAnimal)myGame->gameBoard.getCard(current->getLetter(), current->getNumber())->getAnimal();
                                 crabturned=false;
@@ -160,11 +159,13 @@ int main(int argc, const char * argv[]) {
                             case (FaceAnimal::penguin):
                                 if(numberOfFaceUp>1){
                                     myGame->penguin(*playingNow);
+                                    numberOfFaceUp--;
                                 }
                                 else{
                                     cout<<"You have a penguin but its the first card in round, you cannot flip a card"<<endl;
+
                                 }
-                                numberOfFaceUp--;
+
                                 crabturned=true;
                                 break;
                             case (FaceAnimal::walrus):
@@ -216,13 +217,12 @@ int main(int argc, const char * argv[]) {
                                 myGame->roundFinish();
                                 myGame->nextRound();
                                 myGame->setSkip(false);
-                                numberOfFaceUp=0;
                                 numberOfCardsInRound=0;
                             }
                         }
                     }
-                    
-                    
+
+
                     if(numberOfFaceUp>23){
                         cout<<"shuffling all cards"<<endl;
                         gameCdeck->roundOverShuffle=true;
@@ -344,7 +344,6 @@ int main(int argc, const char * argv[]) {
             cout<<*myGame<<endl;
             cout<<"##########GAME OVER##########"<<endl;
         }
-    }
 
 
 }
