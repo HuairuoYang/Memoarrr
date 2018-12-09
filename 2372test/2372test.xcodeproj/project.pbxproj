@@ -14,7 +14,7 @@
 		9EF92F3021BD862500BC0E34 /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EF92F2321BD862500BC0E34 /* board.cpp */; };
 		9EF92F3121BD862500BC0E34 /* rewarddeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EF92F2421BD862500BC0E34 /* rewarddeck.cpp */; };
 		9EF92F3221BD862500BC0E34 /* card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EF92F2721BD862500BC0E34 /* card.cpp */; };
-		9EF92F3521BD875B00BC0E34 /* testEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EF92F3321BD875B00BC0E34 /* testEntry.cpp */; };
+		9EF92F3521BD875B00BC0E34 /* testentry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9EF92F3321BD875B00BC0E34 /* testentry.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,8 +48,8 @@
 		9EF92F2A21BD862500BC0E34 /* deck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deck.hpp; sourceTree = "<group>"; };
 		9EF92F2B21BD862500BC0E34 /* carddeck.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = carddeck.hpp; sourceTree = "<group>"; };
 		9EF92F2C21BD862500BC0E34 /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
-		9EF92F3321BD875B00BC0E34 /* testEntry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testEntry.cpp; sourceTree = "<group>"; };
-		9EF92F3421BD875B00BC0E34 /* testEntry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = testEntry.hpp; sourceTree = "<group>"; };
+		9EF92F3321BD875B00BC0E34 /* testentry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testentry.cpp; sourceTree = "<group>"; };
+		9EF92F3421BD875B00BC0E34 /* testentry.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = testentry.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +99,8 @@
 				9EF92F1D21BD862500BC0E34 /* rules.hpp */,
 				9EF92F2C21BD862500BC0E34 /* utils.hpp */,
 				9EF92F0021BD847400BC0E34 /* main.cpp */,
-				9EF92F3321BD875B00BC0E34 /* testEntry.cpp */,
-				9EF92F3421BD875B00BC0E34 /* testEntry.hpp */,
+				9EF92F3321BD875B00BC0E34 /* testentry.cpp */,
+				9EF92F3421BD875B00BC0E34 /* testentry.hpp */,
 			);
 			path = 2372test;
 			sourceTree = "<group>";
@@ -161,7 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EF92F3521BD875B00BC0E34 /* testEntry.cpp in Sources */,
+				9EF92F3521BD875B00BC0E34 /* testentry.cpp in Sources */,
 				9EF92F2F21BD862500BC0E34 /* player.cpp in Sources */,
 				9EF92F3121BD862500BC0E34 /* rewarddeck.cpp in Sources */,
 				9EF92F3221BD862500BC0E34 /* card.cpp in Sources */,

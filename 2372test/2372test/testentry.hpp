@@ -399,7 +399,7 @@ void testEntry(){
         cout<<"##########GAME OVER##########"<<endl;
         cout<<"========================================="<<endl;
         cout<<"========================================="<<endl;
-        cout<<"test expert mode end"<<endl;
+        cout<<"test normal mode end"<<endl;
         cout<<"========================================="<<endl;
         cout<<"========================================="<<endl;
         delete(rules);
