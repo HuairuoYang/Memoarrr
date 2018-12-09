@@ -85,7 +85,7 @@ public:
             os <<"deck empty\n";
         }
         os<<"----------------------\n";
-        return os;
+//        return os;
         //}else{
         os<<"======================\n";
         if(!cardsFaceup.empty()){
