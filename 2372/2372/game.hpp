@@ -233,14 +233,12 @@ public:
         cout<<"Player " << p.getName()<< "  you have turned up a Crab!!!!!"<<endl;
         cout<<" You need to turn up an another card now. Please input the Character for row: "<<endl;
         Card* chosen= chooseCard();
-        if(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
+        while(gameBoard.isFaceUp(chosen->getLetter(), chosen->getNumber())==true){
             cout<<"PLease re-enter a card position as the card in position is already face up"<<endl;
-            return nullptr;
+            chosen= chooseCard();
         }
-        else{
             gameBoard.turnFaceUp(chosen->getLetter(), chosen->getNumber());
             return gameBoard.getCard(chosen->getLetter(), chosen->getNumber());
-        }
     }
     
     
@@ -252,9 +250,9 @@ public:
     
     
     bool octopus(Card* cardToSwap, const Player& p){
-        cout<<"Player " << p.getName()<< ", you have turned up an octopus!!!!!"<<endl;
+        cout<<"Player " << p.getName()<< ", you have turned up an octopus"<<endl;
         cout<<"Your chosen card will be swapped with a randomly chosen adjacent card!!! "<<endl;
-        cout<<"-------Reminder:: the card will not be swapped to empty spots, it will not go over the edges, corners and the volcano card!!!!!!------"<<endl;
+        cout<<"(It will not go over the edges, corners and the volcano card)"<<endl;
         cout<<endl;
         Letter a;
         Number z;
@@ -302,7 +300,7 @@ public:
                 swapper->setIndex((Letter)(swapee->getLetter()-1),(Number)swapper->getNumber());
                 adjustSwapMidAvailability(swapee);
                 adjustSwapMidAvailability(swapper);
-                cout<<"Successfully swapped with top side"<<endl;
+                cout<<"It swapped with top side"<<endl;
         
                 
                 return true;
@@ -322,7 +320,7 @@ public:
                 swapper->setIndex((Letter)(swapee->getLetter()+1),(Number)swapper->getNumber());
                 adjustSwapMidAvailability(swapee);
                 adjustSwapMidAvailability(swapper);
-                cout<<"Successfully swapped with bottom side"<<endl;
+                cout<<"It swapped with bottom side"<<endl;
                 return true;
             }
             else{
@@ -340,7 +338,7 @@ public:
                 swapper->setIndex((Letter)swapper->getLetter(),(Number)(swapee->getNumber()-1));
                 adjustSwapMidAvailability(swapee);
                 adjustSwapMidAvailability(swapper);
-                cout<<"Successfully swapped with left side"<<endl;
+                cout<<"It swapped with left side"<<endl;
                 return true;
             }
     
@@ -359,7 +357,7 @@ public:
                 swapper->setIndex((Letter)swapper->getLetter(),(Number)(swapee->getNumber()+1));
                 adjustSwapMidAvailability(swapee);
                 adjustSwapMidAvailability(swapper);
-                cout<<"Successfully swapped with right side"<<endl;
+                cout<<"It swapped with right side"<<endl;
                 return true;
             }
             else{
@@ -437,7 +435,6 @@ public:
     
     
     bool adjustSwapMidAvailability(Card* card){
-        cout<<"Adjusting postion in process...."<<endl;
         Letter a=card->getLetter();
         Number z=card->getNumber();
         if (a==Letter::B&&z==Number::three){

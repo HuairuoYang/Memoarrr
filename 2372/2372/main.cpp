@@ -150,6 +150,7 @@ int main(int argc, const char * argv[]) {
                     Card* cc;
                     bool wal= true;
                     bool crabturned=false;
+                    cout<<"--------Player: "<<playingNow->getName()<<" skills--------"<<endl;
                     cout<<*myGame<<endl;
                     while(!crabturned){
                         switch(animal){
@@ -166,6 +167,9 @@ int main(int argc, const char * argv[]) {
                             case (FaceAnimal::penguin):
                                 if(numberOfFaceUp>1){
                                     myGame->penguin(*playingNow);
+                                }
+                                else{
+                                    cout<<"You have a penguin but its the first card in round, you cannot flip a card"<<endl;
                                 }
                                 numberOfFaceUp--;
                                 crabturned=true;
@@ -195,7 +199,6 @@ int main(int argc, const char * argv[]) {
                     //checking player and game status
                     //myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
                     //cout<<"This is the number of cards in roud!!!:  " << numberOfCardsInRound<<endl;
-                    cout<<*myGame<<endl;
                     if(numberOfCardsInRound<2){
                         cout<<"--------Player: "<<playingNow->getName()<<" finished--------"<<endl;
                     }
@@ -214,6 +217,8 @@ int main(int argc, const char * argv[]) {
                             numberOfActivePlayers--;
                             if(numberOfActivePlayers<2){
                                 playingNow= &myGame->getPlayer(rules->getNextPlayer(*myGame).getSide());
+                                cout<<endl;
+                                cout<<endl;
                                 cout<<"EXPERT: Congratulations! The winner for this round is: "<< playingNow->getName()<<endl;
                                 playingNow->addReward(*rDeck->getNext());
                                  cout<<"********EXPERT: Round "<<myGame->getRound()<<" finish********"<<endl;
