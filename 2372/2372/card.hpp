@@ -31,17 +31,13 @@ public:
     bool rightAvailable=true;
     bool leftAvailable=true;
     
-    void setLetter(Letter l){
-        cout<<"This is the availability top, bot, right, left in set letter: "<<topAvailable<<bottomAvailable<<rightAvailable<<leftAvailable<<endl;
+    void setIndex(Letter l, Number n){
         changeAvailabilityLetter(l);
-        let=l;
-    }
-    
-    void setNumber(Number n){
-        cout<<"This is the availability top, bot, right, left in set number: "<<topAvailable<<bottomAvailable<<rightAvailable<<leftAvailable<<endl;
         changeAvailabilityNumber(n);
+        let=l;
         num=n;
     }
+    
     Letter getLetter() const {return let;}
     Number getNumber() const {return num;}
     
@@ -86,6 +82,13 @@ public:
         if(n==Number::five){
             rightAvailable=false;
         }
+    }
+    
+    void resetAvailability(){
+        topAvailable=true;
+        bottomAvailable=true;
+        leftAvailable=true;
+        rightAvailable=true;
     }
 };
 
