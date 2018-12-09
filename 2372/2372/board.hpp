@@ -32,6 +32,7 @@ public:
     void setCard( const Letter&, const Number&, Card* );
     
     friend std::ostream& operator<<(std::ostream& os,Board & b) {
+        try{
         if(!expertMode){
          os<<"======================\n";
         if(!gameCdeck->isEmpty()){
@@ -88,11 +89,8 @@ public:
         }
         os<<"----------------------\n";
         return os;
-        }else{
-        os<<"======================\n";
-        for (auto i:cardsFaceup){
-            cout<<i<<endl;
         }
+        else{
         if(cardsFaceup.size()!=0){
             os<<"\n======================\n";
             int count =0;
@@ -137,6 +135,11 @@ public:
         os<<"\n======================\n";
             return os;
         }
+    }
+        catch (const std::out_of_range& oor) {
+            std::cerr << "Out of Range error: " << oor.what() << '\n';
+        }
+        return os;
     }
 };
 

@@ -293,6 +293,8 @@ public:
         if(i==0){
             if(swapper->topAvailable){
                 swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()-1), swapper->getNumber());
+                
+                switchPosition(swapee,swapper);
                 swapper->resetAvailability();
                 swapee->resetAvailability();
                 gameCdeck->swap(swapper,swapee);
@@ -301,6 +303,8 @@ public:
                 adjustSwapMidAvailability(swapee);
                 adjustSwapMidAvailability(swapper);
                 cout<<"Successfully swapped with top side"<<endl;
+        
+                
                 return true;
             }
             else{
@@ -310,6 +314,7 @@ public:
         if(i==1){
             if(swapper->bottomAvailable){
                 swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()+1), swapper->getNumber());
+                switchPosition(swapee,swapper);
                 swapper->resetAvailability();
                 swapee->resetAvailability();
                 gameCdeck->swap(swapper,swapee);
@@ -327,6 +332,7 @@ public:
         if(i==2){
             if(swapper->leftAvailable){
                 swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()), (Number)(swapper->getNumber()-1));
+                switchPosition(swapee,swapper);
                 swapper->resetAvailability();
                 swapee->resetAvailability();
                 gameCdeck->swap(swapper,swapee);
@@ -345,6 +351,7 @@ public:
         if(i==3){
             if(swapper->rightAvailable){
                 swapee=gameCdeck->getByPosition((Letter)(swapper->getLetter()), (Number)(swapper->getNumber()+1));
+                switchPosition(swapee,swapper);
                 swapper->resetAvailability();
                 swapee->resetAvailability();
                 gameCdeck->swap(swapper,swapee);
@@ -360,6 +367,23 @@ public:
             }
         }
         return false;
+    }
+    
+    bool switchPosition(Card* swappee, Card* swapper){
+        if(swappee->isFaceUp()){
+            gameBoard.cardsFaceup.erase(std::remove(gameBoard.cardsFaceup.begin(), gameBoard.cardsFaceup.end(), ((int)swapper->getLetter()*5 + (int)swapper->getNumber())), gameBoard.cardsFaceup.end());
+            std::vector<int>::iterator it;
+            it = find(gameBoard.cardsFaceup.begin(),gameBoard.cardsFaceup.end(),swappee->getLetter()*5+swappee->getNumber());
+            gameBoard.cardsFaceup.at(it-gameBoard.cardsFaceup.begin()) =swapper->getLetter()*5+swapper->getNumber();
+           
+        }
+        else{
+            if(!gameBoard.cardsFaceup.empty()){
+                gameBoard.cardsFaceup.erase(std::remove(gameBoard.cardsFaceup.begin(), gameBoard.cardsFaceup.end(), ((int)swapper->getLetter()*5 + (int)swapper->getNumber())), gameBoard.cardsFaceup.end());
+            }
+        }
+         gameBoard.cardsFaceup.push_back(swappee->getLetter()*5+swappee->getNumber());
+        return true;
     }
     
     bool roundFinish() const{

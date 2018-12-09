@@ -73,7 +73,6 @@ int main(int argc, const char * argv[]) {
                 cout<<"EXPERT: Enter any key to start round: "<<myGame->getRound()<<endl;
                 cin>>a;
                 cout<<"********EXPERT: Round "<<myGame->getRound()<<" start********"<<endl;
-                cout<<*myGame<<endl;
                 int numberOfCardsInRound=0;
                 myGame->getPlayer(Side::top).setActive(true);
                 myGame->getPlayer(Side::bottom).setActive(true);
