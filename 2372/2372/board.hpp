@@ -94,6 +94,7 @@ public:
             cout<<i<<endl;
         }
         if(cardsFaceup.size()!=0){
+            os<<"\n======================\n";
             int count =0;
             int line = (int)cardsFaceup.size()/(int)5;
             int extra = cardsFaceup.size()%5;
@@ -105,12 +106,16 @@ public:
                         //each card row
                         os <<(*gameCdeck->getByPosition(cardsFaceup.at(count+col)))(row);
                     }
+                    
+                    os <<"\n";
                 }
                 for(int col1 = 0; col1 < 5; col1++){
                     //each card row
                     os << " "<<(*gameCdeck->getByPosition(cardsFaceup.at(count+col1))).getPositionString()<<" ";
                 }
                 count+=5;
+                
+                os<<"\n----------------------\n";
                 
             }
             for(int row1 = 0;row1 < gameCdeck->getByPosition(0)->getNRows();row1++){
@@ -119,6 +124,7 @@ public:
                     //each card row
                     os <<(*gameCdeck->getByPosition(cardsFaceup.at(count+col2)))(row1);
                 }
+                os <<"\n";
             }
             for(int col3 = 0; col3 < extra; col3++){
                 //each card row
@@ -128,7 +134,7 @@ public:
         else{
             cout<<"No card has been turned yet"<<endl;
         }
-        os<<"----------------------\n";
+        os<<"\n======================\n";
             return os;
        // }
     }

@@ -54,17 +54,10 @@ bool Board::turnFaceDown(const Letter & let, const Number & num){
      return false;
 }
 void Board::reset(){
-    Card* c;
     gameCdeck->make_CardDeck();
     for(int i=0;i<5;i++){
         for(int j=0;j<5;j++){
-            c =  static_cast<Card*>(gameCdeck->getByPosition((Letter)i,(Number)j));
-            if(c!=nullptr){
-                c->turnFace(false);
-            }
-            else{
-                cout<<"error: card deck empty"<<endl;
-            }
+            turnFaceDown((Letter)i,(Number) j);
         }
     }
 }
