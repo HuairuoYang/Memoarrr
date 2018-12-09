@@ -8,10 +8,11 @@
 
 #ifndef utils_hpp
 #define utils_hpp
-
+#include <vector>
 const int rewardList[7] ={1,1,1,2,2,3,4};
 static bool endOfGame = false;
 static bool expertMode = false;
+static std::vector<int> cardsFaceup = {};
 
 enum Side{
     top = 0,

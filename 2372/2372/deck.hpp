@@ -42,6 +42,21 @@ public:
             delete(i);
         }
     }
+    C* getByPosition( int n){
+        if(deck.empty() ){
+            std::cout<<"empty deck"<<std::endl;
+            return nullptr;
+        }
+        if( n>deck.size() || n<0){
+            throw std::out_of_range("out of range");
+            return nullptr;
+        }
+        else {
+            C* pos = deck.at(n);
+            return pos;
+            
+        }
+    }
     C* getByPosition( const Letter& l, const Number& n){
         if(deck.empty() ){
             std::cout<<"empty deck"<<std::endl;

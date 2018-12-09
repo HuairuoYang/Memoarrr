@@ -96,3 +96,12 @@ std::string Card::getPositionString(){
     }
     return rtn;
 }
+void Card::turnFace(bool trueForUp){
+    faceUp = trueForUp;
+    if(faceUp){
+        cardsFaceup.push_back((int)let*5 + (int)num);
+    }
+    else{
+        cardsFaceup.erase(find (cardsFaceup.begin(), cardsFaceup.end(), (int)let*5 + (int)num));
+    }
+}

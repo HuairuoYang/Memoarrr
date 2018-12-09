@@ -52,7 +52,7 @@ public:
     std::string getColorStr();
     
     bool isFaceUp(){return faceUp;}
-    void turnFace(bool trueForUp){faceUp = trueForUp;}
+    void turnFace(bool trueForUp);
     
     Card(const Card&) = delete;
     Card& operator= ( const Card & ) = delete;

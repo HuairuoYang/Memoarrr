@@ -103,7 +103,9 @@ int main(int argc, const char * argv[]) {
                     }
                     cout<<endl;
                     cout<<endl;
+                    cout<<*myGame<<endl;
                     cout<<"--------EXPERT: Player "<<playingNow->getName()<<" start--------"<<endl;;
+                    
 
                     Card* current = nullptr;
                     //if the walrus is turned up, see if the blocked card is chosen to be turn face up
@@ -149,6 +151,7 @@ int main(int argc, const char * argv[]) {
                     Card* cc;
                     bool wal= true;
                     bool crabturned=false;
+                    cout<<*myGame<<endl;
                     while(!crabturned){
                         switch(animal){
                             case (FaceAnimal::crab):
@@ -195,7 +198,10 @@ int main(int argc, const char * argv[]) {
                     //myGame->setCurrentCard(gameCdeck->getByPosition(current->getLetter(), current->getNumber()));
                     //cout<<"This is the number of cards in roud!!!:  " << numberOfCardsInRound<<endl;
                     cout<<*myGame<<endl;
-                    if(numberOfCardsInRound>1){
+                    if(numberOfCardsInRound<2){
+                        cout<<"--------Player: "<<playingNow->getName()<<" finished--------"<<endl;
+                    }
+                    else{
                         if(rules->isValid(*myGame)==true){
                             cout<<*myGame<<endl;
                             cout<<"EXPERT: It is a match!"<<endl;
@@ -224,6 +230,7 @@ int main(int argc, const char * argv[]) {
                             }
                         }
                     }
+                    
                     
                     if(numberOfFaceUp>23){
                         cout<<"shuffling all cards"<<endl;
